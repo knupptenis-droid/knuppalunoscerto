@@ -32,47 +32,19 @@ function exigirAdmin(req, res, next) {
   next();
 }
 
-async function ofertaAtual() {
-  const { data, error } = await db
-    .from('ofertas')
-    .select('*')
-    .order('criada_em', { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  if (error) throw error;
-  return data;
-}
-
-async function contarInscricoes(ofertaId) {
-  const { count, error } = await db
-    .from('inscricoes')
-    .select('id', { count: 'exact', head: true })
-    .eq('oferta_id', ofertaId);
-  if (error) throw error;
-  return count || 0;
-}
-
 // ---------- rotas publicas ----------
 
+// Lista todas as rodadas ABERTAS (pode ser mais de uma ao mesmo tempo)
 app.get('/api/vagas', async (req, res) => {
   try {
-    const oferta = await ofertaAtual();
-    if (!oferta) return res.json({ existe: false });
+    const { data, error } = await db
+      .from('ofertas')
+      .select('id, titulo, detalhe, criada_em')
+      .eq('aberta', true)
+      .order('criada_em', { ascending: true });
+    if (error) throw error;
 
-    const ocupadas = await contarInscricoes(oferta.id);
-    const restantes = Math.max(oferta.vagas_total - ocupadas, 0);
-
-    res.json({
-      existe: true,
-      id: oferta.id,
-      titulo: oferta.titulo,
-      detalhe: oferta.detalhe,
-      total: oferta.vagas_total,
-      ocupadas,
-      restantes,
-      aberta: oferta.aberta && restantes > 0,
-      niveis: NIVEIS,
-    });
+    res.json({ ofertas: data, niveis: NIVEIS });
   } catch (e) {
     console.error(e);
     res.status(500).json({ erro: 'Não foi possível carregar as vagas. Tente de novo.' });
@@ -81,35 +53,40 @@ app.get('/api/vagas', async (req, res) => {
 
 app.post('/api/inscricoes', async (req, res) => {
   try {
+    const ofertaId = parseInt(req.body.oferta_id, 10);
     const nome = String(req.body.nome || '').trim();
     const nivel = String(req.body.nivel || '').trim();
     const whatsapp = String(req.body.whatsapp || '').trim();
 
+    if (!Number.isInteger(ofertaId)) return res.status(400).json({ erro: 'Escolha um horário.' });
     if (nome.length < 3) return res.status(400).json({ erro: 'Escreva seu nome completo.' });
     if (!NIVEIS.includes(nivel)) return res.status(400).json({ erro: 'Escolha o seu nível.' });
-
-    const oferta = await ofertaAtual();
-    if (!oferta) return res.status(409).json({ erro: 'Não há vagas abertas agora.' });
-
-    const { data, error } = await db.rpc('inscrever', {
-      p_oferta_id: oferta.id,
-      p_nome: nome,
-      p_nivel: nivel,
-      p_whatsapp: whatsapp,
-    });
-    if (error) throw error;
-
-    if (!data.ok) {
-      const mensagens = {
-        fechada: 'As inscrições desta rodada foram encerradas.',
-        esgotada: 'As vagas acabaram de ser preenchidas.',
-        duplicada: 'Esse nome já está inscrito nesta rodada.',
-        inexistente: 'Não há vagas abertas agora.',
-      };
-      return res.status(409).json({ erro: mensagens[data.motivo] || 'Não foi possível concluir.' });
+    if (whatsapp.replace(/\D/g, '').length < 10) {
+      return res.status(400).json({ erro: 'Escreva um WhatsApp válido, com DDD.' });
     }
 
-    res.json({ posicao: data.posicao, restantes: data.restantes });
+    const { data: oferta, error: erroOferta } = await db
+      .from('ofertas')
+      .select('id, aberta')
+      .eq('id', ofertaId)
+      .maybeSingle();
+    if (erroOferta) throw erroOferta;
+    if (!oferta || !oferta.aberta) {
+      return res.status(409).json({ erro: 'Esse horário não está mais disponível. Atualize a página.' });
+    }
+
+    const { error: erroInsert } = await db
+      .from('inscricoes')
+      .insert({ oferta_id: ofertaId, nome, nivel, whatsapp, status: 'pendente' });
+
+    if (erroInsert) {
+      if (erroInsert.code === '23505') {
+        return res.status(409).json({ erro: 'Esse nome já está inscrito nesse horário.' });
+      }
+      throw erroInsert;
+    }
+
+    res.json({ ok: true });
   } catch (e) {
     console.error(e);
     res.status(500).json({ erro: 'Não foi possível concluir a inscrição. Tente de novo.' });
@@ -118,22 +95,35 @@ app.post('/api/inscricoes', async (req, res) => {
 
 // ---------- rotas de admin ----------
 
+// Todas as rodadas (abertas e encerradas), cada uma com seus inscritos
 app.get('/api/admin/painel', exigirAdmin, async (req, res) => {
   try {
-    const oferta = await ofertaAtual();
-    if (!oferta) return res.json({ existe: false, niveis: NIVEIS });
-
-    const { data: inscricoes, error } = await db
-      .from('inscricoes')
+    const { data: ofertas, error: erroOfertas } = await db
+      .from('ofertas')
       .select('*')
-      .eq('oferta_id', oferta.id)
-      .order('posicao', { ascending: true });
-    if (error) throw error;
+      .order('criada_em', { ascending: false })
+      .limit(30);
+    if (erroOfertas) throw erroOfertas;
+
+    const ids = ofertas.map(o => o.id);
+    let inscricoes = [];
+    if (ids.length) {
+      const { data, error } = await db
+        .from('inscricoes')
+        .select('*')
+        .in('oferta_id', ids)
+        .order('criada_em', { ascending: true });
+      if (error) throw error;
+      inscricoes = data;
+    }
+
+    const porOferta = {};
+    inscricoes.forEach(i => {
+      (porOferta[i.oferta_id] = porOferta[i.oferta_id] || []).push(i);
+    });
 
     res.json({
-      existe: true,
-      oferta,
-      inscricoes,
+      ofertas: ofertas.map(o => ({ ...o, inscricoes: porOferta[o.id] || [] })),
       niveis: NIVEIS,
     });
   } catch (e) {
@@ -146,16 +136,12 @@ app.post('/api/admin/ofertas', exigirAdmin, async (req, res) => {
   try {
     const titulo = String(req.body.titulo || '').trim();
     const detalhe = String(req.body.detalhe || '').trim();
-    const vagas = parseInt(req.body.vagas_total, 10);
 
-    if (!titulo) return res.status(400).json({ erro: 'Escreva um título para a rodada.' });
-    if (!Number.isInteger(vagas) || vagas < 1) {
-      return res.status(400).json({ erro: 'Informe quantas vagas você vai abrir.' });
-    }
+    if (!titulo) return res.status(400).json({ erro: 'Escreva um título para o horário.' });
 
     const { data, error } = await db
       .from('ofertas')
-      .insert({ titulo, detalhe: detalhe || null, vagas_total: vagas, aberta: true })
+      .insert({ titulo, detalhe: detalhe || null, aberta: true })
       .select()
       .single();
     if (error) throw error;
@@ -163,20 +149,13 @@ app.post('/api/admin/ofertas', exigirAdmin, async (req, res) => {
     res.json({ oferta: data });
   } catch (e) {
     console.error(e);
-    res.status(500).json({ erro: 'Não foi possível abrir a rodada.' });
+    res.status(500).json({ erro: 'Não foi possível abrir o horário.' });
   }
 });
 
 app.patch('/api/admin/ofertas/:id', exigirAdmin, async (req, res) => {
   try {
     const patch = {};
-    if (req.body.vagas_total !== undefined) {
-      const vagas = parseInt(req.body.vagas_total, 10);
-      if (!Number.isInteger(vagas) || vagas < 0) {
-        return res.status(400).json({ erro: 'Número de vagas inválido.' });
-      }
-      patch.vagas_total = vagas;
-    }
     if (req.body.aberta !== undefined) patch.aberta = !!req.body.aberta;
     if (req.body.titulo !== undefined) patch.titulo = String(req.body.titulo).trim();
     if (req.body.detalhe !== undefined) patch.detalhe = String(req.body.detalhe).trim() || null;
@@ -190,6 +169,31 @@ app.patch('/api/admin/ofertas/:id', exigirAdmin, async (req, res) => {
     if (error) throw error;
 
     res.json({ oferta: data });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ erro: 'Não foi possível salvar a alteração.' });
+  }
+});
+
+app.patch('/api/admin/inscricoes/:id', exigirAdmin, async (req, res) => {
+  try {
+    const patch = {};
+    if (req.body.status !== undefined) {
+      if (!['pendente', 'confirmado'].includes(req.body.status)) {
+        return res.status(400).json({ erro: 'Status inválido.' });
+      }
+      patch.status = req.body.status;
+    }
+
+    const { data, error } = await db
+      .from('inscricoes')
+      .update(patch)
+      .eq('id', req.params.id)
+      .select()
+      .single();
+    if (error) throw error;
+
+    res.json({ inscricao: data });
   } catch (e) {
     console.error(e);
     res.status(500).json({ erro: 'Não foi possível salvar a alteração.' });
