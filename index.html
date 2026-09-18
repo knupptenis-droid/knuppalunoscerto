@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vagas de Reposição · Knupp Tênis</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --preto:#0A0A0A;
+    --carta:#141414;
+    --carta-alta:#1C1C1C;
+    --borda:rgba(255,255,255,.08);
+    --verde:#2BD576;
+    --verde-forte:#22C55E;
+    --verde-fundo:rgba(43,213,118,.10);
+    --branco:#F2F2F2;
+    --cinza:#8A8A8A;
+    --cinza-fraco:#5A5A5A;
+    --azul:#3B9EFF;
+    --laranja:#F5A623;
+    --rosa:#E8568F;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--preto);color:var(--branco);
+    font-family:"DM Sans",system-ui,-apple-system,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cinza);margin:0;
+  }
+  .verde{color:var(--verde)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    text-align:center;padding:64px 22px 48px;
+    background:radial-gradient(120% 90% at 50% 0%, rgba(43,213,118,.10) 0%, rgba(10,10,10,0) 62%);
+  }
+  .hero h1{
+    font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;
+    font-size:clamp(3.2rem,15vw,4.6rem);line-height:.88;
+    margin:0 0 16px;letter-spacing:.01em;
+  }
+  .risca{width:44px;height:2px;background:var(--verde);margin:26px auto}
+  .hero p{max-width:30rem;margin:0 auto;color:#CFCFCF;font-size:1rem}
+  .hero .destaque{color:var(--branco);font-weight:700;margin-top:10px}
+
+  /* ---------- contador ---------- */
+  .contador{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);
+    text-align:center;
+  }
+  .contador div{padding:26px 10px}
+  .contador div + div{border-left:1px solid var(--borda)}
+  .contador .n{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.6rem;line-height:1;color:var(--verde)}
+  .contador .n.neutro{color:var(--branco)}
+  .contador .r{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cinza-fraco);margin-top:8px}
+
+  /* ---------- conteudo ---------- */
+  .miolo{max-width:30rem;margin:0 auto;padding:44px 22px 90px}
+  .secao-titulo{
+    font-family:"Bebas Neue",Impact,sans-serif;font-size:2.2rem;line-height:.95;
+    margin:0 0 8px;
+  }
+  .secao-sub{color:var(--cinza);font-size:.95rem;margin:0 0 28px}
+
+  .oferta{
+    background:var(--carta);border:1px solid var(--borda);
+    border-left:3px solid var(--verde);border-radius:10px;
+    padding:20px;margin-bottom:32px;
+  }
+  .oferta h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:1.7rem;margin:0 0 4px;letter-spacing:.01em}
+  .oferta p{margin:0;color:var(--cinza);font-size:.94rem}
+
+  .campo{margin-bottom:22px}
+  label{
+    display:block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--cinza);margin:0 0 9px;
+  }
+  label .req{color:var(--verde)}
+  input,select{
+    width:100%;font-family:inherit;font-size:1rem;color:var(--branco);
+    background:var(--carta);border:1px solid var(--borda);border-radius:10px;
+    padding:15px 16px;appearance:none;
+  }
+  select{
+    background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238A8A8A' stroke-width='1.6'%3E%3Cpath d='M1 1.5L6 6.5l5-5'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 16px center;padding-right:42px;
+  }
+  input::placeholder{color:#4A4A4A}
+  input:focus,select:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px var(--verde-fundo)}
+  button:focus-visible,.engrenagem:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+
+  .btn{
+    width:100%;font-family:inherit;font-size:1rem;font-weight:700;
+    color:#06140C;background:var(--verde-forte);
+    border:0;border-radius:10px;padding:16px;cursor:pointer;
+    transition:background .15s ease;
+  }
+  .btn:hover:not(:disabled){background:var(--verde)}
+  .btn:disabled{background:var(--carta-alta);color:var(--cinza-fraco);cursor:not-allowed}
+  .btn.linha{background:transparent;color:var(--cinza);border:1px solid var(--borda);font-weight:500}
+  .btn.linha:hover{background:var(--carta-alta);color:var(--branco)}
+  .btn.curto{width:auto;padding:12px 22px}
+
+  .aviso{
+    border:1px solid var(--borda);border-left:3px solid var(--verde);
+    background:var(--carta);border-radius:8px;
+    padding:13px 15px;font-size:.93rem;margin-bottom:22px;
+  }
+
+  /* ---------- confirmacao ---------- */
+  .fim{text-align:center;padding:40px 0}
+  .selo-ok{
+    width:62px;height:62px;border-radius:50%;
+    background:var(--verde-fundo);border:1px solid rgba(43,213,118,.4);
+    display:grid;place-items:center;margin:0 auto 22px;
+  }
+  .selo-ok svg{width:26px;height:26px;stroke:var(--verde);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .fim h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:2.4rem;margin:0 0 12px}
+  .fim p{color:var(--cinza);margin:0 0 6px}
+  .fim .posicao{
+    display:inline-block;margin-top:18px;padding:8px 18px;border-radius:99px;
+    background:var(--verde-fundo);color:var(--verde);font-weight:700;font-size:.9rem;
+  }
+
+  .rodape{
+    border-top:1px solid var(--borda);
+    text-align:center;padding:26px 22px 34px;color:var(--cinza-fraco);font-size:.8rem;
+  }
+
+  /* ---------- engrenagem ---------- */
+  .engrenagem{
+    position:fixed;right:18px;bottom:18px;z-index:40;
+    width:46px;height:46px;border-radius:50%;
+    background:var(--carta-alta);border:1px solid var(--borda);
+    display:grid;place-items:center;cursor:pointer;
+    color:var(--cinza);
+  }
+  .engrenagem:hover{color:var(--verde);border-color:rgba(43,213,118,.4)}
+  .engrenagem svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7}
+
+  /* ---------- painel ---------- */
+  .painel{
+    position:fixed;inset:0;z-index:50;background:var(--preto);
+    overflow-y:auto;display:none;
+  }
+  .painel.ativo{display:block}
+
+  .login{min-height:100dvh;display:grid;place-items:center;padding:24px}
+  .login-caixa{width:100%;max-width:21rem;text-align:center}
+  .logo{font-family:"Bebas Neue",Impact,sans-serif;font-size:3rem;line-height:1;letter-spacing:.02em}
+  .logo .ponto{color:var(--verde)}
+  .login .eyebrow{margin:10px 0 34px}
+  .login input{text-align:center;margin-bottom:14px}
+
+  .topo{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:18px 22px;border-bottom:1px solid var(--borda);
+    position:sticky;top:0;background:var(--preto);z-index:2;
+  }
+  .topo .marca{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.5rem;letter-spacing:.02em}
+  .ao-vivo{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:.74rem;color:var(--verde);
+    background:var(--verde-fundo);border-radius:99px;padding:5px 12px;
+  }
+  .ao-vivo i{width:6px;height:6px;border-radius:50%;background:var(--verde);display:block}
+  .fechar{
+    background:transparent;border:1px solid var(--borda);color:var(--cinza);
+    border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:1.1rem;line-height:1;
+  }
+  .fechar:hover{color:var(--branco)}
+
+  .painel-miolo{max-width:56rem;margin:0 auto;padding:26px 22px 80px}
+
+  .cartas{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:26px}
+  .carta{
+    background:var(--carta);border:1px solid var(--borda);border-radius:10px;
+    padding:18px;border-top:2px solid var(--verde);
+  }
+  .carta.azul{border-top-color:var(--azul)}
+  .carta.laranja{border-top-color:var(--laranja)}
+  .carta.rosa{border-top-color:var(--rosa)}
+  .carta .n{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.6rem;line-height:1;margin:10px 0 4px}
+  .carta .r{font-size:.78rem;color:var(--cinza-fraco)}
+
+  .bloco{
+    background:var(--carta);border:1px solid var(--borda);border-radius:10px;
+    padding:20px;margin-bottom:22px;
+  }
+  .bloco h3{
+    font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--cinza);margin:0 0 18px;font-weight:500;
+  }
+  .linha-btns{display:flex;gap:10px;flex-wrap:wrap}
+
+  .lista{list-style:none;margin:0;padding:0}
+  .lista li{
+    display:flex;align-items:center;gap:13px;
+    padding:13px 0;border-bottom:1px solid var(--borda);
+  }
+  .lista li:last-child{border-bottom:0}
+  .num{
+    width:26px;height:26px;border-radius:50%;flex:0 0 auto;
+    background:var(--verde-fundo);color:var(--verde);
+    display:grid;place-items:center;font-size:.8rem;font-weight:700;
+  }
+  .quem{flex:1;min-width:0}
+  .quem b{display:block;font-weight:500;font-size:.97rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .quem span{font-size:.8rem;color:var(--cinza-fraco)}
+  .remover{
+    background:transparent;border:0;color:var(--cinza-fraco);
+    font-family:inherit;font-size:.82rem;cursor:pointer;padding:6px 4px;
+  }
+  .remover:hover{color:var(--rosa)}
+  .vazio{color:var(--cinza-fraco);font-size:.93rem;margin:0}
+
+  .estado{
+    display:inline-flex;align-items:center;gap:7px;font-size:.78rem;
+    border-radius:99px;padding:5px 12px;background:var(--carta-alta);color:var(--cinza);
+    margin-bottom:14px;
+  }
+  .estado.aberta{background:var(--verde-fundo);color:var(--verde)}
+
+  .barra-uso{height:6px;border-radius:99px;background:var(--carta-alta);overflow:hidden;margin:14px 0 6px}
+  .barra-uso i{display:block;height:100%;background:var(--verde);transition:width .35s ease}
+
+  .dupla{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:420px){.dupla{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ===================== PÁGINA DO ALUNO ===================== -->
+<main id="publico">
+  <section class="hero">
+    <h1 class="display" id="heroTitulo">VAGAS DE<br><span class="verde">REPOSIÇÃO</span></h1>
+    <p class="eyebrow">Aulas de tênis · Prof. Matheus Knupp</p>
+    <div class="risca"></div>
+    <p id="heroTexto">Carregando as vagas…</p>
+  </section>
+
+  <section class="contador" id="contador" hidden>
+    <div><div class="n" id="cRestantes">0</div><div class="r">Vagas livres</div></div>
+    <div><div class="n neutro" id="cOcupadas">0</div><div class="r">Já preenchidas</div></div>
+    <div><div class="n neutro" id="cTotal">0</div><div class="r">Total da rodada</div></div>
+  </section>
+
+  <div class="miolo" id="conteudo"></div>
+
+  <p class="rodape">Knupp Tênis · Cabo Frio — RJ</p>
+</main>
+
+<button class="engrenagem" id="btnPainel" aria-label="Abrir painel do professor" title="Painel do professor">
+  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+</button>
+
+<!-- ===================== PAINEL DO PROFESSOR ===================== -->
+<div class="painel" id="painel" role="dialog" aria-modal="true" aria-label="Painel do professor">
+  <div id="painelConteudo"></div>
+</div>
+
+<script>
+/* ---------------- utilidades ---------------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+let vagas = null;
+let senha = sessionStorage.getItem('knupp_senha') || '';
+let admin = null;
+
+/* ---------------- página do aluno ---------------- */
+async function carregarVagas(){
+  try{
+    const r = await fetch('/api/vagas');
+    vagas = await r.json();
+    desenharPublico();
+  }catch(e){
+    $('conteudo').innerHTML = '<div class="aviso">A página não carregou. Verifique a internet e atualize.</div>';
+  }
+}
+
+function desenharPublico(erro){
+  const contador = $('contador');
+  const conteudo = $('conteudo');
+
+  if (!vagas.existe || !vagas.aberta){
+    $('heroTitulo').innerHTML = 'SEM VAGAS<br><span class="verde">NO MOMENTO</span>';
+    $('heroTexto').textContent = vagas.existe
+      ? 'As vagas desta rodada já foram todas preenchidas.'
+      : 'Nenhuma rodada de reposição está aberta agora.';
+    contador.hidden = true;
+    conteudo.innerHTML = `
+      <div class="oferta">
+        <h3>E agora?</h3>
+        <p>Fique de olho no grupo do WhatsApp. Eu aviso assim que abrir a próxima rodada de reposição.</p>
+      </div>`;
+    return;
+  }
+
+  $('heroTitulo').innerHTML = 'VAGAS DE<br><span class="verde">REPOSIÇÃO</span>';
+  $('heroTexto').innerHTML = 'Aula avulsa para quem já é aluno e perdeu o horário da semana.'
+    + '<span class="destaque" style="display:block">As vagas são preenchidas por ordem de inscrição.</span>';
+
+  contador.hidden = false;
+  $('cRestantes').textContent = vagas.restantes;
+  $('cOcupadas').textContent = vagas.ocupadas;
+  $('cTotal').textContent = vagas.total;
+
+  conteudo.innerHTML = `
+    <div class="oferta">
+      <h3>${esc(vagas.titulo)}</h3>
+      ${vagas.detalhe ? `<p>${esc(vagas.detalhe)}</p>` : ''}
+    </div>
+
+    <h2 class="secao-titulo">QUEM É VOCÊ?</h2>
+    <p class="secao-sub">Preencha seus dados para garantir a vaga — simples e rápido.</p>
+
+    ${erro ? `<div class="aviso">${esc(erro)}</div>` : ''}
+
+    <div class="campo">
+      <label for="nome">Nome completo <span class="req">*</span></label>
+      <input id="nome" autocomplete="name" placeholder="Seu nome completo">
+    </div>
+
+    <div class="campo">
+      <label for="nivel">Seu nível <span class="req">*</span></label>
+      <select id="nivel">
+        <option value="">Selecione seu nível</option>
+        ${vagas.niveis.map(n => `<option>${esc(n)}</option>`).join('')}
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="whatsapp">WhatsApp</label>
+      <input id="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(22) 99999-9999">
+    </div>
+
+    <button class="btn" id="enviar">Garantir minha vaga</button>`;
+
+  $('enviar').onclick = enviar;
+}
+
+async function enviar(){
+  const btn = $('enviar');
+  const nome = $('nome').value;
+  const corpo = { nome, nivel: $('nivel').value, whatsapp: $('whatsapp').value };
+
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  try{
+    const r = await fetch('/api/inscricoes', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(corpo),
+    });
+    const dados = await r.json();
+
+    if (!r.ok){
+      try { vagas = await (await fetch('/api/vagas')).json(); } catch(e){}
+      desenharPublico(dados.erro);
+      window.scrollTo({top:0,behavior:'smooth'});
+      return;
+    }
+
+    $('contador').hidden = true;
+    $('heroTitulo').innerHTML = 'VAGA<br><span class="verde">CONFIRMADA</span>';
+    $('heroTexto').textContent = 'Seu nome já está na minha lista desta rodada.';
+    $('conteudo').innerHTML = `
+      <div class="fim">
+        <div class="selo-ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h2 class="display">TE ESPERO NA QUADRA</h2>
+        <p>${esc(nome.trim())}, sua vaga está garantida.</p>
+        <p>Qualquer mudança eu aviso pelo WhatsApp.</p>
+        <span class="posicao">Inscrição nº ${dados.posicao} de ${vagas.total}</span>
+      </div>`;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(e){
+    btn.disabled = false;
+    btn.textContent = 'Garantir minha vaga';
+    desenharPublico('O envio falhou. Verifique a internet e tente de novo.');
+  }
+}
+
+/* ---------------- painel ---------------- */
+$('btnPainel').onclick = () => {
+  $('painel').classList.add('ativo');
+  document.body.style.overflow = 'hidden';
+  senha ? carregarAdmin() : telaLogin();
+};
+
+function fecharPainel(){
+  $('painel').classList.remove('ativo');
+  document.body.style.overflow = '';
+  carregarVagas();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('painel').classList.contains('ativo')) fecharPainel();
+});
+
+function telaLogin(erro){
+  $('painelConteudo').innerHTML = `
+    <div class="login">
+      <div class="login-caixa">
+        <div class="logo">KNUPP<span class="ponto">.</span></div>
+        <p class="eyebrow">Painel · Área restrita</p>
+        ${erro ? `<div class="aviso">${esc(erro)}</div>` : ''}
+        <input id="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password">
+        <button class="btn" id="entrar">Entrar no painel</button>
+        <button class="btn linha" id="voltar" style="margin-top:10px">Voltar ao site</button>
+      </div>
+    </div>`;
+  const campo = $('senha');
+  const go = () => { senha = campo.value; sessionStorage.setItem('knupp_senha', senha); carregarAdmin(); };
+  $('entrar').onclick = go;
+  $('voltar').onclick = fecharPainel;
+  campo.onkeydown = e => { if (e.key === 'Enter') go(); };
+  campo.focus();
+}
+
+async function api(rota, opcoes = {}){
+  const r = await fetch(rota, {
+    ...opcoes,
+    headers:{'Content-Type':'application/json','x-admin-senha':senha, ...(opcoes.headers||{})},
+  });
+  const dados = await r.json().catch(() => ({}));
+  if (r.status === 401){
+    sessionStorage.removeItem('knupp_senha'); senha = '';
+    telaLogin('Senha incorreta.');
+    throw new Error('auth');
+  }
+  if (!r.ok) throw new Error(dados.erro || 'Não foi possível concluir.');
+  return dados;
+}
+
+async function carregarAdmin(aviso){
+  try{
+    admin = await api('/api/admin/painel');
+    desenharAdmin(aviso);
+  }catch(e){
+    if (e.message !== 'auth') telaLogin(e.message);
+  }
+}
+
+function formNovaRodada(){
+  return `
+    <div class="bloco">
+      <h3>Abrir nova rodada</h3>
+      <div class="campo">
+        <label for="titulo">Título (o aluno vê isso)</label>
+        <input id="titulo" placeholder="Sábado, 21/03 · 8h · Clube Militar">
+      </div>
+      <div class="campo">
+        <label for="detalhe">Detalhe (opcional)</label>
+        <input id="detalhe" placeholder="Chegue 10 min antes. Traga água.">
+      </div>
+      <div class="campo">
+        <label for="vagas">Quantas vagas</label>
+        <input id="vagas" type="number" min="1" value="4">
+      </div>
+      <button class="btn" id="abrir">Abrir rodada</button>
+      <p class="vazio" style="margin-top:14px">A rodada nova substitui a anterior na página dos alunos. As inscrições antigas continuam salvas.</p>
+    </div>`;
+}
+
+function ligarNovaRodada(){
+  const btn = $('abrir');
+  if (!btn) return;
+  btn.onclick = () => acao(
+    () => api('/api/admin/ofertas', {method:'POST', body: JSON.stringify({
+      titulo: $('titulo').value, detalhe: $('detalhe').value, vagas_total: $('vagas').value,
+    })}),
+    'Rodada aberta. O link já mostra as vagas novas.'
+  );
+}
+
+function cabecalho(){
+  return `
+    <div class="topo">
+      <div class="marca">DASH<span class="verde">BOARD</span></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ao-vivo"><i></i>Ao vivo</span>
+        <button class="fechar" id="fechar" aria-label="Fechar painel">✕</button>
+      </div>
+    </div>`;
+}
+
+function desenharAdmin(aviso){
+  if (!admin.existe){
+    $('painelConteudo').innerHTML = cabecalho() + `
+      <div class="painel-miolo">
+        ${aviso ? `<div class="aviso">${esc(aviso)}</div>` : ''}
+        <div class="bloco"><p class="vazio">Nenhuma rodada aberta. Crie a primeira abaixo.</p></div>
+        ${formNovaRodada()}
+      </div>`;
+    $('fechar').onclick = fecharPainel;
+    ligarNovaRodada();
+    return;
+  }
+
+  const o = admin.oferta;
+  const ins = admin.inscricoes;
+  const ocupadas = ins.length;
+  const restantes = Math.max(o.vagas_total - ocupadas, 0);
+  const aberta = o.aberta && restantes > 0;
+  const pct = o.vagas_total ? Math.round(ocupadas / o.vagas_total * 100) : 0;
+
+  const porNivel = {};
+  ins.forEach(i => { porNivel[i.nivel] = (porNivel[i.nivel] || 0) + 1; });
+
+  $('painelConteudo').innerHTML = cabecalho() + `
+    <div class="painel-miolo">
+      ${aviso ? `<div class="aviso">${esc(aviso)}</div>` : ''}
+
+      <div class="cartas">
+        <div class="carta"><div class="r">Vagas livres</div><div class="n">${restantes}</div><div class="r">de ${o.vagas_total} abertas</div></div>
+        <div class="carta azul"><div class="r">Inscritos</div><div class="n">${ocupadas}</div><div class="r">nesta rodada</div></div>
+        <div class="carta laranja"><div class="r">Ocupação</div><div class="n">${pct}%</div><div class="r">das vagas</div></div>
+        <div class="carta rosa"><div class="r">Níveis</div><div class="n">${Object.keys(porNivel).length}</div><div class="r">representados</div></div>
+      </div>
+
+      <div class="bloco">
+        <h3>Rodada atual</h3>
+        <span class="estado ${aberta ? 'aberta' : ''}">${aberta ? 'Inscrições abertas' : 'Encerrada'}</span>
+        <div style="font-family:'Bebas Neue',Impact,sans-serif;font-size:1.7rem;line-height:1.1">${esc(o.titulo)}</div>
+        ${o.detalhe ? `<p class="vazio" style="margin-top:4px">${esc(o.detalhe)}</p>` : ''}
+        <div class="barra-uso"><i style="width:${pct}%"></i></div>
+        <p class="vazio">${ocupadas} de ${o.vagas_total} vagas preenchidas</p>
+
+        <div class="dupla" style="margin-top:20px">
+          <div class="campo" style="margin:0">
+            <label for="novoTotal">Mudar total de vagas</label>
+            <input id="novoTotal" type="number" min="${ocupadas}" value="${o.vagas_total}">
+          </div>
+          <div style="display:flex;align-items:flex-end"><button class="btn" id="salvarTotal">Salvar</button></div>
+        </div>
+
+        <div class="linha-btns" style="margin-top:16px">
+          <button class="btn linha curto" id="alternar">${o.aberta ? 'Encerrar agora' : 'Reabrir inscrições'}</button>
+          <button class="btn linha curto" id="atualizar">Atualizar</button>
+          ${ocupadas ? '<button class="btn linha curto" id="copiar">Copiar lista</button>' : ''}
+        </div>
+      </div>
+
+      <div class="bloco">
+        <h3>Inscritos por ordem de chegada</h3>
+        ${ocupadas === 0
+          ? '<p class="vazio">Ninguém se inscreveu ainda. Mande o link no grupo do WhatsApp.</p>'
+          : `<ul class="lista">${ins.map(i => `
+              <li>
+                <span class="num">${i.posicao}</span>
+                <span class="quem">
+                  <b>${esc(i.nome)}</b>
+                  <span>${esc(i.nivel)}${i.whatsapp ? ' · ' + esc(i.whatsapp) : ''}</span>
+                </span>
+                <button class="remover" data-remover="${i.id}">Remover</button>
+              </li>`).join('')}</ul>`}
+      </div>
+
+      ${formNovaRodada()}
+    </div>`;
+
+  $('fechar').onclick = fecharPainel;
+  $('atualizar').onclick = () => carregarAdmin();
+
+  $('salvarTotal').onclick = () => acao(
+    () => api(`/api/admin/ofertas/${o.id}`, {method:'PATCH', body: JSON.stringify({vagas_total: $('novoTotal').value})}),
+    'Total de vagas atualizado.'
+  );
+
+  $('alternar').onclick = () => acao(
+    () => api(`/api/admin/ofertas/${o.id}`, {method:'PATCH', body: JSON.stringify({aberta: !o.aberta})}),
+    o.aberta ? 'Inscrições encerradas.' : 'Inscrições reabertas.'
+  );
+
+  const copiar = $('copiar');
+  if (copiar) copiar.onclick = () => {
+    const texto = `${o.titulo}\n\n` + ins.map(i => `${i.posicao}. ${i.nome} — ${i.nivel}`).join('\n');
+    navigator.clipboard.writeText(texto).then(() => { copiar.textContent = 'Lista copiada'; });
+  };
+
+  document.querySelectorAll('[data-remover]').forEach(b => {
+    b.onclick = () => {
+      if (!confirm('Remover esta inscrição e liberar a vaga?')) return;
+      acao(() => api(`/api/admin/inscricoes/${b.dataset.remover}`, {method:'DELETE'}), 'Inscrição removida.');
+    };
+  });
+
+  ligarNovaRodada();
+}
+
+async function acao(fn, mensagem){
+  try{
+    await fn();
+    admin = await api('/api/admin/painel');
+    desenharAdmin(mensagem);
+    $('painel').scrollTo({top:0});
+  }catch(e){
+    if (e.message !== 'auth') desenharAdmin(e.message);
+  }
+}
+
+carregarVagas();
+</script>
+</body>
+</html>
