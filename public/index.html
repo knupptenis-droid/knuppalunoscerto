@@ -2,554 +2,1120 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vagas de Reposição · Knupp Tênis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reposições · Knupp Tênis</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Knupp Reposição">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --preto:#0A0A0A;
-    --carta:#141414;
-    --carta-alta:#1C1C1C;
-    --borda:rgba(255,255,255,.08);
-    --verde:#2BD576;
-    --verde-forte:#22C55E;
-    --verde-fundo:rgba(43,213,118,.10);
-    --branco:#F2F2F2;
-    --cinza:#8A8A8A;
-    --cinza-fraco:#5A5A5A;
-    --azul:#3B9EFF;
-    --laranja:#F5A623;
-    --rosa:#E8568F;
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--preto);color:var(--branco);
-    font-family:"DM Sans",system-ui,-apple-system,sans-serif;
-    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
-  }
-  .display{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400}
-  .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cinza);margin:0}
-  .verde{color:var(--verde)}
+:root{
+  --preto:#0A0A0A; --fundo2:#0F0F0F; --carta:#141414; --carta2:#1B1B1B; --carta3:#232323;
+  --borda:rgba(255,255,255,.08); --borda2:rgba(255,255,255,.14);
+  --verde:#2BD576; --verde2:#22C55E; --verde-f:rgba(43,213,118,.10); --verde-b:rgba(43,213,118,.35);
+  --branco:#F2F2F2; --texto:#CFCFCF; --cinza:#8A8A8A; --cinza2:#5A5A5A;
+  --amarelo:#FACC15; --amarelo-f:rgba(250,204,21,.10); --vermelho:#F87171; --vermelho-f:rgba(248,113,113,.10);
+  --azul:#3B9EFF; --raio:14px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--preto);color:var(--branco);font-family:"DM Sans",system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+button,input,select,textarea{font-family:inherit;font-size:1rem;color:inherit}
+a{color:inherit}
+.bebas{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;letter-spacing:.01em}
+.eyebrow{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cinza);margin:0}
+.verde{color:var(--verde)} .cinza{color:var(--cinza)} .pequeno{font-size:.85rem}
+.oculto{display:none!important}
 
-  /* ---------- hero ---------- */
-  .hero{
-    text-align:center;padding:64px 22px 40px;
-    background:radial-gradient(120% 90% at 50% 0%, rgba(43,213,118,.10) 0%, rgba(10,10,10,0) 62%);
-  }
-  .hero h1{
-    font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;
-    font-size:clamp(3.2rem,15vw,4.6rem);line-height:.88;
-    margin:0 0 16px;letter-spacing:.01em;
-  }
-  .risca{width:44px;height:2px;background:var(--verde);margin:26px auto}
-  .hero p{max-width:30rem;margin:0 auto;color:#CFCFCF;font-size:1rem}
-  .hero .destaque{color:var(--branco);font-weight:700;margin-top:10px;display:block}
+/* topo */
+.topo{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(12px + env(safe-area-inset-top)) 20px 12px;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--borda)}
+.marca{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.7rem;line-height:1;letter-spacing:.04em;text-decoration:none}
+.marca i{font-style:normal;color:var(--verde)}
+.marca small{font-family:"DM Sans";font-size:.62rem;letter-spacing:.22em;color:var(--cinza);margin-left:8px;vertical-align:middle}
+.topo-acoes{display:flex;gap:8px}
+.chip-btn{background:var(--carta2);border:1px solid var(--borda);border-radius:999px;padding:7px 13px;font-size:.8rem;cursor:pointer;color:var(--texto)}
+.chip-btn:hover{border-color:var(--borda2);color:var(--branco)}
 
-  /* ---------- conteudo ---------- */
-  .miolo{max-width:30rem;margin:0 auto;padding:20px 22px 90px}
-  .secao-titulo{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.2rem;line-height:.95;margin:0 0 8px}
-  .secao-sub{color:var(--cinza);font-size:.95rem;margin:0 0 24px}
+/* hero */
+.hero{position:relative;overflow:hidden;text-align:center;padding:52px 22px 34px}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(110% 80% at 50% 0%,rgba(43,213,118,.14) 0%,rgba(10,10,10,0) 60%);pointer-events:none}
+.quadra{position:absolute;left:50%;top:-40px;width:560px;max-width:none;transform:translateX(-50%);opacity:.07;pointer-events:none}
+.hero h1{position:relative;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:clamp(3.2rem,15vw,5rem);line-height:.86;margin:14px 0 18px}
+.hero p{position:relative;max-width:28rem;margin:0 auto;color:var(--texto)}
+.status{position:relative;display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:9px 16px;border-radius:999px;
+  border:1px solid var(--borda);background:var(--carta);font-size:.88rem}
+.status .ponto{width:8px;height:8px;border-radius:50%;background:var(--cinza2)}
+.status.aberto{border-color:var(--verde-b);background:var(--verde-f)}
+.status.aberto .ponto{background:var(--verde);box-shadow:0 0 0 0 rgba(43,213,118,.6);animation:pulso 1.8s infinite}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(43,213,118,.55)}70%{box-shadow:0 0 0 9px rgba(43,213,118,0)}100%{box-shadow:0 0 0 0 rgba(43,213,118,0)}}
+.contagem{font-variant-numeric:tabular-nums;font-weight:700}
 
-  /* opções de horário (rádio customizado) */
-  .horarios{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
-  .horario{
-    display:flex;align-items:flex-start;gap:14px;cursor:pointer;
-    background:var(--carta);border:1px solid var(--borda);border-radius:10px;
-    padding:16px 18px;
-  }
-  .horario input{position:absolute;opacity:0;width:0;height:0}
-  .horario .bola{
-    width:19px;height:19px;border-radius:50%;flex:0 0 auto;margin-top:2px;
-    border:2px solid var(--cinza-fraco);position:relative;
-  }
-  .horario input:checked ~ .bola{border-color:var(--verde)}
-  .horario input:checked ~ .bola::after{
-    content:"";position:absolute;inset:3px;border-radius:50%;background:var(--verde);
-  }
-  .horario:has(input:checked){border-color:var(--verde);background:var(--verde-fundo)}
-  .horario .txt h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:1.35rem;margin:0 0 2px;letter-spacing:.01em}
-  .horario .txt p{margin:0;color:var(--cinza);font-size:.88rem}
+/* miolo */
+.miolo{max-width:32rem;margin:0 auto;padding:8px 18px 110px}
+.secao{margin-top:34px}
+.secao-t{font-family:"Bebas Neue",Impact,sans-serif;font-size:2rem;line-height:1;margin:0 0 4px}
+.secao-s{color:var(--cinza);font-size:.92rem;margin:0 0 16px}
+.carta{background:var(--carta);border:1px solid var(--borda);border-radius:var(--raio);padding:20px}
+.carta+.carta{margin-top:12px}
 
-  .campo{margin-bottom:22px}
-  label{display:block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cinza);margin:0 0 9px}
-  label .req{color:var(--verde)}
-  input,select{
-    width:100%;font-family:inherit;font-size:1rem;color:var(--branco);
-    background:var(--carta);border:1px solid var(--borda);border-radius:10px;
-    padding:15px 16px;appearance:none;
-  }
-  select{
-    background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238A8A8A' stroke-width='1.6'%3E%3Cpath d='M1 1.5L6 6.5l5-5'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 16px center;padding-right:42px;
-  }
-  input::placeholder{color:#4A4A4A}
-  input:focus,select:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px var(--verde-fundo)}
-  button:focus-visible,.engrenagem:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+label{display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cinza);margin:0 0 8px}
+input,select,textarea{width:100%;background:var(--fundo2);border:1px solid var(--borda);border-radius:11px;padding:14px 15px;appearance:none;-webkit-appearance:none}
+textarea{min-height:90px;resize:vertical;line-height:1.5}
+input::placeholder,textarea::placeholder{color:#4A4A4A}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px var(--verde-f)}
+select{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238A8A8A' stroke-width='1.6'%3E%3Cpath d='M1 1.5L6 6.5l5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:40px}
+input[type=checkbox]{width:20px;height:20px;padding:0;border-radius:6px;flex:0 0 auto;cursor:pointer;position:relative;background:var(--fundo2)}
+input[type=checkbox]:checked{background:var(--verde);border-color:var(--verde)}
+input[type=checkbox]:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #06140C;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.campo{margin-bottom:16px}
+.linha2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-  .btn{
-    width:100%;font-family:inherit;font-size:1rem;font-weight:700;
-    color:#06140C;background:var(--verde-forte);border:0;border-radius:10px;padding:16px;cursor:pointer;
-    transition:background .15s ease;
-  }
-  .btn:hover:not(:disabled){background:var(--verde)}
-  .btn:disabled{background:var(--carta-alta);color:var(--cinza-fraco);cursor:not-allowed}
-  .btn.linha{background:transparent;color:var(--cinza);border:1px solid var(--borda);font-weight:500}
-  .btn.linha:hover{background:var(--carta-alta);color:var(--branco)}
-  .btn.curto{width:auto;padding:12px 22px}
-  .btn.mini{width:auto;padding:9px 14px;font-size:.85rem;border-radius:8px}
-  .btn.wpp{background:#25D366;color:#06140C}
-  .btn.wpp:hover{background:#2FE375}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;font-weight:700;color:#06140C;background:var(--verde2);
+  border:0;border-radius:11px;padding:15px;cursor:pointer;text-decoration:none;transition:background .15s,transform .05s}
+.btn:hover:not(:disabled){background:var(--verde)} .btn:active:not(:disabled){transform:scale(.99)}
+.btn:disabled{background:var(--carta3);color:var(--cinza2);cursor:not-allowed}
+.btn.sec{background:transparent;color:var(--texto);border:1px solid var(--borda2);font-weight:500}
+.btn.sec:hover{background:var(--carta2);color:var(--branco)}
+.btn.perigo{background:transparent;color:var(--vermelho);border:1px solid rgba(248,113,113,.35);font-weight:500}
+.btn.perigo:hover{background:var(--vermelho-f)}
+.btn.wpp{background:#25D366;color:#06140C}
+.btn.auto{width:auto;padding:11px 16px}
+.btn.mini{width:auto;padding:8px 12px;font-size:.82rem;border-radius:9px}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+.btn.mini svg{width:15px;height:15px}
+button:focus-visible,a:focus-visible{outline:2px solid var(--verde);outline-offset:2px}
 
-  .aviso{
-    border:1px solid var(--borda);border-left:3px solid var(--verde);background:var(--carta);
-    border-radius:8px;padding:13px 15px;font-size:.93rem;margin-bottom:22px;
-  }
+.aviso{border:1px solid var(--borda);border-left:3px solid var(--verde);background:var(--carta);border-radius:10px;padding:12px 14px;font-size:.92rem;margin:0 0 14px}
+.aviso.erro{border-left-color:var(--vermelho);background:var(--vermelho-f)}
+.aviso.amarelo{border-left-color:var(--amarelo)}
 
-  .fim{text-align:center;padding:40px 0}
-  .selo-ok{
-    width:62px;height:62px;border-radius:50%;background:var(--verde-fundo);
-    border:1px solid rgba(43,213,118,.4);display:grid;place-items:center;margin:0 auto 22px;
-  }
-  .selo-ok svg{width:26px;height:26px;stroke:var(--verde);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-  .fim h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:2.4rem;margin:0 0 12px}
-  .fim p{color:var(--cinza);margin:0 0 6px}
+/* chips de nível */
+.nivel{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;letter-spacing:.04em;padding:4px 9px;border-radius:999px;
+  background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);white-space:nowrap}
+.niveis{display:flex;flex-wrap:wrap;gap:6px}
+.sel-niveis{display:flex;flex-wrap:wrap;gap:8px}
+.sel-niveis button{cursor:pointer;opacity:.45}
+.sel-niveis button.on{opacity:1;box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 45%,transparent)}
 
-  .rodape{border-top:1px solid var(--borda);text-align:center;padding:26px 22px 34px;color:var(--cinza-fraco);font-size:.8rem}
+/* aluno: carteira */
+.quem{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.quem button{flex:1 1 auto;padding:11px 14px;border-radius:11px;border:1px solid var(--borda);background:var(--carta);cursor:pointer;font-weight:500}
+.quem button.on{border-color:var(--verde);background:var(--verde-f);color:var(--branco)}
+.carteira{position:relative;overflow:hidden;border-radius:18px;padding:22px;border:1px solid var(--verde-b);
+  background:linear-gradient(135deg,rgba(43,213,118,.16),rgba(43,213,118,.03) 55%,rgba(20,20,20,1))}
+.carteira .ola{color:var(--texto);margin:0 0 14px}
+.carteira .num{font-family:"Bebas Neue",Impact,sans-serif;font-size:4.6rem;line-height:.85;color:var(--verde)}
+.carteira .num small{font-size:1.5rem;color:var(--branco);margin-left:6px}
+.carteira .venc{margin-top:10px;font-size:.88rem;color:var(--texto)}
+.carteira .bola{position:absolute;right:-26px;top:-26px;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#E6F96B,#B8D430 60%,#8FA821);opacity:.18}
+.carteira .bola::after{content:"";position:absolute;inset:14px;border-radius:50%;border:3px solid rgba(255,255,255,.7);border-color:rgba(255,255,255,.7) transparent rgba(255,255,255,.7) transparent;transform:rotate(30deg)}
+.carteira.zero{border-color:var(--borda);background:var(--carta)}
+.carteira.zero .num{color:var(--cinza)}
 
-  /* ---------- engrenagem ---------- */
-  .engrenagem{
-    position:fixed;right:18px;bottom:18px;z-index:40;width:46px;height:46px;border-radius:50%;
-    background:var(--carta-alta);border:1px solid var(--borda);display:grid;place-items:center;
-    cursor:pointer;color:var(--cinza);
-  }
-  .engrenagem:hover{color:var(--verde);border-color:rgba(43,213,118,.4)}
-  .engrenagem svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7}
+/* vagas */
+.dia{margin:22px 0 10px;display:flex;align-items:baseline;gap:10px}
+.dia h3{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:1.5rem;margin:0}
+.dia span{color:var(--cinza);font-size:.85rem}
+.vaga{display:flex;align-items:center;gap:16px;background:var(--carta);border:1px solid var(--borda);border-radius:var(--raio);padding:16px;margin-bottom:10px;position:relative;overflow:hidden}
+.vaga::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--verde))}
+.vaga .hora{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.3rem;line-height:.9;min-width:74px}
+.vaga .info{flex:1;min-width:0}
+.vaga .info p{margin:6px 0 0;color:var(--cinza);font-size:.85rem}
+.vaga.lotada{opacity:.55}
+.selo{display:inline-block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 9px;border-radius:7px;white-space:nowrap}
+.selo.pend{background:var(--amarelo-f);color:var(--amarelo)}
+.selo.ok{background:var(--verde-f);color:var(--verde)}
+.selo.cinza{background:var(--carta3);color:var(--cinza)}
+.selo.verm{background:var(--vermelho-f);color:var(--vermelho)}
+.selo.azul{background:rgba(59,158,255,.12);color:var(--azul)}
 
-  /* ---------- painel ---------- */
-  .painel{position:fixed;inset:0;z-index:50;background:var(--preto);overflow-y:auto;display:none}
-  .painel.ativo{display:block}
+.minha{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--borda)}
+.minha:last-child{border-bottom:0}
+.minha .q{flex:1}
+.minha .q b{display:block}
+.minha .q{min-width:0}
+.minha .q > span{color:var(--cinza);font-size:.85rem}
+.minha .btn{flex:0 0 auto}
+.minha .selo{white-space:normal;letter-spacing:.08em}
 
-  .login{min-height:100dvh;display:grid;place-items:center;padding:24px}
-  .login-caixa{width:100%;max-width:21rem;text-align:center}
-  .logo{font-family:"Bebas Neue",Impact,sans-serif;font-size:3rem;line-height:1;letter-spacing:.02em}
-  .logo .ponto{color:var(--verde)}
-  .login .eyebrow{margin:10px 0 34px}
-  .login input{text-align:center;margin-bottom:14px}
+.vazio{text-align:center;padding:34px 18px;border:1px dashed var(--borda2);border-radius:var(--raio);color:var(--cinza)}
+.vazio .bebas{font-size:1.7rem;color:var(--branco);display:block;margin-bottom:6px}
 
-  .topo{
-    display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;
-    border-bottom:1px solid var(--borda);position:sticky;top:0;background:var(--preto);z-index:2;
-  }
-  .topo .marca{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.5rem;letter-spacing:.02em}
-  .ao-vivo{display:inline-flex;align-items:center;gap:7px;font-size:.74rem;color:var(--verde);background:var(--verde-fundo);border-radius:99px;padding:5px 12px}
-  .ao-vivo i{width:6px;height:6px;border-radius:50%;background:var(--verde);display:block}
-  .fechar{background:transparent;border:1px solid var(--borda);color:var(--cinza);border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:1.1rem;line-height:1}
-  .fechar:hover{color:var(--branco)}
+/* regras / prof / local */
+.regras{margin:0;padding:0;list-style:none;counter-reset:r}
+.regras li{counter-increment:r;position:relative;padding:12px 0 12px 40px;border-bottom:1px solid var(--borda);color:var(--texto);font-size:.94rem}
+.regras li:last-child{border-bottom:0}
+.regras li::before{content:counter(r);position:absolute;left:0;top:11px;width:26px;height:26px;border-radius:8px;background:var(--verde-f);color:var(--verde);
+  font-family:"Bebas Neue",Impact,sans-serif;font-size:1.05rem;display:grid;place-items:center}
+.prof{display:flex;gap:16px;align-items:center}
+.marca{display:inline-flex;align-items:center}
+.logo-img{height:34px;width:auto;display:block}
+.prof .foto{width:84px;height:84px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:2px solid var(--verde);background:var(--carta2);
+  display:grid;place-items:center;font-family:"Bebas Neue",Impact,sans-serif;font-size:2rem;color:var(--verde)}
+.prof h3{margin:0;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:1.7rem;line-height:1}
+.prof p{margin:6px 0 0;color:var(--texto);font-size:.9rem}
+.acoes{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.acoes .btn{flex:1 1 140px}
+.local{display:flex;gap:14px;align-items:center}
+.local .pin{width:46px;height:46px;border-radius:12px;background:var(--verde-f);display:grid;place-items:center;flex:0 0 auto}
+.local .pin svg{width:22px;height:22px;stroke:var(--verde);fill:none;stroke-width:2}
 
-  .painel-miolo{max-width:56rem;margin:0 auto;padding:26px 22px 80px}
+.rodape{border-top:1px solid var(--borda);text-align:center;padding:26px 22px 40px;color:var(--cinza2);font-size:.8rem}
+.engrenagem{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;width:44px;height:44px;border-radius:50%;
+  background:var(--carta2);border:1px solid var(--borda);display:grid;place-items:center;cursor:pointer;color:var(--cinza2)}
+.engrenagem:hover{color:var(--branco)}
+.engrenagem svg{width:20px;height:20px}
 
-  .cartas{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:26px}
-  .carta{background:var(--carta);border:1px solid var(--borda);border-radius:10px;padding:18px;border-top:2px solid var(--verde)}
-  .carta.azul{border-top-color:var(--azul)}
-  .carta.laranja{border-top-color:var(--laranja)}
-  .carta.rosa{border-top-color:var(--rosa)}
-  .carta .n{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.6rem;line-height:1;margin:10px 0 4px}
-  .carta .r{font-size:.78rem;color:var(--cinza-fraco)}
+/* modal + toast */
+.fundo-modal{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;padding:0}
+.modal{width:100%;max-width:34rem;max-height:92vh;overflow:auto;background:var(--carta);border:1px solid var(--borda2);border-radius:20px 20px 0 0;padding:24px 20px calc(24px + env(safe-area-inset-bottom));animation:sobe .2s ease}
+@media(min-width:640px){.fundo-modal{align-items:center;padding:20px}.modal{border-radius:20px}}
+@keyframes sobe{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.modal h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:2rem;margin:0 0 6px;line-height:1}
+.modal .sub{color:var(--cinza);margin:0 0 18px;font-size:.92rem}
+.modal .rodape-m{display:flex;gap:10px;margin-top:20px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:90;background:var(--branco);color:#0A0A0A;
+  padding:12px 18px;border-radius:12px;font-weight:500;font-size:.92rem;box-shadow:0 10px 30px rgba(0,0,0,.4);max-width:90vw;text-align:center}
+.toast.erro{background:var(--vermelho);color:#1a0505}
+.girando{width:18px;height:18px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:gira .7s linear infinite;display:inline-block}
+@keyframes gira{to{transform:rotate(360deg)}}
 
-  .bloco{background:var(--carta);border:1px solid var(--borda);border-radius:10px;padding:20px;margin-bottom:22px}
-  .bloco h3{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cinza);margin:0 0 18px;font-weight:500}
-  .linha-btns{display:flex;gap:10px;flex-wrap:wrap}
-
-  .rodada{border:1px solid var(--borda);border-radius:10px;padding:18px;margin-bottom:16px}
-  .rodada:last-child{margin-bottom:0}
-  .rodada-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-  .rodada-titulo{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.5rem;line-height:1.05;margin:0}
-  .rodada-detalhe{color:var(--cinza-fraco);font-size:.87rem;margin:2px 0 0}
-  .estado{display:inline-flex;align-items:center;gap:7px;font-size:.75rem;border-radius:99px;padding:5px 11px;background:var(--carta-alta);color:var(--cinza);white-space:nowrap}
-  .estado.aberta{background:var(--verde-fundo);color:var(--verde)}
-
-  .lista{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--borda)}
-  .lista li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--borda);flex-wrap:wrap}
-  .lista li:last-child{border-bottom:0}
-  .quem{flex:1;min-width:9rem}
-  .quem b{display:block;font-weight:500;font-size:.95rem}
-  .quem span{font-size:.8rem;color:var(--cinza-fraco)}
-  .selo-status{font-size:.72rem;border-radius:99px;padding:4px 10px;white-space:nowrap}
-  .selo-status.pendente{background:rgba(245,166,35,.14);color:var(--laranja)}
-  .selo-status.confirmado{background:var(--verde-fundo);color:var(--verde)}
-  .remover{background:transparent;border:0;color:var(--cinza-fraco);font-family:inherit;font-size:.82rem;cursor:pointer;padding:6px 4px}
-  .remover:hover{color:var(--rosa)}
-  .vazio{color:var(--cinza-fraco);font-size:.93rem;margin:0}
-  .acoes-item{display:flex;gap:8px;align-items:center}
-
-  .dupla{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media (max-width:420px){.dupla{grid-template-columns:1fr}}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* ====================== PAINEL ====================== */
+#painel{position:fixed;inset:0;z-index:60;background:var(--preto);overflow:auto}
+.p-topo{position:sticky;top:0;z-index:5;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--borda);padding:calc(10px + env(safe-area-inset-top)) 16px 0}
+.p-linha{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:60rem;margin:0 auto}
+.p-abas{display:flex;gap:4px;overflow-x:auto;max-width:60rem;margin:10px auto 0;scrollbar-width:none}
+.p-abas::-webkit-scrollbar{display:none}
+.p-abas button{background:none;border:0;border-bottom:2px solid transparent;padding:10px 12px;color:var(--cinza);cursor:pointer;white-space:nowrap;font-weight:500;font-size:.92rem;position:relative}
+.p-abas button.on{color:var(--branco);border-bottom-color:var(--verde)}
+.p-abas .badge{background:var(--amarelo);color:#1a1500;font-size:.68rem;font-weight:700;border-radius:999px;padding:1px 6px;margin-left:5px}
+.p-miolo{max-width:60rem;margin:0 auto;padding:20px 16px 100px}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--carta);border:1px solid var(--borda);border-radius:var(--raio);padding:16px;border-top:2px solid var(--k,var(--verde))}
+.kpi .v{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.6rem;line-height:1}
+.kpi .l{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cinza)}
+.p-titulo{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:26px 0 12px;flex-wrap:wrap}
+.p-titulo h2{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:1.8rem;margin:0;line-height:1}
+.lista{background:var(--carta);border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden}
+.item{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--borda);flex-wrap:wrap}
+.item:last-child{border-bottom:0}
+.item .q{flex:1 1 180px;min-width:0}
+.item .q b{display:block;overflow:hidden;text-overflow:ellipsis}
+.item .q > span{color:var(--cinza);font-size:.84rem}
+.item .btns{display:flex;gap:6px;flex-wrap:wrap}
+.item.clicavel{cursor:pointer} .item.clicavel:hover{background:var(--carta2)}
+.ph{background:var(--carta);border:1px solid var(--borda);border-radius:var(--raio);margin-bottom:12px;overflow:hidden}
+.ph-cab{display:flex;align-items:center;gap:14px;padding:14px 16px;flex-wrap:wrap}
+.ph-cab .hora{font-family:"Bebas Neue",Impact,sans-serif;font-size:2rem;line-height:.9;min-width:64px}
+.ph-cab{flex-wrap:nowrap!important}
+.ph-cab .q{flex:1 1 0;min-width:0}
+.ph-cab > div:last-child{flex:0 0 auto}
+.ph-cab .q > span{color:var(--cinza);font-size:.84rem}
+.ocup{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.4rem}
+.ph-res{border-top:1px solid var(--borda);background:var(--fundo2)}
+.ph-res .item{padding:11px 16px}
+.ph-acoes{display:flex;gap:6px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--borda)}
+.busca{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.busca input{flex:1 1 200px}
+.busca select{flex:0 0 auto;width:auto}
+.barra{display:flex;align-items:flex-end;gap:10px;height:170px;padding:16px 16px 0}
+.barra .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px}
+.barra .b{width:100%;max-width:46px;border-radius:7px 7px 2px 2px;background:var(--verde);min-height:3px}
+.barra .n{font-size:.8rem;font-weight:700}
+.barra-leg{display:flex;gap:10px;padding:8px 16px 14px}
+.barra-leg span{flex:1;text-align:center;color:var(--cinza);font-size:.75rem}
+.check-linha{display:flex;align-items:center;gap:10px;padding:10px 0;cursor:pointer;text-transform:none;letter-spacing:0;font-size:.95rem;color:var(--texto);margin:0}
+.turmas-sel{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.turmas-sel button{padding:8px 12px;border-radius:9px;border:1px solid var(--borda);background:var(--fundo2);cursor:pointer;font-size:.86rem}
+.turmas-sel button.on{border-color:var(--verde);background:var(--verde-f)}
+.alunos-check{max-height:300px;overflow:auto;border:1px solid var(--borda);border-radius:11px;padding:4px 12px;background:var(--fundo2)}
+.cor-in{width:52px;height:46px;padding:4px;cursor:pointer}
+.login-p{max-width:22rem;margin:12vh auto 0;text-align:center;padding:0 20px}
+.login-p .marca{font-size:3.4rem}
+@media(max-width:420px){.vaga .hora{font-size:2rem;min-width:62px}}
 </style>
 </head>
 <body>
 
-<!-- ===================== PÁGINA DO ALUNO ===================== -->
-<main id="publico">
-  <section class="hero">
-    <h1 class="display" id="heroTitulo">VAGAS DE<br><span class="verde">REPOSIÇÃO</span></h1>
-    <p class="eyebrow">Aulas de tênis · Prof. Matheus Knupp</p>
-    <div class="risca"></div>
-    <p id="heroTexto">Carregando os horários…</p>
+<header class="topo">
+  <a class="marca" href="/"><img src="/logo.png" alt="Matheus Knupp Tennis" class="logo-img"><small>REPOSIÇÕES</small></a>
+  <div class="topo-acoes">
+    <button class="chip-btn oculto" id="btn-instalar" type="button">Instalar app</button>
+    <button class="chip-btn oculto" id="btn-sair" type="button">Trocar número</button>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="quadra" viewBox="0 0 560 300" fill="none" stroke="#fff" stroke-width="2"><rect x="20" y="20" width="520" height="260"/><line x1="20" y1="52" x2="540" y2="52"/><line x1="20" y1="248" x2="540" y2="248"/><line x1="280" y1="20" x2="280" y2="280" stroke-width="3"/><line x1="150" y1="52" x2="150" y2="248"/><line x1="410" y1="52" x2="410" y2="248"/><line x1="150" y1="150" x2="410" y2="150"/></svg>
+  <p class="eyebrow" id="hero-local">CLUBE MILITAR · CABO FRIO</p>
+  <h1>REPOSIÇÃO<br>DE <span class="verde">AULAS</span></h1>
+  <p>Teve aula cancelada por chuva ou pelo professor? Use seu crédito e escolha um novo horário.</p>
+  <div class="status" id="status"><span class="ponto"></span><span id="status-txt">Carregando…</span></div>
+</section>
+
+<main class="miolo">
+  <!-- ENTRAR -->
+  <section id="tela-entrar">
+    <div class="carta">
+      <p class="eyebrow" style="margin-bottom:6px">Passo 1</p>
+      <h2 class="secao-t">ENTRE COM SEU <span class="verde">WHATSAPP</span></h2>
+      <p class="secao-s">Use o mesmo número cadastrado com o professor. Para as crianças, é o número do responsável.</p>
+      <div id="entrar-msg"></div>
+      <form id="form-entrar" novalidate>
+        <div class="campo">
+          <label for="in-wpp">WhatsApp com DDD</label>
+          <input id="in-wpp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(22) 99999-9999" maxlength="16">
+        </div>
+        <button class="btn" type="submit" id="btn-entrar">Ver minhas reposições</button>
+      </form>
+    </div>
   </section>
 
-  <div class="miolo" id="conteudo"></div>
+  <!-- ÁREA DO ALUNO -->
+  <section id="tela-aluno" class="oculto">
+    <div class="quem" id="quem"></div>
+    <div id="carteira"></div>
+    <div class="secao" id="bloco-minhas"></div>
+    <div class="secao">
+      <h2 class="secao-t">VAGAS <span class="verde">ABERTAS</span></h2>
+      <p class="secao-s" id="vagas-sub">Horários liberados para o seu nível.</p>
+      <div id="vagas"></div>
+    </div>
+  </section>
 
-  <p class="rodape">Knupp Tênis · Cabo Frio — RJ</p>
+  <section class="secao">
+    <h2 class="secao-t">COMO <span class="verde">FUNCIONA</span></h2>
+    <div class="carta" style="padding:6px 20px"><ol class="regras" id="regras"></ol></div>
+  </section>
+
+  <section class="secao">
+    <h2 class="secao-t">SEU <span class="verde">PROFESSOR</span></h2>
+    <div class="carta">
+      <div class="prof">
+        <div class="foto" id="prof-foto"><img src="/logo-simbolo.png" alt="" style="width:46%;height:auto"></div>
+        <div><p class="eyebrow">Knupp Tênis</p><h3 id="prof-nome">Matheus Knupp</h3><p id="prof-bio"></p></div>
+      </div>
+      <div class="acoes" id="prof-acoes"></div>
+    </div>
+    <div class="carta">
+      <div class="local">
+        <div class="pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div style="flex:1"><p class="eyebrow">Local das aulas</p><b id="local-nome" style="font-size:1.05rem">Clube Militar</b>
+          <div class="cinza pequeno" id="local-end"></div></div>
+        <a class="btn sec mini" id="local-mapa" target="_blank" rel="noopener">Mapa</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<button class="engrenagem" id="btnPainel" aria-label="Abrir painel do professor" title="Painel do professor">
-  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+<footer class="rodape">© <span id="ano"></span> Knupp Tênis · Cabo Frio</footer>
+
+<button class="engrenagem" id="engrenagem" type="button" aria-label="Área do professor">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
 </button>
 
-<!-- ===================== PAINEL DO PROFESSOR ===================== -->
-<div class="painel" id="painel" role="dialog" aria-modal="true" aria-label="Painel do professor">
-  <div id="painelConteudo"></div>
-</div>
+<!-- PAINEL DO PROFESSOR -->
+<div id="painel" class="oculto"></div>
+
+<div id="modais"></div>
+<div id="toast-box"></div>
 
 <script>
-/* ---------------- utilidades ---------------- */
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
 const $ = id => document.getElementById(id);
-function escapar(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-let vagasState = null;
-let senha = sessionStorage.getItem('knupp_senha') || '';
-let admin = null;
-
-/* ---------------- WhatsApp helper ---------------- */
-function numeroWhats(v){
-  let d = String(v || '').replace(/\D/g, '');
-  if (d.length <= 11) d = '55' + d; // adiciona DDI Brasil se a pessoa só digitou DDD+número
-  return d;
+const TZ = 'America/Sao_Paulo';
+const SITE = location.origin;
+const ICON = {
+  wpp: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>',
+  ig: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+};
+function esc(s){return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function soNum(s){return String(s||'').replace(/\D/g,'')}
+function mascaraWpp(v){
+  let d = soNum(v); if (d.startsWith('55') && d.length > 11) d = d.slice(2); d = d.slice(0,11);
+  if (d.length <= 2) return d.length ? '(' + d : '';
+  if (d.length <= 6) return `(${d.slice(0,2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6)}`;
+  return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
 }
-function linkWhats(whatsapp, mensagem){
-  return `https://wa.me/${numeroWhats(whatsapp)}?text=${encodeURIComponent(mensagem)}`;
+function fmtWpp(n){ if(!n) return ''; return mascaraWpp(n); }
+function hojeISO(){ return new Intl.DateTimeFormat('en-CA',{timeZone:TZ}).format(new Date()); }
+function somaDias(iso, n){ const d = new Date(iso + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
+const SEM = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const SEM_L = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+function diaSemana(iso){ return new Date(iso + 'T12:00:00Z').getUTCDay(); }
+function dataCurta(iso){ const [y,m,d] = iso.split('-'); return `${d}/${m}`; }
+function nomeDia(iso){
+  const h = hojeISO();
+  if (iso === h) return 'Hoje';
+  if (iso === somaDias(h,1)) return 'Amanhã';
+  if (iso === somaDias(h,-1)) return 'Ontem';
+  return SEM_L[diaSemana(iso)].replace(/^./, c => c.toUpperCase());
+}
+function diaCompleto(iso){ return `${SEM[diaSemana(iso)]}, ${dataCurta(iso)}`; }
+function fmtHora(t){ if(!t) return ''; const [h,m] = t.split(':'); return m === '00' ? `${+h}h` : `${+h}h${m}`; }
+function fmtHoraBig(t){ return t ? t.slice(0,5) : ''; }
+function fmtDataHora(ts){
+  const d = new Date(ts);
+  const iso = new Intl.DateTimeFormat('en-CA',{timeZone:TZ}).format(d);
+  const hh = new Intl.DateTimeFormat('pt-BR',{timeZone:TZ,hour:'2-digit',minute:'2-digit'}).format(d);
+  return `${nomeDia(iso).toLowerCase()} (${dataCurta(iso)}) às ${hh.replace(':00','h').replace(':','h')}`;
+}
+function diasAte(ts){ return Math.ceil((new Date(ts) - Date.now()) / 86400000); }
+function dataDe(ts){ return dataCurta(new Intl.DateTimeFormat('en-CA',{timeZone:TZ}).format(new Date(ts))); }
+function preencher(modelo, v){ return String(modelo||'').replace(/\{(\w+)\}/g, (_,k) => v[k] ?? ''); }
+function linkWpp(numero, texto){ const n = soNum(numero); return `https://wa.me/${n}?text=${encodeURIComponent(texto)}`; }
+function linkWppLivre(texto){ return `https://wa.me/?text=${encodeURIComponent(texto)}`; }
+function guarda(k, v){ try{ v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); }catch(e){} }
+function pega(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+function toast(msg, erro){
+  const t = document.createElement('div'); t.className = 'toast' + (erro ? ' erro' : ''); t.textContent = msg;
+  $('toast-box').appendChild(t); setTimeout(() => t.remove(), 3200);
+}
+function modal(html, aoMontar){
+  const f = document.createElement('div'); f.className = 'fundo-modal';
+  f.innerHTML = `<div class="modal" role="dialog">${html}</div>`;
+  f.addEventListener('click', e => { if (e.target === f) f.remove(); });
+  $('modais').appendChild(f);
+  const fechar = () => f.remove();
+  f.querySelectorAll('[data-fechar]').forEach(b => b.onclick = fechar);
+  if (aoMontar) aoMontar(f.querySelector('.modal'), fechar);
+  return fechar;
+}
+function confirmar({titulo, texto, ok = 'Confirmar', perigo = false}){
+  return new Promise(res => {
+    let resposta = false;
+    const fechar = modal(`<h2>${titulo}</h2><p class="sub">${texto}</p>
+      <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn ${perigo?'perigo':''}" id="m-ok">${ok}</button></div>`,
+      (m, f) => { m.querySelector('#m-ok').onclick = () => { resposta = true; f(); }; });
+    const obs = new MutationObserver(() => { if (!document.body.contains($('m-ok'))) { obs.disconnect(); res(resposta); } });
+    obs.observe($('modais'), {childList:true});
+  });
+}
+async function chamar(url, opts = {}){
+  const r = await fetch(url, { ...opts, headers: { 'content-type': 'application/json', ...(opts.headers||{}) } });
+  let j = {}; try { j = await r.json(); } catch(e) {}
+  if (!r.ok) { const err = new Error(j.erro || 'Falha na conexão. Tente de novo.'); err.status = r.status; throw err; }
+  return j;
+}
+function ocupado(btn, sim){ if(!btn) return; if (sim){ btn.dataset.txt = btn.innerHTML; btn.innerHTML = '<span class="girando"></span>'; btn.disabled = true; } else { btn.innerHTML = btn.dataset.txt || btn.innerHTML; btn.disabled = false; } }
+
+/* =========================================================
+   INFO PÚBLICA
+   ========================================================= */
+let INFO = { niveis: [], config: {} };
+const nivelPor = id => INFO.niveis.find(n => n.id === id) || (ADM && ADM.niveis.find(n => n.id === id));
+function chipNivel(id){ const n = nivelPor(id); if(!n) return ''; return `<span class="nivel" style="--c:${esc(n.cor)}">${esc(n.nome)}</span>`; }
+function chipsNiveis(ids){ return !ids || !ids.length ? '<span class="nivel" style="--c:#8A8A8A">Todos os níveis</span>' : ids.map(chipNivel).join(''); }
+function corDe(ids){ const n = ids && ids.length ? nivelPor(ids[0]) : null; return n ? n.cor : 'var(--verde)'; }
+const cfg = k => (INFO.config || {})[k];
+
+async function carregarInfo(){
+  try { INFO = await chamar('/api/info'); } catch(e) { $('status-txt').textContent = 'Sem conexão. Puxe para atualizar.'; return; }
+  const c = INFO.config || {};
+  $('hero-local').textContent = `${(c.local_nome || 'Clube Militar').toUpperCase()} · CABO FRIO`;
+  $('regras').innerHTML = (c.regras || []).map(r => `<li>${esc(r)}</li>`).join('');
+  $('prof-nome').textContent = c.professor_nome || 'Matheus Knupp';
+  $('prof-bio').textContent = c.professor_bio || '';
+  if (c.foto) $('prof-foto').outerHTML = `<img class="foto" id="prof-foto" src="${esc(c.foto)}" alt="Foto do professor">`;
+  const acoes = [];
+  if (c.instagram) acoes.push(`<a class="btn sec" target="_blank" rel="noopener" href="https://instagram.com/${esc(String(c.instagram).replace('@',''))}">${ICON.ig} @${esc(String(c.instagram).replace('@',''))}</a>`);
+  if (c.professor_whatsapp) acoes.push(`<a class="btn wpp" target="_blank" rel="noopener" href="${linkWpp(c.professor_whatsapp, 'Oi, professor! Tenho uma dúvida sobre reposição.')}">${ICON.wpp} WhatsApp</a>`);
+  $('prof-acoes').innerHTML = acoes.join('');
+  $('local-nome').textContent = c.local_nome || 'Clube Militar';
+  $('local-end').textContent = c.local_endereco || '';
+  $('local-mapa').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(`${c.local_nome || 'Clube Militar'} ${c.local_endereco || 'Cabo Frio'}`);
+  atualizarStatus();
 }
 
-/* ---------------- página do aluno ---------------- */
-async function carregarVagas(){
-  try{
-    const r = await fetch('/api/vagas');
-    vagasState = await r.json();
-    desenharPublico();
-  }catch(e){
-    $('conteudo').innerHTML = '<div class="aviso">A página não carregou. Verifique a internet e atualize.</div>';
+/* status do topo: vagas abertas ou contagem para a próxima abertura */
+let timerStatus;
+function proximaAberturaRegra(){
+  // véspera 14h: abre de domingo a quinta
+  const hh = String(cfg('hora_abertura') || '14:00');
+  const agoraISO = hojeISO();
+  for (let i = 0; i < 8; i++){
+    const dia = somaDias(agoraISO, i);
+    const dow = diaSemana(dia);
+    if (dow === 5 || dow === 6) continue; // sexta e sábado não abre
+    const alvo = new Date(`${dia}T${hh.slice(0,5)}:00-03:00`);
+    if (alvo > new Date()) return alvo;
   }
+  return null;
 }
-
-function desenharPublico(erro){
-  const conteudo = $('conteudo');
-  const ofertas = vagasState.ofertas || [];
-
-  if (ofertas.length === 0){
-    $('heroTitulo').innerHTML = 'SEM VAGAS<br><span class="verde">NO MOMENTO</span>';
-    $('heroTexto').textContent = 'Nenhum horário de reposição está aberto agora.';
-    conteudo.innerHTML = `
-      <div class="rodada">
-        <h3 class="rodada-titulo">E agora?</h3>
-        <p class="rodada-detalhe" style="margin-top:8px">Fique de olho no grupo do WhatsApp. Eu aviso assim que abrir um novo horário.</p>
-      </div>`;
-    return;
+function atualizarStatus(){
+  clearInterval(timerStatus);
+  const box = $('status'), txt = $('status-txt');
+  const abertas = ALUNO.dados ? ALUNO.dados.horarios.filter(h => !h.lotado).length : (INFO.abertos_agora || 0);
+  if (abertas){
+    box.className = 'status aberto'; txt.innerHTML = `${abertas} horário${abertas>1?'s':''} com vaga agora`; return;
   }
-
-  $('heroTitulo').innerHTML = 'VAGAS DE<br><span class="verde">REPOSIÇÃO</span>';
-  $('heroTexto').innerHTML = 'Aula avulsa para quem já é aluno e perdeu o horário da semana.'
-    + '<span class="destaque">Escolha um horário e entre na lista.</span>';
-
-  const unica = ofertas.length === 1;
-
-  conteudo.innerHTML = `
-    <h2 class="secao-titulo">${unica ? 'ESSE É O HORÁRIO' : 'ESCOLHA O HORÁRIO'}</h2>
-    <p class="secao-sub">${unica ? 'Confira os detalhes e garanta seu lugar.' : 'Mais de um horário disponível — veja qual encaixa melhor.'}</p>
-
-    <div class="horarios" role="radiogroup" aria-label="Horários disponíveis">
-      ${ofertas.map((o, i) => `
-        <label class="horario">
-          <input type="radio" name="oferta" value="${o.id}" ${i === 0 ? 'checked' : ''}>
-          <span class="bola"></span>
-          <span class="txt">
-            <h3>${escapar(o.titulo)}</h3>
-            ${o.detalhe ? `<p>${escapar(o.detalhe)}</p>` : ''}
-          </span>
-        </label>`).join('')}
-    </div>
-
-    <h2 class="secao-titulo">QUEM É VOCÊ?</h2>
-    <p class="secao-sub">Preencha seus dados para entrar na lista — simples e rápido.</p>
-
-    ${erro ? `<div class="aviso">${escapar(erro)}</div>` : ''}
-
-    <div class="campo">
-      <label for="nome">Nome completo <span class="req">*</span></label>
-      <input id="nome" autocomplete="name" placeholder="Seu nome completo">
-    </div>
-
-    <div class="campo">
-      <label for="nivel">Seu nível <span class="req">*</span></label>
-      <select id="nivel">
-        <option value="">Selecione seu nível</option>
-        ${vagasState.niveis.map(n => `<option>${escapar(n)}</option>`).join('')}
-      </select>
-    </div>
-
-    <div class="campo">
-      <label for="whatsapp">WhatsApp <span class="req">*</span></label>
-      <input id="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(22) 99999-9999">
-    </div>
-
-    <button class="btn" id="enviar">Entrar na lista</button>`;
-
-  $('enviar').onclick = enviar;
-}
-
-async function enviar(){
-  const btn = $('enviar');
-  const nome = $('nome').value;
-  const selecionada = document.querySelector('input[name="oferta"]:checked');
-  const corpo = {
-    oferta_id: selecionada ? selecionada.value : '',
-    nome, nivel: $('nivel').value, whatsapp: $('whatsapp').value,
+  const alvo = INFO.proxima_abertura ? new Date(INFO.proxima_abertura) : proximaAberturaRegra();
+  if (!alvo){ box.className = 'status'; txt.textContent = 'Vagas abrem na véspera, às 14h'; return; }
+  box.className = 'status';
+  const tick = () => {
+    const ms = alvo - Date.now();
+    if (ms <= 0){ clearInterval(timerStatus); txt.innerHTML = 'Vagas abrindo… <b>atualize a página</b>'; if (ALUNO.wpp) entrar(ALUNO.wpp, true); return; }
+    if (ms < 6 * 3600e3){
+      const h = Math.floor(ms/3600e3), m = Math.floor(ms%3600e3/60e3), s = Math.floor(ms%60e3/1e3);
+      txt.innerHTML = `Próximas vagas abrem em <span class="contagem">${h?h+'h ':''}${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s</span>`;
+    } else txt.innerHTML = `Próximas vagas abrem ${esc(fmtDataHora(alvo))}`;
   };
+  tick(); timerStatus = setInterval(tick, 1000);
+}
 
-  btn.disabled = true;
-  btn.textContent = 'Enviando…';
+/* =========================================================
+   ÁREA DO ALUNO
+   ========================================================= */
+const ALUNO = { wpp: null, dados: null, sel: null };
 
-  try{
-    const r = await fetch('/api/inscricoes', {
-      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(corpo),
-    });
-    const dados = await r.json();
+$('in-wpp').addEventListener('input', e => { e.target.value = mascaraWpp(e.target.value); });
+$('form-entrar').addEventListener('submit', e => { e.preventDefault(); entrar(soNum($('in-wpp').value)); });
+$('btn-sair').onclick = () => { guarda('knupp_wpp', null); ALUNO.wpp = null; ALUNO.dados = null;
+  $('tela-aluno').classList.add('oculto'); $('tela-entrar').classList.remove('oculto'); $('btn-sair').classList.add('oculto'); $('in-wpp').value=''; atualizarStatus(); };
 
+async function entrar(wpp, silencioso){
+  const msg = $('entrar-msg'); msg.innerHTML = '';
+  if (soNum(wpp).length < 10){ msg.innerHTML = '<div class="aviso erro">Digite o WhatsApp com DDD. Ex.: (22) 99999-9999</div>'; return; }
+  const btn = $('btn-entrar'); if (!silencioso) ocupado(btn, true);
+  try {
+    const r = await chamar('/api/aluno/entrar', { method:'POST', body: JSON.stringify({ whatsapp: wpp }) });
     if (!r.ok){
-      try { vagasState = await (await fetch('/api/vagas')).json(); } catch(e){}
-      desenharPublico(dados.erro);
-      window.scrollTo({top:0,behavior:'smooth'});
+      guarda('knupp_wpp', null);
+      msg.innerHTML = r.motivo === 'nao_cadastrado'
+        ? `<div class="aviso amarelo">Não achamos esse número. Confira se digitou certo ou fale com o professor para atualizar seu cadastro.</div>`
+        : `<div class="aviso erro">Número inválido. Use DDD + número.</div>`;
+      $('tela-aluno').classList.add('oculto'); $('tela-entrar').classList.remove('oculto');
       return;
     }
-
-    $('heroTitulo').innerHTML = 'VOCÊ ESTÁ<br><span class="verde">NA LISTA</span>';
-    $('heroTexto').textContent = 'Seu nome já chegou para o professor.';
-    $('conteudo').innerHTML = `
-      <div class="fim">
-        <div class="selo-ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <h2 class="display">AGUARDE A CONFIRMAÇÃO</h2>
-        <p>${escapar(nome.trim())}, você entrou na lista desse horário.</p>
-        <p>Assim que o professor confirmar, você recebe um aviso no seu WhatsApp.</p>
-      </div>`;
-    window.scrollTo({top:0,behavior:'smooth'});
-  }catch(e){
-    btn.disabled = false;
-    btn.textContent = 'Entrar na lista';
-    desenharPublico('O envio falhou. Verifique a internet e tente de novo.');
-  }
+    ALUNO.wpp = wpp; ALUNO.dados = r; guarda('knupp_wpp', wpp);
+    if (!ALUNO.sel || !r.alunos.some(a => a.id === ALUNO.sel)) ALUNO.sel = r.alunos[0].id;
+    $('tela-entrar').classList.add('oculto'); $('tela-aluno').classList.remove('oculto'); $('btn-sair').classList.remove('oculto');
+    desenharAluno(); atualizarStatus();
+  } catch(e){ msg.innerHTML = `<div class="aviso erro">${esc(e.message)}</div>`; }
+  finally { if (!silencioso) ocupado(btn, false); }
 }
 
-/* ---------------- painel ---------------- */
-$('btnPainel').onclick = () => {
-  $('painel').classList.add('ativo');
-  document.body.style.overflow = 'hidden';
-  senha ? carregarAdmin() : telaLogin();
+const STATUS_RES = {
+  pendente: ['pend', 'Aguardando confirmação'], confirmada: ['ok', 'Confirmada'],
+  cancelada_aluno: ['cinza', 'Cancelada por você'], cancelada_chuva: ['azul', 'Cancelada · crédito devolvido'], recusada: ['verm', 'Não confirmada · crédito devolvido'],
 };
 
-function fecharPainel(){
-  $('painel').classList.remove('ativo');
-  document.body.style.overflow = '';
-  carregarVagas();
-}
+function desenharAluno(){
+  const d = ALUNO.dados, a = d.alunos.find(x => x.id === ALUNO.sel);
+  $('quem').innerHTML = d.alunos.length > 1
+    ? `<p class="eyebrow" style="width:100%;margin-bottom:2px">Quem vai jogar?</p>` + d.alunos.map(x => `<button class="${x.id===a.id?'on':''}" data-aluno="${x.id}">${esc(x.nome)}</button>`).join('')
+    : '';
+  document.querySelectorAll('[data-aluno]').forEach(b => b.onclick = () => { ALUNO.sel = +b.dataset.aluno; desenharAluno(); });
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && $('painel').classList.contains('ativo')) fecharPainel();
-});
+  const primeiro = a.nome.split(' ')[0];
+  const prox = a.lista_creditos[0];
+  $('carteira').innerHTML = `<div class="carteira ${a.creditos ? '' : 'zero'}"><div class="bola"></div>
+    <p class="ola">Olá, <b>${esc(primeiro)}</b> ${a.nivel_ids.length ? '· ' + a.nivel_ids.map(chipNivel).join(' ') : ''}</p>
+    <div class="num">${a.creditos}<small>${a.creditos === 1 ? 'CRÉDITO' : 'CRÉDITOS'}</small></div>
+    <div class="venc">${a.creditos
+      ? `Próximo vencimento: <b>${dataDe(prox.expira_em)}</b> (${diasAte(prox.expira_em) <= 1 ? 'vence amanhã' : 'em ' + diasAte(prox.expira_em) + ' dias'})`
+      : 'Você não tem créditos de reposição agora. Eles aparecem aqui quando uma aula sua é cancelada por chuva ou pelo professor.'}</div></div>`;
 
-function telaLogin(erro){
-  $('painelConteudo').innerHTML = `
-    <div class="login">
-      <div class="login-caixa">
-        <div class="logo">KNUPP<span class="ponto">.</span></div>
-        <p class="eyebrow">Painel · Área restrita</p>
-        ${erro ? `<div class="aviso">${escapar(erro)}</div>` : ''}
-        <input id="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password">
-        <button class="btn" id="entrar">Entrar no painel</button>
-        <button class="btn linha" id="voltar" style="margin-top:10px">Voltar ao site</button>
-      </div>
-    </div>`;
-  const campo = $('senha');
-  const go = () => { senha = campo.value; sessionStorage.setItem('knupp_senha', senha); carregarAdmin(); };
-  $('entrar').onclick = go;
-  $('voltar').onclick = fecharPainel;
-  campo.onkeydown = e => { if (e.key === 'Enter') go(); };
-  campo.focus();
-}
+  // minhas reposições
+  const minhas = a.reservas;
+  $('bloco-minhas').innerHTML = minhas.length ? `<h2 class="secao-t">MINHAS <span class="verde">REPOSIÇÕES</span></h2>
+    <div class="carta" style="padding:4px 18px">${minhas.map(r => {
+      const [cl, tx] = STATUS_RES[r.status] || ['cinza', r.status];
+      const podeCancelar = ['pendente','confirmada'].includes(r.status);
+      return `<div class="minha"><div class="q"><b>${nomeDia(r.data)} · ${fmtHora(r.hora)}</b>
+        <span>${diaCompleto(r.data)}${r.observacao ? ' · ' + esc(r.observacao) : ''}</span>
+        <div style="margin-top:6px"><span class="selo ${cl}">${tx}</span></div></div>
+        ${podeCancelar ? `<button class="btn perigo mini" data-cancelar="${r.id}" data-st="${r.status}">Cancelar</button>` : ''}</div>`;
+    }).join('')}</div>` : '';
+  document.querySelectorAll('[data-cancelar]').forEach(b => b.onclick = () => cancelarMinha(+b.dataset.cancelar, b.dataset.st, b));
 
-async function api(rota, opcoes = {}){
-  const r = await fetch(rota, {
-    ...opcoes,
-    headers:{'Content-Type':'application/json','x-admin-senha':senha, ...(opcoes.headers||{})},
-  });
-  const dados = await r.json().catch(() => ({}));
-  if (r.status === 401){
-    sessionStorage.removeItem('knupp_senha'); senha = '';
-    telaLogin('Senha incorreta.');
-    throw new Error('auth');
+  // vagas do nível
+  const meus = d.horarios.filter(h => !h.nivel_ids.length || h.nivel_ids.some(n => a.nivel_ids.includes(n)));
+  const jaPedi = new Set(minhas.filter(r => ['pendente','confirmada'].includes(r.status)).map(r => r.horario_id));
+  if (!meus.length){
+    const alvo = INFO.proxima_abertura ? new Date(INFO.proxima_abertura) : proximaAberturaRegra();
+    $('vagas').innerHTML = `<div class="vazio"><span class="bebas">Nenhuma vaga aberta agora</span>
+      ${alvo ? 'As próximas vagas abrem ' + esc(fmtDataHora(alvo)) + '.' : 'As vagas abrem na véspera, às 14h.'}<br>Fique de olho no grupo do WhatsApp.</div>`;
+    return;
   }
-  if (!r.ok) throw new Error(dados.erro || 'Não foi possível concluir.');
-  return dados;
-}
-
-async function carregarAdmin(aviso){
-  try{
-    admin = await api('/api/admin/painel');
-    desenharAdmin(aviso);
-  }catch(e){
-    if (e.message !== 'auth') telaLogin(e.message);
-  }
-}
-
-function formNovoHorario(){
-  return `
-    <div class="bloco">
-      <h3>Abrir novo horário</h3>
-      <div class="campo">
-        <label for="titulo">Título (o aluno vê isso)</label>
-        <input id="titulo" placeholder="Sábado, 21/03 · 8h · Clube Militar">
-      </div>
-      <div class="campo">
-        <label for="detalhe">Detalhe (opcional)</label>
-        <input id="detalhe" placeholder="Chegue 10 min antes. Traga água.">
-      </div>
-      <button class="btn" id="abrir">Abrir horário</button>
-      <p class="vazio" style="margin-top:14px">Fica aberto junto com os outros — não some nenhum. Você fecha cada um quando quiser.</p>
-    </div>`;
-}
-
-function ligarNovoHorario(){
-  const btn = $('abrir');
-  if (!btn) return;
-  btn.onclick = () => acao(
-    () => api('/api/admin/ofertas', {method:'POST', body: JSON.stringify({
-      titulo: $('titulo').value, detalhe: $('detalhe').value,
-    })}),
-    'Horário aberto. Já aparece para os alunos.'
-  );
-}
-
-function cabecalho(){
-  return `
-    <div class="topo">
-      <div class="marca">DASH<span class="verde">BOARD</span></div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <span class="ao-vivo"><i></i>Ao vivo</span>
-        <button class="fechar" id="fechar" aria-label="Fechar painel">✕</button>
-      </div>
-    </div>`;
-}
-
-function mensagemConfirmacao(nome, titulo){
-  return `Oi ${nome}! Sua vaga na reposição (${titulo}) está confirmada. Te espero na quadra! 🎾`;
-}
-
-function desenharAdmin(aviso){
-  const ofertas = admin.ofertas || [];
-  const todasInscricoes = ofertas.flatMap(o => o.inscricoes);
-  const abertas = ofertas.filter(o => o.aberta).length;
-  const pendentes = todasInscricoes.filter(i => i.status === 'pendente').length;
-  const confirmados = todasInscricoes.filter(i => i.status === 'confirmado').length;
-
-  $('painelConteudo').innerHTML = cabecalho() + `
-    <div class="painel-miolo">
-      ${aviso ? `<div class="aviso">${escapar(aviso)}</div>` : ''}
-
-      <div class="cartas">
-        <div class="carta"><div class="r">Horários abertos</div><div class="n">${abertas}</div><div class="r">de ${ofertas.length} no total</div></div>
-        <div class="carta laranja"><div class="r">Aguardando</div><div class="n">${pendentes}</div><div class="r">a confirmar</div></div>
-        <div class="carta azul"><div class="r">Confirmados</div><div class="n">${confirmados}</div><div class="r">no total</div></div>
-        <div class="carta rosa"><div class="r">Inscritos</div><div class="n">${todasInscricoes.length}</div><div class="r">somando tudo</div></div>
-      </div>
-
-      <div class="bloco">
-        <h3>Horários</h3>
-        ${ofertas.length === 0 ? '<p class="vazio">Nenhum horário criado ainda.</p>' : ofertas.map(o => `
-          <div class="rodada">
-            <div class="rodada-topo">
-              <div>
-                <span class="estado ${o.aberta ? 'aberta' : ''}">${o.aberta ? 'Aberto' : 'Encerrado'}</span>
-                <p class="rodada-titulo" style="margin-top:8px">${escapar(o.titulo)}</p>
-                ${o.detalhe ? `<p class="rodada-detalhe">${escapar(o.detalhe)}</p>` : ''}
-              </div>
-              <button class="btn linha mini" data-alternar="${o.id}" data-aberta="${o.aberta}">${o.aberta ? 'Encerrar' : 'Reabrir'}</button>
-            </div>
-            ${o.inscricoes.length === 0
-              ? '<p class="vazio">Ninguém se inscreveu ainda.</p>'
-              : `<ul class="lista">${o.inscricoes.map(i => `
-                  <li>
-                    <span class="quem">
-                      <b>${escapar(i.nome)}</b>
-                      <span>${escapar(i.nivel)} · ${escapar(i.whatsapp)}</span>
-                    </span>
-                    <span class="selo-status ${i.status}">${i.status === 'confirmado' ? 'Confirmado' : 'Pendente'}</span>
-                    <span class="acoes-item">
-                      ${i.status === 'pendente'
-                        ? `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWhats(i.whatsapp, mensagemConfirmacao(i.nome, o.titulo))}" data-confirmar="${i.id}">Confirmar</a>`
-                        : ''}
-                      <button class="remover" data-remover="${i.id}">Remover</button>
-                    </span>
-                  </li>`).join('')}</ul>`}
-          </div>`).join('')}
-      </div>
-
-      ${formNovoHorario()}
-    </div>`;
-
-  $('fechar').onclick = fecharPainel;
-
-  document.querySelectorAll('[data-alternar]').forEach(b => {
-    b.onclick = () => acao(
-      () => api(`/api/admin/ofertas/${b.dataset.alternar}`, {method:'PATCH', body: JSON.stringify({aberta: b.dataset.aberta !== 'true'})}),
-      b.dataset.aberta === 'true' ? 'Horário encerrado.' : 'Horário reaberto.'
-    );
+  let html = '', ultimo = '';
+  meus.forEach(h => {
+    if (h.data !== ultimo){ ultimo = h.data; html += `<div class="dia"><h3>${nomeDia(h.data)}</h3><span>${diaCompleto(h.data)}</span></div>`; }
+    const pedi = jaPedi.has(h.id);
+    let botao;
+    if (pedi) botao = `<span class="selo pend">Pedido feito</span>`;
+    else if (h.lotado) botao = `<span class="selo cinza">Lotado</span>`;
+    else botao = `<button class="btn auto mini" data-pedir="${h.id}" ${a.creditos ? '' : 'disabled title="Sem créditos"'}>Pedir vaga</button>`;
+    html += `<div class="vaga ${h.lotado && !pedi ? 'lotada' : ''}" style="--c:${esc(corDe(h.nivel_ids))}">
+      <div class="hora">${fmtHoraBig(h.hora)}</div>
+      <div class="info"><div class="niveis">${chipsNiveis(h.nivel_ids)}</div>${h.observacao ? `<p>${esc(h.observacao)}</p>` : ''}</div>
+      ${botao}</div>`;
   });
+  $('vagas').innerHTML = html + (a.creditos ? '' : `<div class="aviso amarelo">Para pedir uma vaga você precisa ter pelo menos 1 crédito.</div>`);
+  document.querySelectorAll('[data-pedir]').forEach(b => b.onclick = () => pedir(+b.dataset.pedir, b));
+}
 
-  // ao clicar em "Confirmar", abre o WhatsApp (target=_blank) e também marca como confirmado
-  document.querySelectorAll('[data-confirmar]').forEach(a => {
-    a.addEventListener('click', () => {
-      const id = a.dataset.confirmar;
-      setTimeout(() => acao(
-        () => api(`/api/admin/inscricoes/${id}`, {method:'PATCH', body: JSON.stringify({status:'confirmado'})}),
-        'Marcado como confirmado.'
-      ), 300);
-    });
+const MOTIVOS = {
+  lotado: 'Que pena — essa vaga acabou de ser preenchida.', sem_credito: 'Você não tem créditos disponíveis.',
+  nivel: 'Esse horário não é para o seu nível.', ja_pediu: 'Você já pediu esse horário.', passou: 'Esse horário já começou.',
+  nao_abriu: 'Esse horário ainda não abriu.', indisponivel: 'Esse horário não está mais disponível.', aluno: 'Não conseguimos confirmar seu cadastro. Entre de novo.',
+};
+async function pedir(horarioId, btn){
+  const h = ALUNO.dados.horarios.find(x => x.id === horarioId), a = ALUNO.dados.alunos.find(x => x.id === ALUNO.sel);
+  const ok = await confirmar({ titulo: 'PEDIR ESTA VAGA?', ok: 'Pedir vaga',
+    texto: `<b>${esc(a.nome)}</b> · ${nomeDia(h.data)} (${dataCurta(h.data)}) às <b>${fmtHora(h.hora)}</b>.<br><br>Vamos usar 1 crédito. Sua vaga fica garantida quando o professor confirmar pelo WhatsApp. Até lá, se cancelar, o crédito volta.` });
+  if (!ok) return;
+  ocupado(btn, true);
+  try {
+    const r = await chamar('/api/aluno/reservar', { method:'POST', body: JSON.stringify({ whatsapp: ALUNO.wpp, aluno_id: a.id, horario_id: horarioId }) });
+    if (r.ok) {
+      modal(`<div style="text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:var(--verde-f);border:1px solid var(--verde-b);display:grid;place-items:center;margin:4px auto 16px">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2BD576" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h2>PEDIDO <span class="verde">ENVIADO!</span></h2><p class="sub">Você está na lista de ${nomeDia(h.data).toLowerCase()} às ${fmtHora(h.hora)}.<br>O professor vai confirmar pelo WhatsApp.</p>
+        <button class="btn" data-fechar>Fechar</button></div>`);
+    } else toast(MOTIVOS[r.motivo] || 'Não foi possível pedir essa vaga.', true);
+  } catch(e){ toast(e.message, true); }
+  await entrar(ALUNO.wpp, true);
+}
+async function cancelarMinha(id, status, btn){
+  const perde = status === 'confirmada';
+  const ok = await confirmar({ titulo: 'CANCELAR REPOSIÇÃO?', ok: 'Sim, cancelar', perigo: true,
+    texto: perde ? 'Essa reposição já foi <b>confirmada</b>. Se cancelar agora, <b>você perde o crédito</b> e a vaga fica livre para outro aluno.'
+                 : 'O professor ainda não confirmou, então <b>o crédito volta</b> para você.' });
+  if (!ok) return;
+  ocupado(btn, true);
+  try {
+    const r = await chamar('/api/aluno/cancelar', { method:'POST', body: JSON.stringify({ whatsapp: ALUNO.wpp, reserva_id: id }) });
+    toast(r.ok ? (r.perdeu_credito ? 'Reposição cancelada. O crédito foi perdido.' : 'Cancelada. Seu crédito voltou.') : 'Não foi possível cancelar.', !r.ok);
+  } catch(e){ toast(e.message, true); }
+  await entrar(ALUNO.wpp, true);
+}
+
+/* instalar como app */
+let pedidoInstalar = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); pedidoInstalar = e; $('btn-instalar').classList.remove('oculto'); });
+const ehIOS = /iphone|ipad|ipod/i.test(navigator.userAgent), standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+if (ehIOS && !standalone) $('btn-instalar').classList.remove('oculto');
+$('btn-instalar').onclick = async () => {
+  if (pedidoInstalar){ pedidoInstalar.prompt(); await pedidoInstalar.userChoice; pedidoInstalar = null; $('btn-instalar').classList.add('oculto'); return; }
+  modal(`<h2>INSTALAR NO <span class="verde">IPHONE</span></h2><p class="sub">Leva 10 segundos:</p>
+    <ol class="regras"><li>Abra este site no <b>Safari</b>.</li><li>Toque no botão <b>Compartilhar</b> (quadrado com a seta para cima).</li><li>Escolha <b>Adicionar à Tela de Início</b> e toque em <b>Adicionar</b>.</li></ol>
+    <div class="rodape-m"><button class="btn" data-fechar>Entendi</button></div>`);
+};
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(() => {});
+
+/* =========================================================
+   PAINEL DO PROFESSOR
+   ========================================================= */
+let ADM = null, SENHA = null, ABA = 'pedidos', ESTAT = null;
+try { SENHA = sessionStorage.getItem('knupp_senha'); } catch(e) {}
+const api = (url, opts = {}) => chamar('/api/admin' + url, { ...opts, headers: { 'x-admin-senha': SENHA || '' } })
+  .catch(e => { if (e.status === 401){ SENHA = null; try{sessionStorage.removeItem('knupp_senha')}catch(_){}; loginPainel('Senha incorreta.'); } throw e; });
+const post = (url, body) => api(url, { method:'POST', body: JSON.stringify(body || {}) });
+const del = url => api(url, { method:'DELETE' });
+
+$('engrenagem').onclick = () => { $('painel').classList.remove('oculto'); document.body.style.overflow = 'hidden'; SENHA ? carregarPainel() : loginPainel(); };
+function fecharPainel(){ $('painel').classList.add('oculto'); document.body.style.overflow = ''; carregarInfo(); if (ALUNO.wpp) entrar(ALUNO.wpp, true); }
+
+function loginPainel(erro){
+  $('painel').innerHTML = `<div class="login-p"><img src="/logo.png" alt="Matheus Knupp Tennis" style="width:min(260px,80%);height:auto">
+    <p class="eyebrow" style="margin:10px 0 28px">Dashboard · Área restrita</p>
+    ${erro ? `<div class="aviso erro">${esc(erro)}</div>` : ''}
+    <form id="f-login"><div class="campo"><input type="password" id="in-senha" placeholder="Senha" autocomplete="current-password"></div>
+    <button class="btn" type="submit">Entrar</button></form>
+    <button class="btn sec" style="margin-top:10px" id="login-voltar">Voltar ao site</button></div>`;
+  $('in-senha').focus();
+  $('login-voltar').onclick = fecharPainel;
+  $('f-login').onsubmit = e => { e.preventDefault(); SENHA = $('in-senha').value; try{sessionStorage.setItem('knupp_senha', SENHA)}catch(_){}; carregarPainel(); };
+}
+
+async function carregarPainel(){
+  try { ADM = await api('/dados'); } catch(e){ if (e.status !== 401) toast(e.message, true); return; }
+  INFO.niveis = ADM.niveis.filter(n => n.ativo); INFO.config = ADM.config;
+  desenharPainel();
+}
+async function recarregar(msg){ if (msg) toast(msg); await carregarPainel(); }
+
+const ABAS = [['pedidos','Pedidos'],['horarios','Horários'],['alunos','Alunos'],['creditos','Créditos'],['numeros','Números'],['ajustes','Ajustes']];
+function desenharPainel(){
+  const pend = pendentes().length;
+  $('painel').innerHTML = `<div class="p-topo"><div class="p-linha">
+      <div class="marca"><img src="/logo.png" alt="Matheus Knupp Tennis" class="logo-img"><small>DASHBOARD</small></div>
+      <div style="display:flex;gap:8px"><button class="chip-btn" id="p-atualizar">Atualizar</button><button class="chip-btn" id="p-fechar">Ver site</button></div></div>
+    <nav class="p-abas">${ABAS.map(([k,t]) => `<button data-aba="${k}" class="${ABA===k?'on':''}">${t}${k==='pedidos'&&pend?`<span class="badge">${pend}</span>`:''}</button>`).join('')}</nav></div>
+    <div class="p-miolo" id="p-miolo"></div>`;
+  $('p-fechar').onclick = fecharPainel;
+  $('p-atualizar').onclick = () => recarregar('Atualizado.');
+  document.querySelectorAll('[data-aba]').forEach(b => b.onclick = () => { ABA = b.dataset.aba; desenharPainel(); });
+  ({ pedidos: abaPedidos, horarios: abaHorarios, alunos: abaAlunos, creditos: abaCreditos, numeros: abaNumeros, ajustes: abaAjustes })[ABA]();
+}
+function pendentes(){
+  const out = [];
+  ADM.horarios.forEach(h => h.reservas.forEach(r => { if (r.status === 'pendente' && h.status !== 'cancelado') out.push({ r, h }); }));
+  return out.sort((a,b) => (a.h.data+a.h.hora).localeCompare(b.h.data+b.h.hora) || a.r.criado_em.localeCompare(b.r.criado_em));
+}
+function variaveis(h, extra = {}){
+  return { dia: `${nomeDia(h.data).toLowerCase()} (${diaCompleto(h.data)})`, hora: fmtHora(h.hora), local: ADM.config.local_nome || 'Clube Militar', link: SITE, ...extra };
+}
+function statusHorario(h){
+  const agora = Date.now(), abre = new Date(h.abre_em), inicio = new Date(`${h.data}T${h.hora.slice(0,5)}:00-03:00`);
+  if (h.status === 'cancelado') return ['verm', 'Cancelado'];
+  if (inicio < agora) return ['cinza', 'Encerrado'];
+  if (h.status === 'fechado') return ['cinza', 'Fechado'];
+  if (abre > agora) return ['azul', 'Abre ' + fmtDataHora(abre)];
+  if (h.ocupadas >= h.vagas) return ['pend', 'Lotado'];
+  return ['ok', 'Aberto'];
+}
+function botaoConfirmar(r, h){
+  if (!r.whatsapp) return `<button class="btn mini" data-conf="${r.id}">Confirmar</button>`;
+  const texto = preencher(ADM.config.msg_confirmacao, variaveis(h, { nome: r.nome.split(' ')[0] }));
+  return `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWpp(r.whatsapp, texto)}" data-conf-link="${r.id}">${ICON.wpp} Confirmar</a>`;
+}
+function ligarConfirmar(raiz){
+  raiz.querySelectorAll('[data-conf-link]').forEach(a => a.addEventListener('click', () => {
+    fetch(`/api/admin/reserva/${a.dataset.confLink}/confirmar`, { method:'POST', keepalive:true, headers:{'x-admin-senha':SENHA,'content-type':'application/json'} })
+      .then(() => setTimeout(() => recarregar('Confirmado ✅'), 400));
+  }));
+  raiz.querySelectorAll('[data-conf]').forEach(b => b.onclick = async () => { ocupado(b,true); await post(`/reserva/${b.dataset.conf}/confirmar`).catch(()=>{}); recarregar('Confirmado ✅'); });
+  raiz.querySelectorAll('[data-recusar]').forEach(b => b.onclick = async () => {
+    if (!await confirmar({ titulo:'RECUSAR PEDIDO?', texto:'O aluno sai da lista e o crédito volta para ele.', ok:'Recusar', perigo:true })) return;
+    await post(`/reserva/${b.dataset.recusar}/recusar`).catch(e => toast(e.message,true)); recarregar('Pedido recusado. Crédito devolvido.');
   });
+}
 
-  document.querySelectorAll('[data-remover]').forEach(b => {
-    b.onclick = () => {
-      if (!confirm('Remover esta inscrição?')) return;
-      acao(() => api(`/api/admin/inscricoes/${b.dataset.remover}`, {method:'DELETE'}), 'Inscrição removida.');
+/* ---------- PEDIDOS ---------- */
+function abaPedidos(){
+  const hoje = hojeISO(), amanha = somaDias(hoje, 1);
+  const pend = pendentes();
+  const abertosAm = ADM.horarios.filter(h => h.data === amanha && h.status !== 'cancelado');
+  const vagasAm = abertosAm.reduce((s,h) => s + Math.max(h.vagas - h.ocupadas, 0), 0);
+  const comCred = ADM.alunos.filter(a => a.creditos > 0).length;
+  const vencendo = ADM.creditos.filter(c => c.status === 'disponivel' && diasAte(c.expira_em) <= 7).length;
+  const proximoDia = ADM.horarios.filter(h => h.data >= hoje && h.status !== 'cancelado').map(h => h.data).sort()[0];
+  const textoGrupo = preencher(ADM.config.msg_grupo, { dia: proximoDia ? `${nomeDia(proximoDia).toLowerCase()} (${diaCompleto(proximoDia)})` : 'amanhã', link: SITE });
+  const m = $('p-miolo');
+  m.innerHTML = `<div class="kpis">
+      <div class="kpi" style="--k:var(--amarelo)"><div class="v">${pend.length}</div><div class="l">Pedidos para confirmar</div></div>
+      <div class="kpi"><div class="v">${vagasAm}</div><div class="l">Vagas livres amanhã</div></div>
+      <div class="kpi" style="--k:var(--azul)"><div class="v">${comCred}</div><div class="l">Alunos com crédito</div></div>
+      <div class="kpi" style="--k:var(--vermelho)"><div class="v">${vencendo}</div><div class="l">Créditos vencendo (7 dias)</div></div></div>
+    <div class="carta" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1 1 220px"><b>Avisar o grupo</b><div class="cinza pequeno">Abre o WhatsApp com a mensagem pronta e o link do site. É só escolher o grupo.</div></div>
+      <a class="btn wpp auto" target="_blank" rel="noopener" href="${linkWppLivre(textoGrupo)}">${ICON.wpp} Avisar o grupo</a></div>
+    <div class="p-titulo"><h2>PARA <span class="verde">CONFIRMAR</span></h2></div>
+    ${pend.length ? `<div class="lista">${pend.map(({r,h}) => `<div class="item"><div class="q"><b>${esc(r.nome)}</b>
+        <span>${nomeDia(h.data)} ${dataCurta(h.data)} · ${fmtHora(h.hora)} · ${r.whatsapp ? fmtWpp(r.whatsapp) : 'sem WhatsApp'}</span></div>
+        <div class="btns">${botaoConfirmar(r,h)}<button class="btn perigo mini" data-recusar="${r.id}">Recusar</button></div></div>`).join('')}</div>`
+      : `<div class="vazio"><span class="bebas">Tudo em dia</span>Nenhum pedido esperando confirmação.</div>`}
+    <div class="p-titulo"><h2>PRÓXIMAS <span class="verde">REPOSIÇÕES</span></h2><button class="btn auto mini" id="novo-h1">+ Novo horário</button></div>
+    <div id="lista-prox"></div>`;
+  const prox = ADM.horarios.filter(h => h.data >= hoje && h.status !== 'cancelado').sort((a,b) => (a.data+a.hora).localeCompare(b.data+b.hora));
+  $('lista-prox').innerHTML = prox.length ? prox.map(cartaHorario).join('') : `<div class="vazio">Nenhum horário futuro criado.</div>`;
+  ligarHorarios(m); ligarConfirmar(m);
+  $('novo-h1').onclick = () => formHorario();
+}
+
+/* ---------- HORÁRIOS ---------- */
+function cartaHorario(h){
+  const [cl, tx] = statusHorario(h);
+  const ativos = h.reservas.filter(r => ['pendente','confirmada'].includes(r.status));
+  const outros = h.reservas.filter(r => !['pendente','confirmada'].includes(r.status));
+  const futuro = new Date(`${h.data}T${h.hora.slice(0,5)}:00-03:00`) > Date.now();
+  return `<div class="ph" style="border-left:3px solid ${esc(corDe(h.nivel_ids))}">
+    <div class="ph-cab"><div class="hora">${fmtHoraBig(h.hora)}</div>
+      <div class="q"><b>${nomeDia(h.data)} · ${diaCompleto(h.data)}</b><div class="niveis" style="margin-top:5px">${chipsNiveis(h.nivel_ids)}</div>
+        ${h.observacao ? `<span>${esc(h.observacao)}</span>` : ''}${h.motivo_cancelamento ? `<span> · ${esc(h.motivo_cancelamento)}</span>` : ''}</div>
+      <div style="text-align:right"><div class="ocup">${h.ocupadas}/${h.vagas}</div><span class="selo ${cl}">${esc(tx)}</span></div></div>
+    ${ativos.length || outros.length ? `<div class="ph-res">${ativos.map(r => `<div class="item"><div class="q"><b>${esc(r.nome)}</b>
+        <span>${r.status === 'pendente' ? 'Aguardando confirmação' : 'Confirmado'}${r.whatsapp ? ' · ' + fmtWpp(r.whatsapp) : ''}</span></div>
+        <div class="btns">${r.status === 'pendente' ? botaoConfirmar(r,h) : `<span class="selo ok">Confirmado</span>`}
+        <button class="btn perigo mini" data-recusar="${r.id}">${r.status === 'pendente' ? 'Recusar' : 'Tirar'}</button></div></div>`).join('')}
+      ${outros.map(r => `<div class="item"><div class="q"><span>${esc(r.nome)} — ${(STATUS_RES[r.status]||[])[1] || r.status}${r.perdeu_credito ? ' (perdeu o crédito)' : ''}</span></div></div>`).join('')}</div>` : ''}
+    ${h.status !== 'cancelado' && futuro ? `<div class="ph-acoes">
+      <button class="btn sec mini" data-editar="${h.id}">Editar</button>
+      ${new Date(h.abre_em) > Date.now() ? `<button class="btn sec mini" data-abrir="${h.id}">Abrir agora</button>` : ''}
+      <button class="btn sec mini" data-status="${h.id}" data-para="${h.status === 'fechado' ? 'ativo' : 'fechado'}">${h.status === 'fechado' ? 'Reabrir' : 'Fechar'}</button>
+      <button class="btn sec mini" data-add="${h.id}">+ Aluno</button>
+      <button class="btn sec mini" data-duplicar="${h.id}">Duplicar</button>
+      <button class="btn perigo mini" data-cancelar-h="${h.id}">Cancelar (chuva)</button>
+      <button class="btn perigo mini" data-excluir="${h.id}">Apagar</button></div>`
+    : `<div class="ph-acoes"><button class="btn perigo mini" data-excluir="${h.id}">Apagar</button></div>`}</div>`;
+}
+function ligarHorarios(raiz){
+  const H = id => ADM.horarios.find(h => h.id === +id);
+  raiz.querySelectorAll('[data-editar]').forEach(b => b.onclick = () => formHorario(H(b.dataset.editar)));
+  raiz.querySelectorAll('[data-duplicar]').forEach(b => b.onclick = () => { const h = H(b.dataset.duplicar); formHorario({ ...h, id: null, abre_em: null }); });
+  raiz.querySelectorAll('[data-abrir]').forEach(b => b.onclick = async () => { await post(`/horario/${b.dataset.abrir}/abrir-agora`); recarregar('Horário aberto para os alunos.'); });
+  raiz.querySelectorAll('[data-status]').forEach(b => b.onclick = async () => { await post(`/horario/${b.dataset.status}/status`, { status: b.dataset.para }); recarregar(b.dataset.para === 'fechado' ? 'Horário fechado.' : 'Horário reaberto.'); });
+  raiz.querySelectorAll('[data-excluir]').forEach(b => b.onclick = async () => {
+    const h = H(b.dataset.excluir);
+    const tem = h.reservas.some(r => ['pendente','confirmada'].includes(r.status));
+    if (!await confirmar({ titulo:'APAGAR HORÁRIO?', perigo:true, ok:'Apagar', texto: tem ? 'Tem aluno marcado aqui. Os créditos deles <b>voltam</b> e o horário some de vez.' : 'O horário some de vez do sistema.' })) return;
+    await del(`/horario/${h.id}`); recarregar('Horário apagado.');
+  });
+  raiz.querySelectorAll('[data-cancelar-h]').forEach(b => b.onclick = () => cancelarHorario(H(b.dataset.cancelarH)));
+  raiz.querySelectorAll('[data-add]').forEach(b => b.onclick = () => adicionarNoHorario(H(b.dataset.add)));
+}
+function seletorNiveis(sel, todos){
+  const lista = (todos || ADM.niveis).filter(n => n.ativo || sel.includes(n.id));
+  return `<div class="sel-niveis">${lista.map(n => `<button type="button" class="nivel ${sel.includes(n.id)?'on':''}" style="--c:${esc(n.cor)}" data-niv="${n.id}">${esc(n.nome)}</button>`).join('')}</div>`;
+}
+function ligarSeletor(raiz){ raiz.querySelectorAll('[data-niv]').forEach(b => b.onclick = () => b.classList.toggle('on')); }
+const lerSeletor = raiz => [...raiz.querySelectorAll('[data-niv].on')].map(b => +b.dataset.niv);
+
+function formHorario(h){
+  const novo = !h || !h.id;
+  h = h || { data: somaDias(hojeISO(), 1), hora: '', nivel_ids: [], vagas: 1, observacao: '' };
+  const abre = h.abre_em ? new Date(h.abre_em) : null;
+  const abreLocal = abre ? new Intl.DateTimeFormat('sv-SE',{timeZone:TZ,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(abre).replace(' ','T') : '';
+  modal(`<h2>${novo ? 'NOVO' : 'EDITAR'} <span class="verde">HORÁRIO</span></h2><p class="sub">Local: ${esc(ADM.config.local_nome || 'Clube Militar')}</p>
+    <div id="fh-msg"></div>
+    <div class="linha2"><div class="campo"><label>Dia</label><input type="date" id="fh-data" value="${esc(h.data)}"></div>
+    <div class="campo"><label>Hora</label><input type="time" id="fh-hora" value="${esc((h.hora||'').slice(0,5))}" step="900"></div></div>
+    <div class="campo"><label>Níveis (pode marcar mais de um)</label>${seletorNiveis(h.nivel_ids)}
+      <div class="cinza pequeno" style="margin-top:6px">Sem nenhum marcado = aberto para todos os níveis.</div></div>
+    <div class="linha2"><div class="campo"><label>Vagas</label><input type="number" id="fh-vagas" min="0" max="12" value="${esc(h.vagas)}"></div>
+    <div class="campo"><label>Quando abre</label><select id="fh-quando">
+      <option value="padrao" ${!abreLocal ? 'selected' : ''}>Véspera às ${esc(ADM.config.hora_abertura || '14:00')}</option>
+      <option value="agora">Agora</option><option value="custom" ${abreLocal ? 'selected' : ''}>Escolher dia/hora</option></select></div></div>
+    <div class="campo ${abreLocal ? '' : 'oculto'}" id="fh-custom-box"><label>Abre em</label><input type="datetime-local" id="fh-abre" value="${esc(abreLocal)}"></div>
+    <div class="campo"><label>Observação (opcional)</label><input id="fh-obs" value="${esc(h.observacao||'')}" placeholder="Ex.: Quadra 1 · trazer garrafa d'água"></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="fh-salvar">${novo ? 'Criar horário' : 'Salvar'}</button></div>`,
+  (m, fechar) => {
+    ligarSeletor(m);
+    m.querySelector('#fh-quando').onchange = e => m.querySelector('#fh-custom-box').classList.toggle('oculto', e.target.value !== 'custom');
+    m.querySelector('#fh-salvar').onclick = async e => {
+      const q = m.querySelector('#fh-quando').value;
+      const body = { id: novo ? null : h.id, data: m.querySelector('#fh-data').value, hora: m.querySelector('#fh-hora').value,
+        nivel_ids: lerSeletor(m), vagas: m.querySelector('#fh-vagas').value, observacao: m.querySelector('#fh-obs').value, abre_em: null };
+      if (!body.data || !body.hora){ m.querySelector('#fh-msg').innerHTML = '<div class="aviso erro">Preencha dia e hora.</div>'; return; }
+      const dow = diaSemana(body.data);
+      if (q === 'agora') body.abre_em = new Date().toISOString();
+      if (q === 'custom'){ const v = m.querySelector('#fh-abre').value; if (!v){ m.querySelector('#fh-msg').innerHTML = '<div class="aviso erro">Escolha quando abre.</div>'; return; } body.abre_em = new Date(v + ':00-03:00').toISOString(); }
+      ocupado(e.target, true);
+      try { await post('/horario', body); fechar(); recarregar(novo ? (q === 'padrao' ? `Criado! Abre ${fmtDataHora(new Date(new Date(somaDias(body.data,-1)+'T'+(ADM.config.hora_abertura||'14:00')+':00-03:00')))}.` : 'Horário criado.') : 'Horário salvo.'); }
+      catch(err){ ocupado(e.target, false); m.querySelector('#fh-msg').innerHTML = `<div class="aviso erro">${esc(err.message)}</div>`; }
+      if (dow === 0 || dow === 6) toast('Atenção: esse dia cai no fim de semana.');
     };
   });
-
-  ligarNovoHorario();
+}
+async function cancelarHorario(h){
+  modal(`<h2>CANCELAR <span class="verde">HORÁRIO</span></h2><p class="sub">${nomeDia(h.data)} ${dataCurta(h.data)} às ${fmtHora(h.hora)}. Quem estava marcado recebe o crédito de volta.</p>
+    <div class="campo"><label>Motivo</label><input id="ch-motivo" value="chuva"></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn perigo" id="ch-ok">Cancelar horário</button></div>`,
+  (m, fechar) => m.querySelector('#ch-ok').onclick = async e => {
+    ocupado(e.target, true);
+    const motivo = m.querySelector('#ch-motivo').value;
+    const r = await post(`/horario/${h.id}/cancelar`, { motivo }).catch(err => { toast(err.message, true); return null; });
+    fechar(); await recarregar('Horário cancelado.');
+    if (r && r.afetados.length) avisarAfetados(r.afetados, h, motivo);
+  });
+}
+function avisarAfetados(lista, h, motivo){
+  modal(`<h2>AVISAR <span class="verde">ALUNOS</span></h2><p class="sub">Os créditos já voltaram. Toque em cada um para avisar pelo WhatsApp.</p>
+    <div class="lista">${lista.map(a => `<div class="item"><div class="q"><b>${esc(a.nome)}</b><span>${a.whatsapp ? fmtWpp(a.whatsapp) : 'sem WhatsApp'}</span></div>
+      ${a.whatsapp ? `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWpp(a.whatsapp, preencher(ADM.config.msg_cancelamento, variaveis(h || {data:hojeISO(),hora:'00:00'}, { nome: a.nome.split(' ')[0], motivo })))}">${ICON.wpp} Avisar</a>` : ''}</div>`).join('')}</div>
+    <div class="rodape-m"><button class="btn" data-fechar>Pronto</button></div>`);
+}
+function adicionarNoHorario(h){
+  const elegiveis = ADM.alunos.filter(a => a.ativo && (!h.nivel_ids.length || a.nivel_ids.some(n => h.nivel_ids.includes(n))));
+  modal(`<h2>MARCAR <span class="verde">ALUNO</span></h2><p class="sub">${nomeDia(h.data)} às ${fmtHora(h.hora)} — entra já confirmado.</p>
+    <div class="campo"><label>Aluno</label><select id="ad-aluno">${elegiveis.map(a => `<option value="${a.id}">${esc(a.nome)} · ${a.creditos} crédito(s)</option>`).join('')}</select></div>
+    <label class="check-linha"><input type="checkbox" id="ad-cred" checked> <span>Usar 1 crédito do aluno</span></label>
+    <div id="ad-msg"></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="ad-ok">Marcar</button></div>`,
+  (m, fechar) => m.querySelector('#ad-ok').onclick = async () => {
+    const r = await post('/reservar', { aluno_id: +m.querySelector('#ad-aluno').value, horario_id: h.id, usar_credito: m.querySelector('#ad-cred').checked });
+    if (!r.ok){ m.querySelector('#ad-msg').innerHTML = `<div class="aviso erro">${r.motivo === 'sem_credito' ? 'Esse aluno não tem crédito. Desmarque "usar crédito" se quiser marcar mesmo assim.' : 'Esse aluno já está nesse horário.'}</div>`; return; }
+    fechar(); recarregar('Aluno marcado.');
+  });
+}
+function abaHorarios(){
+  const hoje = hojeISO();
+  const futuros = ADM.horarios.filter(h => h.data >= hoje).sort((a,b) => (a.data+a.hora).localeCompare(b.data+b.hora));
+  const passados = ADM.horarios.filter(h => h.data < hoje);
+  let html = `<div class="p-titulo"><h2>HORÁRIOS DE <span class="verde">REPOSIÇÃO</span></h2><button class="btn auto mini" id="novo-h">+ Novo horário</button></div>
+    <div class="aviso">Cada horário abre sozinho na <b>véspera às ${esc(ADM.config.hora_abertura || '14:00')}</b> (segunda abre domingo). Você pode deixar a semana toda pronta. Sexta e sábado não abre nada, porque não tem aula no fim de semana.</div>`;
+  let ult = '';
+  if (!futuros.length) html += `<div class="vazio"><span class="bebas">Nenhum horário futuro</span>Crie o primeiro no botão acima.</div>`;
+  futuros.forEach(h => { if (h.data !== ult){ ult = h.data; html += `<div class="dia"><h3>${nomeDia(h.data)}</h3><span>${diaCompleto(h.data)}</span></div>`; } html += cartaHorario(h); });
+  if (passados.length) html += `<details style="margin-top:26px"><summary class="cinza" style="cursor:pointer">Últimos 30 dias (${passados.length})</summary><div style="margin-top:12px">${passados.map(cartaHorario).join('')}</div></details>`;
+  const m = $('p-miolo'); m.innerHTML = html;
+  $('novo-h').onclick = () => formHorario(); ligarHorarios(m); ligarConfirmar(m);
 }
 
-async function acao(fn, mensagem){
-  try{
-    await fn();
-    admin = await api('/api/admin/painel');
-    desenharAdmin(mensagem);
-  }catch(e){
-    if (e.message !== 'auth') desenharAdmin(e.message);
-  }
+/* ---------- ALUNOS ---------- */
+let FILTRO = { q: '', nivel: '', so: '' };
+function abaAlunos(){
+  const m = $('p-miolo');
+  const semWpp = ADM.alunos.filter(a => !a.whatsapp).length;
+  m.innerHTML = `<div class="p-titulo"><h2>ALUNOS <span class="cinza" style="font-size:1.2rem">(${ADM.alunos.length})</span></h2>
+      <div style="display:flex;gap:8px"><button class="btn sec auto mini" id="importar">Importar lista</button><button class="btn auto mini" id="novo-a">+ Aluno</button></div></div>
+    ${semWpp ? `<div class="aviso amarelo"><b>${semWpp} aluno(s) sem WhatsApp.</b> Eles não conseguem entrar no site até você cadastrar o número. Use o filtro "Sem WhatsApp".</div>` : ''}
+    <div class="busca"><input id="fa-q" placeholder="Buscar por nome ou número…" value="${esc(FILTRO.q)}">
+      <select id="fa-nivel"><option value="">Todos os níveis</option>${ADM.niveis.map(n => `<option value="${n.id}" ${+FILTRO.nivel===n.id?'selected':''}>${esc(n.nome)}</option>`).join('')}</select>
+      <select id="fa-so"><option value="">Todos</option><option value="sem" ${FILTRO.so==='sem'?'selected':''}>Sem WhatsApp</option><option value="cred" ${FILTRO.so==='cred'?'selected':''}>Com crédito</option><option value="inativos" ${FILTRO.so==='inativos'?'selected':''}>Inativos</option></select></div>
+    <div class="lista" id="lista-a"></div>`;
+  const desenhar = () => {
+    const q = FILTRO.q.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    const lista = ADM.alunos.filter(a => {
+      const nome = a.nome.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+      if (q && !nome.includes(q) && !(a.whatsapp||'').includes(soNum(q) || '###')) return false;
+      if (FILTRO.nivel && !a.nivel_ids.includes(+FILTRO.nivel)) return false;
+      if (FILTRO.so === 'sem' && a.whatsapp) return false;
+      if (FILTRO.so === 'cred' && !a.creditos) return false;
+      if (FILTRO.so === 'inativos' ? a.ativo : !a.ativo) return false;
+      return true;
+    });
+    $('lista-a').innerHTML = lista.length ? lista.map(a => `<div class="item clicavel" data-al="${a.id}">
+      <div class="q"><b>${esc(a.nome)}</b><span>${a.whatsapp ? fmtWpp(a.whatsapp) : '<span style="color:var(--amarelo)">sem WhatsApp</span>'}${a.turmas.length ? ' · ' + esc(a.turmas.join(', ')) : ''}</span></div>
+      <div class="niveis">${a.nivel_ids.map(chipNivel).join('')}</div>
+      <span class="selo ${a.creditos ? 'ok' : 'cinza'}">${a.creditos} crédito${a.creditos===1?'':'s'}</span></div>`).join('')
+      : `<div class="vazio" style="border:0">Nenhum aluno encontrado.</div>`;
+    $('lista-a').querySelectorAll('[data-al]').forEach(el => el.onclick = () => formAluno(ADM.alunos.find(a => a.id === +el.dataset.al)));
+  };
+  $('fa-q').oninput = e => { FILTRO.q = e.target.value; desenhar(); };
+  $('fa-nivel').onchange = e => { FILTRO.nivel = e.target.value; desenhar(); };
+  $('fa-so').onchange = e => { FILTRO.so = e.target.value; desenhar(); };
+  $('novo-a').onclick = () => formAluno();
+  $('importar').onclick = importarAlunos;
+  desenhar();
+}
+function formAluno(a){
+  const novo = !a;
+  a = a || { nome:'', whatsapp:'', nivel_ids:[], turmas:[], observacao:'', ativo:true, creditos:0 };
+  const creds = novo ? [] : ADM.creditos.filter(c => c.aluno_id === a.id);
+  const reservas = [];
+  if (!novo) ADM.horarios.forEach(h => h.reservas.filter(r => r.aluno_id === a.id).forEach(r => reservas.push({ r, h })));
+  const STC = { disponivel:['ok','Disponível'], reservado:['pend','Em uso'], usado:['cinza','Usado'], perdido:['verm','Perdido'], removido:['cinza','Removido'], vencido:['verm','Vencido'] };
+  modal(`<h2>${novo ? 'NOVO' : 'EDITAR'} <span class="verde">ALUNO</span></h2><div id="fa-msg"></div>
+    <div class="campo"><label>Nome</label><input id="fa-nome" value="${esc(a.nome)}"></div>
+    <div class="campo"><label>WhatsApp (do aluno ou do responsável)</label><input id="fa-wpp" type="tel" inputmode="numeric" value="${esc(fmtWpp(a.whatsapp))}" placeholder="(22) 99999-9999"></div>
+    <div class="campo"><label>Nível(eis)</label>${seletorNiveis(a.nivel_ids)}</div>
+    <div class="campo"><label>Turmas fixas (separe por vírgula)</label><input id="fa-turmas" value="${esc(a.turmas.join(', '))}" placeholder="Ex.: Ter 18h, Qui 18h"></div>
+    <div class="campo"><label>Observação</label><input id="fa-obs" value="${esc(a.observacao||'')}"></div>
+    <label class="check-linha"><input type="checkbox" id="fa-ativo" ${a.ativo ? 'checked' : ''}> <span>Aluno ativo</span></label>
+    ${novo ? '' : `<div class="p-titulo" style="margin-top:18px"><h2 style="font-size:1.5rem">CRÉDITOS · ${a.creditos}</h2><button class="btn auto mini" id="fa-mais">+ Dar crédito</button></div>
+      ${creds.length ? `<div class="lista">${creds.map(c => `<div class="item"><div class="q"><b>${c.origem === 'chuva' ? 'Chuva' : c.origem === 'devolucao' ? 'Devolução' : 'Manual'}${c.motivo ? ' · ' + esc(c.motivo) : ''}</b>
+          <span>Criado ${dataDe(c.criado_em)} · vence ${dataDe(c.expira_em)}</span></div><span class="selo ${(STC[c.status]||['cinza'])[0]}">${(STC[c.status]||['',c.status])[1]}</span>
+          ${c.status === 'disponivel' ? `<button class="btn perigo mini" data-rmc="${c.id}">Remover</button>` : ''}</div>`).join('')}</div>` : '<p class="cinza pequeno">Nenhum crédito ainda.</p>'}
+      ${reservas.length ? `<div class="p-titulo"><h2 style="font-size:1.5rem">HISTÓRICO</h2></div><div class="lista">${reservas.map(({r,h}) => `<div class="item"><div class="q"><b>${diaCompleto(h.data)} · ${fmtHora(h.hora)}</b></div><span class="selo ${(STATUS_RES[r.status]||['cinza'])[0]}">${(STATUS_RES[r.status]||['',r.status])[1]}</span></div>`).join('')}</div>` : ''}`}
+    <div class="rodape-m">${novo ? '' : '<button class="btn perigo auto" id="fa-del">Excluir</button>'}<button class="btn sec" data-fechar>Voltar</button><button class="btn" id="fa-salvar">Salvar</button></div>`,
+  (m, fechar) => {
+    ligarSeletor(m);
+    m.querySelector('#fa-wpp').oninput = e => e.target.value = mascaraWpp(e.target.value);
+    m.querySelector('#fa-salvar').onclick = async e => {
+      const body = { id: novo ? null : a.id, nome: m.querySelector('#fa-nome').value, whatsapp: soNum(m.querySelector('#fa-wpp').value) || null,
+        nivel_ids: lerSeletor(m), turmas: m.querySelector('#fa-turmas').value.split(','), observacao: m.querySelector('#fa-obs').value, ativo: m.querySelector('#fa-ativo').checked };
+      ocupado(e.target, true);
+      try { await post('/aluno', body); fechar(); recarregar('Aluno salvo.'); }
+      catch(err){ ocupado(e.target, false); m.querySelector('#fa-msg').innerHTML = `<div class="aviso erro">${esc(err.message)}</div>`; }
+    };
+    const d = m.querySelector('#fa-del'); if (d) d.onclick = async () => {
+      if (!await confirmar({ titulo:'EXCLUIR ALUNO?', perigo:true, ok:'Excluir', texto:`${esc(a.nome)} e todo o histórico dele serão apagados. Se ele só parou de treinar, prefira desmarcar "Aluno ativo".` })) return;
+      await del(`/aluno/${a.id}`); fechar(); recarregar('Aluno excluído.');
+    };
+    const mais = m.querySelector('#fa-mais'); if (mais) mais.onclick = () => { fechar(); darCredito([a.id]); };
+    m.querySelectorAll('[data-rmc]').forEach(b => b.onclick = async () => { await del(`/credito/${b.dataset.rmc}`); fechar(); await recarregar('Crédito removido.'); formAluno(ADM.alunos.find(x => x.id === a.id)); });
+  });
+}
+function darCredito(ids){
+  const nomes = ids.map(id => ADM.alunos.find(a => a.id === id)?.nome).join(', ');
+  modal(`<h2>DAR <span class="verde">CRÉDITO</span></h2><p class="sub">${esc(nomes)} · vale ${esc(ADM.config.validade_dias || 40)} dias</p>
+    <div class="linha2"><div class="campo"><label>Quantidade</label><input type="number" id="dc-q" min="1" max="10" value="1"></div>
+    <div class="campo"><label>Motivo</label><select id="dc-o"><option value="chuva">Chuva</option><option value="manual">Professor cancelou / outro</option></select></div></div>
+    <div class="campo"><label>Detalhe (opcional)</label><input id="dc-m" placeholder="Ex.: aula de ter 25/11 18h"></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="dc-ok">Dar crédito</button></div>`,
+  (m, fechar) => m.querySelector('#dc-ok').onclick = async () => {
+    await post('/creditos', { aluno_ids: ids, quantidade: +m.querySelector('#dc-q').value, origem: m.querySelector('#dc-o').value, motivo: m.querySelector('#dc-m').value });
+    fechar(); recarregar('Crédito adicionado ✅');
+  });
+}
+function importarAlunos(){
+  modal(`<h2>IMPORTAR <span class="verde">LISTA</span></h2><p class="sub">Um aluno por linha, no formato:<br><b>Nome ; WhatsApp ; Nível ; Turmas</b><br>Ex.: <span class="cinza">Ana Souza ; 22 99999-1111 ; Iniciante ; Ter 18h, Qui 18h</span></p>
+    <div class="campo"><textarea id="imp-t" style="min-height:180px" placeholder="Ana Souza ; 22999991111 ; Iniciante ; Ter 18h"></textarea></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="imp-ok">Importar</button></div>`,
+  (m, fechar) => m.querySelector('#imp-ok').onclick = async () => {
+    const lista = m.querySelector('#imp-t').value.split('\n').map(l => l.split(';').map(s => s.trim())).filter(p => p[0])
+      .map(([nome, whatsapp, nivel, turmas]) => ({ nome, whatsapp: soNum(whatsapp) || null, nivel: nivel || '', turmas: (turmas||'').split(',').map(s=>s.trim()).filter(Boolean) }));
+    if (!lista.length) return;
+    const r = await post('/importar', { lista }); fechar(); recarregar(`${r.importados} aluno(s) importado(s).`);
+  });
 }
 
-carregarVagas();
+/* ---------- CRÉDITOS ---------- */
+function abaCreditos(){
+  const m = $('p-miolo');
+  const STC = { disponivel:['ok','Disponível'], reservado:['pend','Em uso'], usado:['cinza','Usado'], perdido:['verm','Perdido'], removido:['cinza','Removido'], vencido:['verm','Vencido'] };
+  const vencendo = ADM.creditos.filter(c => c.status === 'disponivel' && diasAte(c.expira_em) <= 7);
+  m.innerHTML = `<div class="carta" style="border-color:var(--verde-b);background:linear-gradient(135deg,rgba(43,213,118,.10),var(--carta) 60%)">
+      <h2 class="secao-t" style="font-size:1.8rem">🌧️ DIA DE <span class="verde">CHUVA</span></h2>
+      <p class="secao-s" style="margin-bottom:14px">Escolha as turmas ou os alunos que perderam aula. Cada um ganha 1 crédito de ${esc(ADM.config.validade_dias || 40)} dias.</p>
+      <button class="btn auto" id="chuva">Lançar créditos de chuva</button></div>
+    <div class="p-titulo"><h2>DAR CRÉDITO <span class="verde">AVULSO</span></h2><button class="btn sec auto mini" id="avulso">Escolher alunos</button></div>
+    ${vencendo.length ? `<div class="p-titulo"><h2>VENCENDO EM <span style="color:var(--vermelho)">7 DIAS</span></h2></div>
+      <div class="lista">${vencendo.map(c => { const a = ADM.alunos.find(x => x.id === c.aluno_id);
+        return `<div class="item"><div class="q"><b>${esc(c.nome)}</b><span>vence ${dataDe(c.expira_em)}</span></div>
+        ${a && a.whatsapp ? `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWpp(a.whatsapp, `Oi, ${c.nome.split(' ')[0]}! Você tem um crédito de reposição que vence dia ${dataDe(c.expira_em)}. Marque seu horário pelo site 👉 ${SITE}`)}">${ICON.wpp} Lembrar</a>` : ''}</div>`; }).join('')}</div>` : ''}
+    <div class="p-titulo"><h2>ÚLTIMOS <span class="verde">CRÉDITOS</span></h2></div>
+    ${ADM.creditos.length ? `<div class="lista">${ADM.creditos.slice(0, 80).map(c => `<div class="item"><div class="q"><b>${esc(c.nome)}</b>
+      <span>${c.origem === 'chuva' ? 'Chuva' : c.origem === 'devolucao' ? 'Devolução' : 'Manual'}${c.motivo ? ' · ' + esc(c.motivo) : ''} · ${dataDe(c.criado_em)} → vence ${dataDe(c.expira_em)}</span></div>
+      <span class="selo ${(STC[c.status]||['cinza'])[0]}">${(STC[c.status]||['',c.status])[1]}</span></div>`).join('')}</div>` : '<div class="vazio">Nenhum crédito lançado ainda.</div>'}`;
+  $('chuva').onclick = () => escolherAlunos({ chuva: true });
+  $('avulso').onclick = () => escolherAlunos({ chuva: false });
+}
+function escolherAlunos({ chuva }){
+  const turmas = [...new Set(ADM.alunos.flatMap(a => a.turmas))].sort();
+  const sel = new Set();
+  modal(`<h2>${chuva ? 'DIA DE <span class="verde">CHUVA</span>' : 'ESCOLHER <span class="verde">ALUNOS</span>'}</h2>
+    ${chuva ? `<div class="linha2"><div class="campo"><label>Dia da aula</label><input type="date" id="ec-data" value="${hojeISO()}"></div>
+      <div class="campo"><label>Motivo</label><input id="ec-mot" value="Chuva"></div></div>` : ''}
+    ${turmas.length ? `<label>Turmas</label><div class="turmas-sel" id="ec-turmas">${turmas.map(t => `<button type="button" data-t="${esc(t)}">${esc(t)}</button>`).join('')}</div>` : `<p class="cinza pequeno">Dica: cadastre as turmas fixas de cada aluno (ex.: "Ter 18h") para marcar a turma inteira com um toque.</p>`}
+    <div class="campo"><input id="ec-q" placeholder="Buscar aluno…"></div>
+    <div class="alunos-check" id="ec-lista"></div>
+    ${chuva ? `<label class="check-linha"><input type="checkbox" id="ec-cancel" checked> <span>Cancelar também as reposições marcadas nesse dia (o crédito volta)</span></label>` : ''}
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="ec-ok">Continuar (<span id="ec-n">0</span>)</button></div>`,
+  (m, fechar) => {
+    const lista = ADM.alunos.filter(a => a.ativo);
+    const desenhar = () => {
+      const q = m.querySelector('#ec-q').value.toLowerCase();
+      m.querySelector('#ec-lista').innerHTML = lista.filter(a => !q || a.nome.toLowerCase().includes(q)).map(a =>
+        `<label class="check-linha"><input type="checkbox" data-ec="${a.id}" ${sel.has(a.id)?'checked':''}><span style="flex:1">${esc(a.nome)}</span><span class="cinza pequeno">${esc(a.turmas.join(', '))}</span></label>`).join('');
+      m.querySelectorAll('[data-ec]').forEach(c => c.onchange = () => { c.checked ? sel.add(+c.dataset.ec) : sel.delete(+c.dataset.ec); m.querySelector('#ec-n').textContent = sel.size; });
+      m.querySelector('#ec-n').textContent = sel.size;
+    };
+    m.querySelector('#ec-q').oninput = desenhar;
+    m.querySelectorAll('[data-t]').forEach(b => b.onclick = () => {
+      b.classList.toggle('on'); const on = b.classList.contains('on');
+      lista.filter(a => a.turmas.includes(b.dataset.t)).forEach(a => on ? sel.add(a.id) : sel.delete(a.id)); desenhar();
+    });
+    const dataIn = m.querySelector('#ec-data');
+    if (dataIn){ // ao escolher o dia, sugere as turmas daquele dia da semana
+      const sugerir = () => { const pref = SEM[diaSemana(dataIn.value)].toLowerCase();
+        m.querySelectorAll('[data-t]').forEach(b => b.style.borderColor = b.dataset.t.toLowerCase().startsWith(pref) ? 'var(--verde-b)' : ''); };
+      dataIn.onchange = sugerir; sugerir();
+    }
+    desenhar();
+    m.querySelector('#ec-ok').onclick = async e => {
+      if (!chuva){ if (!sel.size) return toast('Escolha pelo menos um aluno.', true); fechar(); return darCredito([...sel]); }
+      const cancel = m.querySelector('#ec-cancel').checked;
+      if (!sel.size && !cancel) return toast('Escolha pelo menos um aluno.', true);
+      ocupado(e.target, true);
+      const motivo = `${m.querySelector('#ec-mot').value} · ${diaCompleto(dataIn.value)}`;
+      const r = await post('/chuva', { data: dataIn.value, aluno_ids: [...sel], motivo, cancelar_reposicoes: cancel }).catch(err => { toast(err.message, true); return null; });
+      fechar(); await recarregar(r ? `${r.creditos} crédito(s) lançado(s) 🌧️` : null);
+      if (r && r.afetados && r.afetados.length) avisarAfetados(r.afetados, { data: dataIn.value, hora: '00:00' }, m.querySelector('#ec-mot').value);
+    };
+  });
+}
+
+/* ---------- NÚMEROS ---------- */
+async function abaNumeros(){
+  const m = $('p-miolo'); m.innerHTML = '<div class="vazio"><span class="girando"></span></div>';
+  try { ESTAT = await api('/estatisticas'); } catch(e){ return; }
+  const c = ESTAT.creditos, meses = ESTAT.por_mes.slice(-6);
+  const max = Math.max(1, ...meses.map(x => x.pedidos));
+  const MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  m.innerHTML = `<div class="kpis">
+      <div class="kpi"><div class="v">${c.disponiveis}</div><div class="l">Créditos disponíveis</div></div>
+      <div class="kpi" style="--k:var(--azul)"><div class="v">${ESTAT.alunos_com_credito}</div><div class="l">Alunos com crédito</div></div>
+      <div class="kpi" style="--k:var(--amarelo)"><div class="v">${c.vencendo_7d}</div><div class="l">Vencem em 7 dias</div></div>
+      <div class="kpi" style="--k:var(--vermelho)"><div class="v">${c.vencidos_30d}</div><div class="l">Venceram sem uso (30d)</div></div></div>
+    <div class="kpis"><div class="kpi"><div class="v">${c.gerados_30d}</div><div class="l">Créditos gerados (30d)</div></div>
+      <div class="kpi"><div class="v">${c.usados_30d}</div><div class="l">Créditos usados (30d)</div></div></div>
+    <div class="p-titulo"><h2>REPOSIÇÕES POR <span class="verde">MÊS</span></h2></div>
+    ${meses.length ? `<div class="lista"><div class="barra">${meses.map(x => `<div class="col"><span class="n">${x.confirmadas}</span>
+        <div class="b" style="height:${Math.round(x.confirmadas / max * 120)}px"></div></div>`).join('')}</div>
+      <div class="barra-leg">${meses.map(x => `<span>${MES[+x.mes.slice(5)-1]}/${x.mes.slice(2,4)}<br>${x.pedidos} pedidos</span>`).join('')}</div></div>
+      <p class="cinza pequeno">Barra = reposições confirmadas. Embaixo, o total de pedidos do mês.</p>` : '<div class="vazio">Ainda sem dados.</div>'}
+    <div class="p-titulo"><h2>HORÁRIOS MAIS <span class="verde">PROCURADOS</span></h2></div>
+    ${ESTAT.por_horario.length ? `<div class="lista">${ESTAT.por_horario.map((x,i) => `<div class="item"><span class="bebas" style="font-size:1.4rem;width:28px;color:var(--verde)">${i+1}</span>
+      <div class="q"><b>${SEM_L[x.dia_semana % 7].replace(/^./,c=>c.toUpperCase())} · ${fmtHora(x.hora)}</b></div><span class="selo cinza">${x.pedidos} pedidos</span></div>`).join('')}</div>` : '<div class="vazio">Ainda sem dados.</div>'}`;
+}
+
+/* ---------- AJUSTES ---------- */
+function abaAjustes(){
+  const c = ADM.config, m = $('p-miolo');
+  m.innerHTML = `<div class="p-titulo"><h2>REGRAS</h2></div>
+    <div class="carta"><div class="linha2"><div class="campo"><label>Validade do crédito (dias)</label><input type="number" id="aj-val" value="${esc(c.validade_dias || 40)}"></div>
+      <div class="campo"><label>Hora de abertura (véspera)</label><input type="time" id="aj-hora" value="${esc(c.hora_abertura || '14:00')}"></div></div>
+      <div class="campo"><label>Regras mostradas ao aluno (uma por linha)</label><textarea id="aj-regras" style="min-height:170px">${esc((c.regras||[]).join('\n'))}</textarea></div></div>
+    <div class="p-titulo"><h2>PROFESSOR E <span class="verde">LOCAL</span></h2></div>
+    <div class="carta"><div class="prof" style="margin-bottom:16px">${c.foto ? `<img class="foto" src="${esc(c.foto)}" alt="">` : '<div class="foto"><img src="/logo-simbolo.png" alt="" style="width:46%;height:auto"></div>'}
+        <div><label for="aj-foto" class="btn sec auto mini" style="letter-spacing:0;text-transform:none;font-size:.82rem;color:var(--texto)">Trocar foto</label>
+        <input type="file" id="aj-foto" accept="image/*" class="oculto"></div></div>
+      <div class="linha2"><div class="campo"><label>Nome</label><input id="aj-pnome" value="${esc(c.professor_nome||'')}"></div>
+      <div class="campo"><label>Instagram</label><input id="aj-ig" value="${esc(c.instagram||'')}"></div></div>
+      <div class="campo"><label>Seu WhatsApp (botão para os alunos)</label><input id="aj-pwpp" type="tel" value="${esc(fmtWpp(c.professor_whatsapp))}" placeholder="(22) 99999-9999"></div>
+      <div class="campo"><label>Sobre você</label><textarea id="aj-bio">${esc(c.professor_bio||'')}</textarea></div>
+      <div class="linha2"><div class="campo"><label>Local</label><input id="aj-lnome" value="${esc(c.local_nome||'Clube Militar')}"></div>
+      <div class="campo"><label>Endereço</label><input id="aj-lend" value="${esc(c.local_endereco||'')}" placeholder="Rua…, Cabo Frio"></div></div></div>
+    <div class="p-titulo"><h2>MENSAGENS DE <span class="verde">WHATSAPP</span></h2></div>
+    <div class="carta"><p class="cinza pequeno" style="margin-top:0">Use {nome}, {dia}, {hora}, {local}, {link} e {motivo}. Eles são trocados automaticamente.</p>
+      <div class="campo"><label>Confirmação</label><textarea id="aj-mc">${esc(c.msg_confirmacao||'')}</textarea></div>
+      <div class="campo"><label>Aviso no grupo (vagas abertas)</label><textarea id="aj-mg">${esc(c.msg_grupo||'')}</textarea></div>
+      <div class="campo"><label>Cancelamento (chuva)</label><textarea id="aj-mx">${esc(c.msg_cancelamento||'')}</textarea></div></div>
+    <button class="btn" id="aj-salvar" style="margin-top:16px">Salvar ajustes</button>
+    <div class="p-titulo"><h2>NÍVEIS</h2><button class="btn auto mini" id="aj-nnovo">+ Nível</button></div>
+    <div class="lista">${ADM.niveis.map(n => `<div class="item"><input type="color" class="cor-in" value="${esc(n.cor)}" data-ncor="${n.id}">
+      <input value="${esc(n.nome)}" data-nnome="${n.id}" style="flex:1 1 140px">
+      <input type="number" value="${n.ordem}" data-nordem="${n.id}" style="width:70px" title="Ordem">
+      <button class="btn sec mini" data-nsalvar="${n.id}">Salvar</button><button class="btn perigo mini" data-ndel="${n.id}">Apagar</button></div>`).join('')}</div>
+    <div class="p-titulo"><h2>SAIR</h2></div><button class="btn sec auto" id="aj-sair">Sair do painel</button>`;
+  let foto = null;
+  $('aj-foto').onchange = e => {
+    const f = e.target.files[0]; if (!f) return;
+    const img = new Image(); img.onload = () => {
+      const lado = Math.min(img.width, img.height), cv = document.createElement('canvas'); cv.width = cv.height = 360;
+      cv.getContext('2d').drawImage(img, (img.width-lado)/2, (img.height-lado)/2, lado, lado, 0, 0, 360, 360);
+      foto = cv.toDataURL('image/jpeg', .82); m.querySelector('.prof .foto').outerHTML = `<img class="foto" src="${foto}" alt="">`; toast('Foto pronta. Clique em "Salvar ajustes".');
+    }; img.src = URL.createObjectURL(f);
+  };
+  $('aj-salvar').onclick = async e => {
+    const body = { validade_dias: +$('aj-val').value || 40, hora_abertura: $('aj-hora').value || '14:00',
+      regras: $('aj-regras').value.split('\n').map(s => s.trim()).filter(Boolean), professor_nome: $('aj-pnome').value, instagram: $('aj-ig').value.replace('@','').trim(),
+      professor_whatsapp: soNum($('aj-pwpp').value) ? (soNum($('aj-pwpp').value).startsWith('55') ? soNum($('aj-pwpp').value) : '55' + soNum($('aj-pwpp').value)) : '',
+      professor_bio: $('aj-bio').value, local_nome: $('aj-lnome').value, local_endereco: $('aj-lend').value,
+      msg_confirmacao: $('aj-mc').value, msg_grupo: $('aj-mg').value, msg_cancelamento: $('aj-mx').value };
+    if (foto) body.foto = foto;
+    ocupado(e.target, true); await post('/config', body).catch(err => toast(err.message, true)); recarregar('Ajustes salvos ✅');
+  };
+  $('aj-nnovo').onclick = async () => { await post('/nivel', { nome: 'Novo nível', cor: '#2BD576', ordem: ADM.niveis.length + 1 }); recarregar('Nível criado. Renomeie e salve.'); };
+  m.querySelectorAll('[data-nsalvar]').forEach(b => b.onclick = async () => { const id = b.dataset.nsalvar;
+    await post('/nivel', { id, nome: m.querySelector(`[data-nnome="${id}"]`).value, cor: m.querySelector(`[data-ncor="${id}"]`).value, ordem: m.querySelector(`[data-nordem="${id}"]`).value }); recarregar('Nível salvo.'); });
+  m.querySelectorAll('[data-ndel]').forEach(b => b.onclick = async () => {
+    if (!await confirmar({ titulo:'APAGAR NÍVEL?', perigo:true, ok:'Apagar', texto:'Ele sai dos alunos e horários que usam esse nível.' })) return;
+    await del(`/nivel/${b.dataset.ndel}`); recarregar('Nível apagado.'); });
+  $('aj-sair').onclick = () => { SENHA = null; try{sessionStorage.removeItem('knupp_senha')}catch(_){}; fecharPainel(); };
+}
+
+/* =========================================================
+   INÍCIO
+   ========================================================= */
+$('ano').textContent = new Date().getFullYear();
+(async () => {
+  await carregarInfo();
+  const salvo = pega('knupp_wpp');
+  if (salvo){ $('in-wpp').value = mascaraWpp(salvo); entrar(salvo, true); }
+  if (location.hash === '#admin') $('engrenagem').click();
+})();
+document.addEventListener('visibilitychange', () => { if (!document.hidden && ALUNO.wpp && $('painel').classList.contains('oculto')) entrar(ALUNO.wpp, true); });
 </script>
 </body>
 </html>
