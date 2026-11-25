@@ -159,6 +159,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--verde);outline-offs
 .regras li::before{content:counter(r);position:absolute;left:0;top:11px;width:26px;height:26px;border-radius:8px;background:var(--verde-f);color:var(--verde);
   font-family:"Bebas Neue",Impact,sans-serif;font-size:1.05rem;display:grid;place-items:center}
 .prof{display:flex;gap:16px;align-items:center}
+.marca{display:inline-flex;align-items:center}
+.logo-img{height:34px;width:auto;display:block}
 .prof .foto{width:84px;height:84px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:2px solid var(--verde);background:var(--carta2);
   display:grid;place-items:center;font-family:"Bebas Neue",Impact,sans-serif;font-size:2rem;color:var(--verde)}
 .prof h3{margin:0;font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:1.7rem;line-height:1}
@@ -248,7 +250,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--verde);outline-offs
 <body>
 
 <header class="topo">
-  <a class="marca" href="/">KNUPP<i>.</i><small>REPOSIÇÕES</small></a>
+  <a class="marca" href="/"><img src="/logo.png" alt="Matheus Knupp Tennis" class="logo-img"><small>REPOSIÇÕES</small></a>
   <div class="topo-acoes">
     <button class="chip-btn oculto" id="btn-instalar" type="button">Instalar app</button>
     <button class="chip-btn oculto" id="btn-sair" type="button">Trocar número</button>
@@ -302,7 +304,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--verde);outline-offs
     <h2 class="secao-t">SEU <span class="verde">PROFESSOR</span></h2>
     <div class="carta">
       <div class="prof">
-        <div class="foto" id="prof-foto">MK</div>
+        <div class="foto" id="prof-foto"><img src="/logo-simbolo.png" alt="" style="width:46%;height:auto"></div>
         <div><p class="eyebrow">Knupp Tênis</p><h3 id="prof-nome">Matheus Knupp</h3><p id="prof-bio"></p></div>
       </div>
       <div class="acoes" id="prof-acoes"></div>
@@ -632,7 +634,7 @@ $('engrenagem').onclick = () => { $('painel').classList.remove('oculto'); docume
 function fecharPainel(){ $('painel').classList.add('oculto'); document.body.style.overflow = ''; carregarInfo(); if (ALUNO.wpp) entrar(ALUNO.wpp, true); }
 
 function loginPainel(erro){
-  $('painel').innerHTML = `<div class="login-p"><div class="marca">KNUPP<i>.</i></div>
+  $('painel').innerHTML = `<div class="login-p"><img src="/logo.png" alt="Matheus Knupp Tennis" style="width:min(260px,80%);height:auto">
     <p class="eyebrow" style="margin:10px 0 28px">Dashboard · Área restrita</p>
     ${erro ? `<div class="aviso erro">${esc(erro)}</div>` : ''}
     <form id="f-login"><div class="campo"><input type="password" id="in-senha" placeholder="Senha" autocomplete="current-password"></div>
@@ -654,7 +656,7 @@ const ABAS = [['pedidos','Pedidos'],['horarios','Horários'],['alunos','Alunos']
 function desenharPainel(){
   const pend = pendentes().length;
   $('painel').innerHTML = `<div class="p-topo"><div class="p-linha">
-      <div class="marca">KNUPP<i>.</i><small>DASHBOARD</small></div>
+      <div class="marca"><img src="/logo.png" alt="Matheus Knupp Tennis" class="logo-img"><small>DASHBOARD</small></div>
       <div style="display:flex;gap:8px"><button class="chip-btn" id="p-atualizar">Atualizar</button><button class="chip-btn" id="p-fechar">Ver site</button></div></div>
     <nav class="p-abas">${ABAS.map(([k,t]) => `<button data-aba="${k}" class="${ABA===k?'on':''}">${t}${k==='pedidos'&&pend?`<span class="badge">${pend}</span>`:''}</button>`).join('')}</nav></div>
     <div class="p-miolo" id="p-miolo"></div>`;
@@ -1055,7 +1057,7 @@ function abaAjustes(){
       <div class="campo"><label>Hora de abertura (véspera)</label><input type="time" id="aj-hora" value="${esc(c.hora_abertura || '14:00')}"></div></div>
       <div class="campo"><label>Regras mostradas ao aluno (uma por linha)</label><textarea id="aj-regras" style="min-height:170px">${esc((c.regras||[]).join('\n'))}</textarea></div></div>
     <div class="p-titulo"><h2>PROFESSOR E <span class="verde">LOCAL</span></h2></div>
-    <div class="carta"><div class="prof" style="margin-bottom:16px">${c.foto ? `<img class="foto" src="${esc(c.foto)}" alt="">` : '<div class="foto">MK</div>'}
+    <div class="carta"><div class="prof" style="margin-bottom:16px">${c.foto ? `<img class="foto" src="${esc(c.foto)}" alt="">` : '<div class="foto"><img src="/logo-simbolo.png" alt="" style="width:46%;height:auto"></div>'}
         <div><label for="aj-foto" class="btn sec auto mini" style="letter-spacing:0;text-transform:none;font-size:.82rem;color:var(--texto)">Trocar foto</label>
         <input type="file" id="aj-foto" accept="image/*" class="oculto"></div></div>
       <div class="linha2"><div class="campo"><label>Nome</label><input id="aj-pnome" value="${esc(c.professor_nome||'')}"></div>
