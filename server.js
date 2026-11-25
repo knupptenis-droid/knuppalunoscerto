@@ -1,214 +1,191 @@
+// Knupp Tênis · Reposições 2.0
+// Toda a regra de negócio mora em funções SQL no Supabase (schema.sql).
+// Este servidor só confere a senha do professor e repassa os pedidos.
+
 const path = require('path');
 const express = require('express');
-const { createClient } = require('@supabase/supabase-js');
 
-const {
-  SUPABASE_URL,
-  SUPABASE_SERVICE_KEY,
-  ADMIN_SENHA,
-  PORT = 3000,
-} = process.env;
+const { SUPABASE_URL, SUPABASE_SERVICE_KEY, ADMIN_SENHA, PORT = 3000, TEST_PG } = process.env;
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !ADMIN_SENHA) {
+if (!ADMIN_SENHA || (!TEST_PG && (!SUPABASE_URL || !SUPABASE_SERVICE_KEY))) {
   console.error('Faltam variaveis de ambiente: SUPABASE_URL, SUPABASE_SERVICE_KEY, ADMIN_SENHA');
   process.exit(1);
 }
 
-const db = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
-  auth: { persistSession: false },
-});
+// ---------- acesso ao banco: sempre por funções (rpc) ----------
+let rpc;
+if (TEST_PG) {
+  // modo de teste local (Postgres direto)
+  const { Pool } = require('pg');
+  const pool = new Pool({ connectionString: TEST_PG });
+  rpc = async (fn, args = {}) => {
+    const keys = Object.keys(args);
+    const vals = keys.map(k => (['p_valor', 'p_lista'].includes(k) ? JSON.stringify(args[k]) : args[k]));
+    const sql = `select public.${fn}(${keys.map((k, i) => `${k} => $${i + 1}`).join(', ')}) as r`;
+    const { rows } = await pool.query(sql, vals);
+    return rows[0].r;
+  };
+} else {
+  const { createClient } = require('@supabase/supabase-js');
+  const db = createClient(SUPABASE_URL.replace(/\/+$/, ''), SUPABASE_SERVICE_KEY, { auth: { persistSession: false } });
+  rpc = async (fn, args = {}) => {
+    const { data, error } = await db.rpc(fn, args);
+    if (error) throw error;
+    return data;
+  };
+}
 
 const app = express();
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json({ limit: '2mb' }));
+app.use(express.static(path.join(__dirname, 'public'), {
+  setHeaders(res, file) {
+    if (file.endsWith('sw.js') || file.endsWith('.html')) res.setHeader('Cache-Control', 'no-cache');
+  },
+}));
 
-const NIVEIS = ['Iniciante', 'Intermediário', 'Avançado'];
+// endereço usado para acordar o site (cron-job.org)
+app.get('/ping', (req, res) => res.type('text').send('ok'));
+
+// ---------- proteção simples contra excesso de tentativas ----------
+const LIMITE = Number(process.env.LIMITE_POR_MINUTO || 40);
+const tentativas = new Map();
+function limitar(max) {
+  return (req, res, next) => {
+    const ip = (req.headers['x-forwarded-for'] || req.ip || '').split(',')[0].trim();
+    const agora = Date.now();
+    const lista = (tentativas.get(ip) || []).filter(t => agora - t < 60_000);
+    lista.push(agora);
+    tentativas.set(ip, lista);
+    if (lista.length > max) return res.status(429).json({ erro: 'Muitas tentativas. Espere um minuto.' });
+    next();
+  };
+}
 
 function exigirAdmin(req, res, next) {
-  const senha = req.get('x-admin-senha');
-  if (senha !== ADMIN_SENHA) {
-    return res.status(401).json({ erro: 'Senha incorreta.' });
-  }
+  if (req.get('x-admin-senha') !== ADMIN_SENHA) return res.status(401).json({ erro: 'Senha incorreta.' });
   next();
 }
 
-// ---------- rotas publicas ----------
-
-// Lista todas as rodadas ABERTAS (pode ser mais de uma ao mesmo tempo)
-app.get('/api/vagas', async (req, res) => {
+const rota = fn => async (req, res) => {
   try {
-    const { data, error } = await db
-      .from('ofertas')
-      .select('id, titulo, detalhe, criada_em')
-      .eq('aberta', true)
-      .order('criada_em', { ascending: true });
-    if (error) throw error;
-
-    res.json({ ofertas: data, niveis: NIVEIS });
+    await fn(req, res);
   } catch (e) {
     console.error(e);
-    res.status(500).json({ erro: 'Não foi possível carregar as vagas. Tente de novo.' });
+    res.status(500).json({ erro: 'Algo deu errado. Tente de novo em instantes.' });
   }
-});
+};
 
-app.post('/api/inscricoes', async (req, res) => {
-  try {
-    const ofertaId = parseInt(req.body.oferta_id, 10);
-    const nome = String(req.body.nome || '').trim();
-    const nivel = String(req.body.nivel || '').trim();
-    const whatsapp = String(req.body.whatsapp || '').trim();
+const num = v => (v === null || v === undefined || v === '' ? null : Number(v));
+const ints = v => (Array.isArray(v) ? v.map(Number).filter(Number.isFinite) : []);
+const txt = v => (v === null || v === undefined ? null : String(v));
 
-    if (!Number.isInteger(ofertaId)) return res.status(400).json({ erro: 'Escolha um horário.' });
-    if (nome.length < 3) return res.status(400).json({ erro: 'Escreva seu nome completo.' });
-    if (!NIVEIS.includes(nivel)) return res.status(400).json({ erro: 'Escolha o seu nível.' });
-    if (whatsapp.replace(/\D/g, '').length < 10) {
-      return res.status(400).json({ erro: 'Escreva um WhatsApp válido, com DDD.' });
-    }
+// ======================= ALUNO =======================
+app.get('/api/info', rota(async (req, res) => {
+  res.json(await rpc('publico_info'));
+}));
 
-    const { data: oferta, error: erroOferta } = await db
-      .from('ofertas')
-      .select('id, aberta')
-      .eq('id', ofertaId)
-      .maybeSingle();
-    if (erroOferta) throw erroOferta;
-    if (!oferta || !oferta.aberta) {
-      return res.status(409).json({ erro: 'Esse horário não está mais disponível. Atualize a página.' });
-    }
+app.post('/api/aluno/entrar', limitar(LIMITE), rota(async (req, res) => {
+  res.json(await rpc('aluno_entrar', { p_whatsapp: txt(req.body.whatsapp) }));
+}));
 
-    const { error: erroInsert } = await db
-      .from('inscricoes')
-      .insert({ oferta_id: ofertaId, nome, nivel, whatsapp, status: 'pendente' });
+app.post('/api/aluno/reservar', limitar(LIMITE), rota(async (req, res) => {
+  res.json(await rpc('aluno_reservar', {
+    p_whatsapp: txt(req.body.whatsapp), p_aluno_id: num(req.body.aluno_id), p_horario_id: num(req.body.horario_id),
+  }));
+}));
 
-    if (erroInsert) {
-      if (erroInsert.code === '23505') {
-        return res.status(409).json({ erro: 'Esse nome já está inscrito nesse horário.' });
-      }
-      throw erroInsert;
-    }
+app.post('/api/aluno/cancelar', limitar(LIMITE), rota(async (req, res) => {
+  res.json(await rpc('aluno_cancelar', { p_whatsapp: txt(req.body.whatsapp), p_reserva_id: num(req.body.reserva_id) }));
+}));
 
-    res.json({ ok: true });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ erro: 'Não foi possível concluir a inscrição. Tente de novo.' });
-  }
-});
+// ======================= PROFESSOR =======================
+const admin = express.Router();
+admin.use(limitar(120), exigirAdmin);
 
-// ---------- rotas de admin ----------
+admin.get('/dados', rota(async (req, res) => res.json(await rpc('admin_dados'))));
+admin.get('/estatisticas', rota(async (req, res) => res.json(await rpc('admin_estatisticas'))));
 
-// Todas as rodadas (abertas e encerradas), cada uma com seus inscritos
-app.get('/api/admin/painel', exigirAdmin, async (req, res) => {
-  try {
-    const { data: ofertas, error: erroOfertas } = await db
-      .from('ofertas')
-      .select('*')
-      .order('criada_em', { ascending: false })
-      .limit(30);
-    if (erroOfertas) throw erroOfertas;
+admin.post('/horario', rota(async (req, res) => {
+  const b = req.body;
+  if (!b.data || !b.hora) return res.status(400).json({ erro: 'Preencha dia e hora.' });
+  if (!(Number(b.vagas) >= 0)) return res.status(400).json({ erro: 'Número de vagas inválido.' });
+  res.json(await rpc('admin_salvar_horario', {
+    p_id: num(b.id), p_data: b.data, p_hora: b.hora, p_nivel_ids: ints(b.nivel_ids), p_vagas: Number(b.vagas),
+    p_observacao: txt(b.observacao), p_abre_em: b.abre_em || null,
+  }));
+}));
+admin.post('/horario/:id/status', rota(async (req, res) =>
+  res.json(await rpc('admin_status_horario', { p_id: num(req.params.id), p_status: txt(req.body.status) }))));
+admin.post('/horario/:id/abrir-agora', rota(async (req, res) =>
+  res.json(await rpc('admin_abrir_agora', { p_id: num(req.params.id) }))));
+admin.post('/horario/:id/cancelar', rota(async (req, res) =>
+  res.json(await rpc('admin_cancelar_horario', { p_id: num(req.params.id), p_motivo: txt(req.body.motivo) }))));
+admin.delete('/horario/:id', rota(async (req, res) =>
+  res.json(await rpc('admin_excluir_horario', { p_id: num(req.params.id) }))));
 
-    const ids = ofertas.map(o => o.id);
-    let inscricoes = [];
-    if (ids.length) {
-      const { data, error } = await db
-        .from('inscricoes')
-        .select('*')
-        .in('oferta_id', ids)
-        .order('criada_em', { ascending: true });
-      if (error) throw error;
-      inscricoes = data;
-    }
+admin.post('/reserva/:id/confirmar', rota(async (req, res) =>
+  res.json(await rpc('admin_confirmar', { p_reserva: num(req.params.id) }))));
+admin.post('/reserva/:id/recusar', rota(async (req, res) =>
+  res.json(await rpc('admin_recusar', { p_reserva: num(req.params.id) }))));
+admin.post('/reservar', rota(async (req, res) =>
+  res.json(await rpc('admin_reservar', {
+    p_aluno_id: num(req.body.aluno_id), p_horario_id: num(req.body.horario_id), p_usar_credito: !!req.body.usar_credito,
+  }))));
 
-    const porOferta = {};
-    inscricoes.forEach(i => {
-      (porOferta[i.oferta_id] = porOferta[i.oferta_id] || []).push(i);
-    });
+admin.post('/creditos', rota(async (req, res) => {
+  const ids = ints(req.body.aluno_ids);
+  if (!ids.length) return res.status(400).json({ erro: 'Escolha pelo menos um aluno.' });
+  res.json(await rpc('admin_dar_creditos', {
+    p_aluno_ids: ids, p_quantidade: Number(req.body.quantidade) || 1,
+    p_origem: txt(req.body.origem) || 'manual', p_motivo: txt(req.body.motivo),
+  }));
+}));
+admin.delete('/credito/:id', rota(async (req, res) =>
+  res.json(await rpc('admin_remover_credito', { p_credito: num(req.params.id) }))));
+admin.post('/chuva', rota(async (req, res) => {
+  if (!req.body.data) return res.status(400).json({ erro: 'Escolha o dia.' });
+  res.json(await rpc('admin_chuva', {
+    p_data: req.body.data, p_aluno_ids: ints(req.body.aluno_ids), p_motivo: txt(req.body.motivo),
+    p_cancelar_reposicoes: !!req.body.cancelar_reposicoes,
+  }));
+}));
 
-    res.json({
-      ofertas: ofertas.map(o => ({ ...o, inscricoes: porOferta[o.id] || [] })),
-      niveis: NIVEIS,
-    });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ erro: 'Não foi possível carregar o painel.' });
-  }
-});
+admin.post('/aluno', rota(async (req, res) => {
+  const b = req.body;
+  if (!b.nome || String(b.nome).trim().length < 2) return res.status(400).json({ erro: 'Escreva o nome do aluno.' });
+  if (b.whatsapp && String(b.whatsapp).replace(/\D/g, '').length < 10)
+    return res.status(400).json({ erro: 'WhatsApp inválido: coloque DDD + número.' });
+  res.json(await rpc('admin_salvar_aluno', {
+    p_id: num(b.id), p_nome: String(b.nome), p_whatsapp: txt(b.whatsapp) || null, p_nivel_ids: ints(b.nivel_ids),
+    p_turmas: Array.isArray(b.turmas) ? b.turmas.map(String).map(s => s.trim()).filter(Boolean) : [],
+    p_observacao: txt(b.observacao), p_ativo: b.ativo !== false,
+  }));
+}));
+admin.delete('/aluno/:id', rota(async (req, res) =>
+  res.json(await rpc('admin_excluir_aluno', { p_id: num(req.params.id) }))));
+admin.post('/importar', rota(async (req, res) => {
+  if (!Array.isArray(req.body.lista)) return res.status(400).json({ erro: 'Lista vazia.' });
+  res.json(await rpc('admin_importar_alunos', { p_lista: req.body.lista }));
+}));
 
-app.post('/api/admin/ofertas', exigirAdmin, async (req, res) => {
-  try {
-    const titulo = String(req.body.titulo || '').trim();
-    const detalhe = String(req.body.detalhe || '').trim();
+admin.post('/nivel', rota(async (req, res) => {
+  const b = req.body;
+  if (!b.nome) return res.status(400).json({ erro: 'Escreva o nome do nível.' });
+  res.json(await rpc('admin_salvar_nivel', {
+    p_id: num(b.id), p_nome: String(b.nome), p_cor: txt(b.cor), p_ordem: num(b.ordem), p_ativo: b.ativo !== false,
+  }));
+}));
+admin.delete('/nivel/:id', rota(async (req, res) =>
+  res.json(await rpc('admin_excluir_nivel', { p_id: num(req.params.id) }))));
 
-    if (!titulo) return res.status(400).json({ erro: 'Escreva um título para o horário.' });
+const CONFIG_PERMITIDA = ['validade_dias', 'hora_abertura', 'local_nome', 'local_endereco', 'professor_nome',
+  'professor_bio', 'professor_whatsapp', 'instagram', 'foto', 'regras', 'msg_confirmacao', 'msg_grupo', 'msg_cancelamento'];
+admin.post('/config', rota(async (req, res) => {
+  const itens = Object.entries(req.body || {}).filter(([k]) => CONFIG_PERMITIDA.includes(k));
+  for (const [k, v] of itens) await rpc('admin_salvar_config', { p_chave: k, p_valor: v });
+  res.json({ ok: true, salvos: itens.length });
+}));
 
-    const { data, error } = await db
-      .from('ofertas')
-      .insert({ titulo, detalhe: detalhe || null, aberta: true })
-      .select()
-      .single();
-    if (error) throw error;
+app.use('/api/admin', admin);
 
-    res.json({ oferta: data });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ erro: 'Não foi possível abrir o horário.' });
-  }
-});
-
-app.patch('/api/admin/ofertas/:id', exigirAdmin, async (req, res) => {
-  try {
-    const patch = {};
-    if (req.body.aberta !== undefined) patch.aberta = !!req.body.aberta;
-    if (req.body.titulo !== undefined) patch.titulo = String(req.body.titulo).trim();
-    if (req.body.detalhe !== undefined) patch.detalhe = String(req.body.detalhe).trim() || null;
-
-    const { data, error } = await db
-      .from('ofertas')
-      .update(patch)
-      .eq('id', req.params.id)
-      .select()
-      .single();
-    if (error) throw error;
-
-    res.json({ oferta: data });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ erro: 'Não foi possível salvar a alteração.' });
-  }
-});
-
-app.patch('/api/admin/inscricoes/:id', exigirAdmin, async (req, res) => {
-  try {
-    const patch = {};
-    if (req.body.status !== undefined) {
-      if (!['pendente', 'confirmado'].includes(req.body.status)) {
-        return res.status(400).json({ erro: 'Status inválido.' });
-      }
-      patch.status = req.body.status;
-    }
-
-    const { data, error } = await db
-      .from('inscricoes')
-      .update(patch)
-      .eq('id', req.params.id)
-      .select()
-      .single();
-    if (error) throw error;
-
-    res.json({ inscricao: data });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ erro: 'Não foi possível salvar a alteração.' });
-  }
-});
-
-app.delete('/api/admin/inscricoes/:id', exigirAdmin, async (req, res) => {
-  try {
-    const { error } = await db.from('inscricoes').delete().eq('id', req.params.id);
-    if (error) throw error;
-    res.json({ ok: true });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ erro: 'Não foi possível remover a inscrição.' });
-  }
-});
-
-app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`));
+app.listen(PORT, () => console.log(`Reposições Knupp rodando na porta ${PORT}`));
