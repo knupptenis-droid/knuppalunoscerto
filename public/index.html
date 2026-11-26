@@ -346,6 +346,20 @@ button.kpi{text-align:left;color:var(--branco);cursor:pointer;font:inherit}
 .opcoes i{width:16px;height:16px;border-radius:50%;border:1px solid var(--borda2);display:inline-block}
 .app-nav button{font-size:.62rem}
 .minha .q > span,.item .q > span{display:block}
+/* ====== v5: plano trimestral ====== */
+.banner-plano{position:relative;overflow:hidden;border-radius:18px;padding:20px;margin:6px 0 14px;border:1px solid rgba(250,204,21,.45);
+  background:linear-gradient(135deg,rgba(250,204,21,.16),rgba(43,213,118,.10) 55%,var(--carta))}
+.bp-tag{font-size:.7rem;letter-spacing:.2em;font-weight:700;color:var(--amarelo)}
+.bp-tit{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.5rem;line-height:1;margin:6px 0 6px}
+.bp-sub{color:var(--texto);font-size:.95rem;margin-bottom:14px}
+.plano-ativo{border:1px solid var(--verde-b);background:var(--verde-f);border-radius:12px;padding:12px 14px;margin:6px 0 14px;font-size:.93rem}
+.planos-opc{display:grid;gap:10px;margin:6px 0 10px}
+.planos-opc button{position:relative;text-align:left;display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:14px;border:1px solid var(--borda2);background:var(--fundo2);cursor:pointer;color:var(--branco)}
+.planos-opc button.on{border-color:var(--verde);background:var(--verde-f);box-shadow:0 0 0 2px var(--verde-b)}
+.po-tag{position:absolute;right:12px;top:12px;font-size:.62rem;letter-spacing:.14em;font-weight:700;color:#1a1500;background:var(--amarelo);padding:3px 7px;border-radius:6px}
+.planos-opc b{font-size:1rem}
+.po-val{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.9rem;line-height:1.05;color:var(--verde)}
+.po-eco{font-size:.82rem;color:var(--amarelo);font-weight:700}
 </style>
 </head>
 <body>
@@ -679,7 +693,7 @@ $('btn-sair').onclick = () => sair(false);
 
 async function carregarApp(silencioso){
   let r;
-  try { r = await apiAluno('aluno_area_v4'); } catch(e){ if (!silencioso && e.status !== 401) toast(e.message, true); return; }
+  try { r = await apiAluno('aluno_area_v5'); } catch(e){ if (!silencioso && e.status !== 401) toast(e.message, true); return; }
   if (!r.ok){ sair(true); return; }
   S.dados = r;
   if (!S.sel || !r.alunos.some(a => a.id === S.sel)) S.sel = +(pega('knupp_sel') || 0) && r.alunos.some(a => a.id === +pega('knupp_sel')) ? +pega('knupp_sel') : r.alunos[0].id;
@@ -1051,7 +1065,7 @@ function pagarPedido(id){
         <button class="btn" id="pp-copiar" style="margin-top:12px">Copiar código PIX</button>
         <button class="btn sec" id="pp-paguei" style="margin-top:10px">Já paguei</button></div>`
         : `<div class="aviso amarelo">O PIX ainda não foi configurado. Fale com o professor para pagar.</div>`)
-      : `<div class="aviso">Pagamento no <b>cartão</b> na hora da entrega/retirada (crédito com a taxa da maquininha ou débito). O professor vai combinar com você.</div>`}
+      : (p.tipo === 'plano' ? `<div class="aviso">Pagamento no <b>cartão</b>, na maquininha, na sua próxima aula: <b>${esc(p.itens[0].opcoes || '')}</b>.</div>` : `<div class="aviso">Pagamento no <b>cartão</b> na hora da entrega/retirada (crédito com a taxa da maquininha ou débito). O professor vai combinar com você.</div>`)}
     ${w ? `<a class="btn wpp" style="margin-top:10px" target="_blank" rel="noopener" href="${linkWpp(w, `Oi, professor! Fiz o pedido #${p.id} na área do aluno (${resumoItens(p)}) — total ${dinheiro(p.total)}.`)}">${ICON.wpp} Avisar o professor</a>` : ''}
     <div class="rodape-m"><button class="btn sec" data-fechar>Fechar</button></div>`,
   (m, fechar) => {
@@ -1071,7 +1085,7 @@ tabFin = function(){
   const box = document.createElement('div'); box.className = 'secao';
   box.innerHTML = `<h2 class="secao-t" style="font-size:1.6rem">MEUS <span class="verde">PEDIDOS</span></h2><div class="carta" style="padding:4px 18px">
     ${meus.map(p => { const [sc, st] = STATUS_PED[p.status] || ['cinza', p.status];
-      return `<div class="minha"><div class="q"><b>#${p.id} · ${p.tipo === 'aulas' ? 'Compra de aulas' : 'Loja'} · ${dinheiro(p.total)}</b><span>${esc(resumoItens(p))}</span>
+      return `<div class="minha"><div class="q"><b>#${p.id} · ${p.tipo === 'aulas' ? 'Compra de aulas' : p.tipo === 'plano' ? 'Plano trimestral' : 'Loja'} · ${dinheiro(p.total)}</b><span>${esc(resumoItens(p))}</span>
         <div style="margin-top:6px"><span class="selo ${sc}">${st}</span></div></div>
         <div style="display:flex;flex-direction:column;gap:6px">
         ${p.status === 'aguardando' ? `<button class="btn mini" data-ppagar="${p.id}">${p.pagamento === 'pix' ? 'Pagar' : 'Ver'}</button><button class="btn perigo mini" data-pcancel="${p.id}">Cancelar</button>` : ''}
@@ -1208,6 +1222,89 @@ function abrirCarrinho(){
     };
   });
 }
+
+
+/* =========================================================
+   v5: PLANO TRIMESTRAL + MENSALIDADE NO CARTÃO (aluno)
+   ========================================================= */
+const planoSel = () => ((S.dados.plano || {})[S.sel]) || {};
+const mesCurto = iso => `${MESES[+iso.slice(5,7)-1].slice(0,3)}/${iso.slice(2,4)}`;
+function bannerPlano(){
+  const pl = planoSel(), pr = pl.precos; if (!pr) return '';
+  const mesAtual = hojeISO().slice(0,7);
+  if (pl.ativo_ate){
+    const termina = pl.ativo_ate.slice(0,7) === mesAtual;
+    return termina
+      ? `<div class="banner-plano"><div class="bp-tag">⏰ SEU PLANO TERMINA ESTE MÊS</div><div class="bp-tit">RENOVE COM <span class="verde">DESCONTO</span></div>
+         <div class="bp-sub">Mais 3 meses por <b>${dinheiro(pr.pix)}</b> no PIX ou <b>3x de ${dinheiro(pr.parcela3)}</b> sem juros.</div><button class="btn" data-plano>Renovar plano</button></div>`
+      : `<div class="plano-ativo">✅ <b>Plano trimestral ativo</b> até ${esc(nomeMes(pl.ativo_ate))}</div>`;
+  }
+  if (pl.pendente) return `<div class="plano-ativo" style="border-color:rgba(250,204,21,.4)">⏳ <b>Plano trimestral aguardando pagamento</b> · veja em Financeiro → Meus pedidos</div>`;
+  return `<div class="banner-plano"><div class="bp-tag">🔥 PLANO TRIMESTRAL</div>
+    <div class="bp-tit">ECONOMIZE <span class="verde">${dinheiro(pr.economia_pix)}</span></div>
+    <div class="bp-sub">Pague 3 meses de uma vez: <b>${dinheiro(pr.pix)}</b> no PIX<br>ou <b>3x de ${dinheiro(pr.parcela3)} sem juros</b> no cartão</div>
+    <button class="btn" data-plano>Quero o plano trimestral</button></div>`;
+}
+function ligarPlano(){ document.querySelectorAll('[data-plano]').forEach(b => b.onclick = modalPlano); }
+function modalPlano(){
+  const pl = planoSel(), pr = pl.precos; if (!pr) return;
+  let forma = 'pix';
+  const opc = [
+    ['pix', '⭐ MELHOR PREÇO', 'PIX à vista', dinheiro(pr.pix), `Você economiza ${dinheiro(pr.economia_pix)}`],
+    ['cartao3', 'SEM JUROS', 'Cartão em 3x', `3x de ${dinheiro(pr.parcela3)}`, `Total ${dinheiro(pr.cartao3)} · você economiza ${dinheiro(pr.economia_cartao3)}`],
+    ['cartao1', '', 'Cartão à vista', dinheiro(pr.cartao1), `Você economiza ${dinheiro(pr.cheio - pr.cartao1)}`],
+  ];
+  modal(`<h2>PLANO <span class="verde">TRIMESTRAL</span></h2>
+    <p class="sub">3 meses de aula: <b>${(pl.meses || []).map(mesCurto).join(', ')}</b><br>Sem o plano: 3 × ${dinheiro(pr.mensal)} = <s>${dinheiro(pr.cheio)}</s></p>
+    <div class="planos-opc">${opc.map(([k, tag, tit, val, eco]) => `<button type="button" data-forma="${k}" class="${k === forma ? 'on' : ''}">
+      ${tag ? `<span class="po-tag">${tag}</span>` : ''}<b>${tit}</b><span class="po-val">${val}</span><span class="po-eco">${eco}</span></button>`).join('')}</div>
+    <p class="cinza pequeno" id="po-info"></p>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Agora não</button><button class="btn" id="po-ok">Fechar plano</button></div>`,
+  (m, fechar) => {
+    const info = () => { m.querySelector('#po-info').innerHTML = forma === 'pix' ? 'Você paga pelo PIX agora e os 3 meses ficam quitados assim que o professor confirmar.'
+      : 'O pagamento é feito <b>na maquininha, na sua próxima aula</b>. Os 3 meses ficam quitados assim que o professor passar o cartão.'; };
+    m.querySelectorAll('[data-forma]').forEach(b => b.onclick = () => { forma = b.dataset.forma; m.querySelectorAll('[data-forma]').forEach(x => x.classList.toggle('on', x === b)); info(); });
+    info();
+    m.querySelector('#po-ok').onclick = async e => {
+      ocupado(e.target, true);
+      try {
+        const r = await apiAluno('aluno_criar_pedido', { aluno_id: S.sel, tipo: 'plano', itens: [{ forma }] });
+        if (!r.ok){ ocupado(e.target, false); return toast(r.motivo === 'plano_pendente' ? 'Você já tem um plano aguardando pagamento.' : 'Não foi possível fechar o plano.', true); }
+        fechar(); await carregarApp(true);
+        if (forma === 'pix') pagarPedido(r.pedido_id);
+        else modal(`<div style="text-align:center"><div class="selo-grande">✓</div><h2>PLANO <span class="verde">RESERVADO!</span></h2>
+          <p class="sub">Leve o cartão na próxima aula: <b>${forma === 'cartao3' ? `3x de ${dinheiro(pr.parcela3)}` : dinheiro(pr.cartao1)}</b> na maquininha.<br>Assim que o professor passar, seus 3 meses ficam quitados.</p>
+          <button class="btn" data-fechar>Combinado</button></div>`);
+      } catch(err){ ocupado(e.target, false); toast(err.message, true); }
+    };
+  });
+}
+const tabInicioV4 = tabInicio;
+tabInicio = function(){
+  tabInicioV4();
+  const alvo = document.querySelector('#app-conteudo .prox');
+  if (alvo) alvo.insertAdjacentHTML('beforebegin', bannerPlano());
+  ligarPlano();
+};
+const tabFinV4 = tabFin;
+tabFin = function(){
+  tabFinV4();
+  const c = $('app-conteudo'), sub = c.querySelector('.secao-s');
+  if (sub) sub.insertAdjacentHTML('afterend', bannerPlano());
+  ligarPlano();
+  // botão de cartão na mensalidade em aberto
+  const ex = extraSel(), atual = mensalidadeAtual(ex), pr = planoSel().precos;
+  const jp = $('ja-paguei');
+  if (jp && atual && atual.status === 'pendente'){
+    const valorCartao = Math.ceil(Number(atual.valor) / (1 - Number(cfg('taxa_credito_1x') || 3.15) / 100));
+    jp.insertAdjacentHTML('afterend', `<button class="btn sec" id="pagar-cartao" style="margin-top:10px">💳 Pagar no cartão na aula (${dinheiro(valorCartao)})</button>`);
+    $('pagar-cartao').onclick = async () => {
+      if (!await confirmar({ titulo: 'PAGAR NO CARTÃO?', ok: 'Combinado', texto: `Você paga <b>${dinheiro(valorCartao)}</b> na maquininha, na sua próxima aula (inclui a taxa do cartão).<br><br>💡 Dica: no <b>plano trimestral</b> você parcela 3 meses em 3x sem juros e ainda tem desconto.` })) return;
+      try { const r = await apiAluno('aluno_pagar_cartao', { mensalidade_id: atual.id }); toast(r.ok ? 'Combinado! Leve o cartão na próxima aula 💳' : 'Não foi possível.', !r.ok); } catch(e){ toast(e.message, true); }
+      carregarApp(true);
+    };
+  }
+};
 
 /* instalar como app */
 let pedidoInstalar = null;
@@ -1907,10 +2004,14 @@ async function abaFinanceiro(){
     const i = todos.find(x => x.id === +b.dataset.pagar);
     modal(`<h2>RECEBI <span class="verde">${dinheiro(i.valor)}</span></h2><p class="sub">${esc(i.nome)}</p>
       <div class="campo"><label>Forma</label><div class="turmas-sel" id="pg-forma">${['PIX','Dinheiro','Cartão','Transferência'].map((x, k) => `<button type="button" class="${k ? '' : 'on'}">${x}</button>`).join('')}</div></div>
+      <div class="campo"><label>Valor recebido (R$)</label><input type="number" step="0.01" id="pg-valor" value="${Number(i.valor)}"><div class="cinza pequeno" id="pg-dica"></div></div>
       <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="pg-ok">Confirmar pagamento</button></div>`,
     (mm, fechar) => {
-      mm.querySelectorAll('#pg-forma button').forEach(x => x.onclick = () => { mm.querySelectorAll('#pg-forma button').forEach(y => y.classList.remove('on')); x.classList.add('on'); });
-      mm.querySelector('#pg-ok').onclick = async () => { await v3('admin_mensalidade', { id: i.id, status: 'pago', forma: mm.querySelector('#pg-forma .on').textContent }); fechar(); toast('Pagamento registrado ✅'); await recarregarSilencioso(); abaFinanceiro(); };
+      const t1 = Number(ADM.config.taxa_credito_1x ?? 3.15), cartao = Math.ceil(Number(i.valor) / (1 - t1 / 100));
+      mm.querySelectorAll('#pg-forma button').forEach(x => x.onclick = () => { mm.querySelectorAll('#pg-forma button').forEach(y => y.classList.remove('on')); x.classList.add('on');
+        const ehCartao = x.textContent === 'Cartão'; mm.querySelector('#pg-valor').value = ehCartao ? cartao : Number(i.valor);
+        mm.querySelector('#pg-dica').textContent = ehCartao ? `Mensalidade + taxa do crédito à vista (${t1}%).` : ''; });
+      mm.querySelector('#pg-ok').onclick = async () => { await v3('admin_mensalidade', { id: i.id, status: 'pago', forma: mm.querySelector('#pg-forma .on').textContent, valor: Number(mm.querySelector('#pg-valor').value) || Number(i.valor) }); fechar(); toast('Pagamento registrado ✅'); await recarregarSilencioso(); abaFinanceiro(); };
     });
   });
   m.querySelectorAll('[data-recibo]').forEach(b => b.onclick = () => { const i = itens.find(x => x.id === +b.dataset.recibo);
@@ -2150,7 +2251,7 @@ function abaLoja(){
 function lojaPedidos(){
   const box = $('loja-miolo'), peds = ADM.pedidos;
   const F = { abertos: p => ['aguardando','informado'].includes(p.status), separar: p => p.tipo === 'loja' && ['pago','separado'].includes(p.status),
-    concluidos: p => ['entregue'].includes(p.status) || (p.tipo === 'aulas' && p.status === 'pago'), cancelados: p => p.status === 'cancelado', todos: () => true };
+    concluidos: p => ['entregue'].includes(p.status) || (p.tipo !== 'loja' && p.status === 'pago'), cancelados: p => p.status === 'cancelado', todos: () => true };
   const lista = peds.filter(F[FILTRO_PED]);
   const ST = { aguardando: ['pend','Aguardando pagamento'], informado: ['azul','Informou pagamento'], pago: ['ok','Pago'], separado: ['ok','Separado'], entregue: ['cinza','Entregue'], cancelado: ['cinza','Cancelado'] };
   const mes = hojeISO().slice(0, 7);
@@ -2163,7 +2264,7 @@ function lojaPedidos(){
       `<button data-fp="${k}" class="${FILTRO_PED === k ? 'on' : ''}">${t} (${peds.filter(F[k]).length})</button>`).join('')}</div>
     ${lista.length ? `<div class="lista">${lista.map(p => { const [sc, st] = ST[p.status] || ['cinza', p.status];
       return `<div class="item"><div class="q"><b>#${p.id} · ${esc(p.nome || '—')} · ${dinheiro(p.total)}</b>
-        <span>${p.tipo === 'aulas' ? '🎾 Compra de aulas · ' : ''}${esc(p.itens.map(i => `${i.qtd}× ${i.nome}${i.opcoes ? ' (' + i.opcoes + ')' : ''}`).join(' · '))}</span>
+        <span>${p.tipo === 'aulas' ? '🎾 Compra de aulas · ' : p.tipo === 'plano' ? '📅 Plano trimestral · ' : ''}${esc(p.itens.map(i => `${i.qtd}× ${i.nome}${i.opcoes ? ' (' + i.opcoes + ')' : ''}`).join(' · '))}</span>
         <span>${p.pagamento === 'pix' ? 'PIX' : 'Cartão na entrega'} · ${p.entrega === 'entrega' ? 'Entrega: ' + esc(p.endereco || '') : 'Retira na aula'} · ${dataDe(p.criado_em)}${p.observacao ? ' · "' + esc(p.observacao) + '"' : ''}</span></div>
         <span class="selo ${sc}">${st}</span><div class="btns">
         ${['aguardando','informado'].includes(p.status) ? `<button class="btn mini" data-pst="${p.id}" data-para="pago">Recebi</button>` : ''}
@@ -2267,6 +2368,61 @@ function formProduto(p){
     };
   });
 }
+
+
+/* =========================================================
+   PAINEL v5: PLANOS TRIMESTRAIS
+   ========================================================= */
+async function carregarPainel(){
+  try { ADM = await v3('admin_dados_v5'); } catch(e){ if (e.status !== 401) toast(e.message, true); return; }
+  INFO.niveis = ADM.niveis.filter(n => n.ativo); INFO.config = ADM.config;
+  desenharPainel();
+}
+async function recarregarSilencioso(){ try { ADM = await v3('admin_dados_v5'); INFO.config = ADM.config; } catch(e){} }
+const abaFinanceiroV4 = abaFinanceiro;
+abaFinanceiro = async function(){
+  await abaFinanceiroV4();
+  const m = $('p-miolo'); if (!m || ABA !== 'financeiro') return;
+  const planos = ADM.planos || [], mesAtual = hojeISO().slice(0,7);
+  const terminando = planos.filter(p => String(p.ativo_ate).slice(0,7) === mesAtual);
+  const pendentesPlano = (ADM.pedidos || []).filter(p => p.tipo === 'plano' && ['aguardando','informado'].includes(p.status));
+  const box = document.createElement('div');
+  box.innerHTML = `<div class="p-titulo"><h2>PLANOS <span class="verde">TRIMESTRAIS</span></h2></div>
+    <div class="kpis"><div class="kpi"><div class="v">${planos.length}</div><div class="l">Alunos no plano</div></div>
+      <div class="kpi" style="--k:var(--amarelo)"><div class="v">${pendentesPlano.length}</div><div class="l">Planos a receber</div></div>
+      <div class="kpi" style="--k:var(--vermelho)"><div class="v">${terminando.length}</div><div class="l">Terminam este mês</div></div>
+      <div class="kpi" style="--k:var(--azul)"><div class="v">${ADM.alunos.filter(a => a.ativo && ALEX(a.id).valor_mensal && !planos.some(p => p.aluno_id === a.id)).length}</div><div class="l">Ainda no mensal</div></div></div>
+    ${pendentesPlano.length ? `<div class="lista" style="margin-bottom:12px">${pendentesPlano.map(p => `<div class="item"><div class="q"><b>${esc(p.nome)} · ${dinheiro(p.total)}</b>
+      <span>${esc(p.itens[0].opcoes || '')} · meses ${(p.itens[0].meses || []).map(mesCurto).join(', ')}</span></div>
+      <span class="selo ${p.status === 'informado' ? 'azul' : 'pend'}">${p.pagamento === 'pix' ? (p.status === 'informado' ? 'Informou PIX' : 'Aguardando PIX') : 'Cartão na aula'}</span>
+      <div class="btns"><button class="btn mini" data-plrec="${p.id}">Recebi</button></div></div>`).join('')}</div>` : ''}
+    ${terminando.length ? `<div class="aviso amarelo"><b>Para renovar:</b> esses alunos têm o plano terminando este mês.</div>
+      <div class="lista">${terminando.map(p => `<div class="item"><div class="q"><b>${esc(p.nome)}</b><span>Plano até ${esc(nomeMes(p.ativo_ate))}</span></div>
+      ${p.whatsapp ? `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWpp(p.whatsapp, `Oi, ${p.nome.split(' ')[0]}! Seu plano trimestral termina este mês 🎾 Renove pela área do aluno e mantenha o desconto: ${dinheiro(p.precos.pix)} no PIX ou 3x de ${dinheiro(p.precos.parcela3)} sem juros no cartão 👉 ${SITE}`)}">${ICON.wpp} Renovar</a>` : ''}</div>`).join('')}</div>` : ''}
+    <div class="carta" style="margin-top:12px"><b>Como os preços são calculados</b>
+      <div class="cinza pequeno">PIX à vista: ${esc(ADM.config.plano_desconto ?? 10)}% de desconto sobre 3 mensalidades. Cartão: o valor do PIX com a taxa da maquininha por cima
+      (${esc(ADM.config.taxa_credito_1x ?? 3.15)}% à vista, ${esc(ADM.config.taxa_credito_3x ?? 6.12)}% em 3x), então você recebe líquido o mesmo do PIX. Tudo arredondado para cima. Ajuste em Ajustes.</div></div>`;
+  const ref = m.querySelector('.turmas-sel'); if (ref) m.insertBefore(box, ref); else m.appendChild(box);
+  box.querySelectorAll('[data-plrec]').forEach(b => b.onclick = async () => {
+    const p = pendentesPlano.find(x => x.id === +b.dataset.plrec);
+    if (!await confirmar({ titulo: 'RECEBEU O PLANO?', ok: 'Recebi', texto: `${esc(p.nome)} · <b>${dinheiro(p.total)}</b> (${esc(p.itens[0].opcoes || '')}).<br>Os meses <b>${(p.itens[0].meses || []).map(mesCurto).join(', ')}</b> ficam pagos.` })) return;
+    await v3('admin_pedido_status', { id: p.id, status: 'pago', forma: p.pagamento === 'pix' ? 'PIX' : (p.itens[0].forma === 'cartao3' ? 'Cartão 3x' : 'Cartão à vista') });
+    await recarregarSilencioso(); toast('Plano confirmado ✅'); abaFinanceiro();
+  });
+};
+const abaAjustesV4 = abaAjustes;
+abaAjustes = function(){
+  abaAjustesV4();
+  const c = ADM.config, alvo = $('aj-salvar3'); if (!alvo) return;
+  alvo.insertAdjacentHTML('beforebegin', `<div class="linha2"><div class="campo"><label>Desconto do trimestral (%)</label><input type="number" step="0.5" id="aj-pdesc" value="${esc(c.plano_desconto ?? 10)}"></div>
+    <div class="campo"><label>Taxa crédito à vista (%)</label><input type="number" step="0.01" id="aj-t1" value="${esc(c.taxa_credito_1x ?? 3.15)}"></div></div>
+    <div class="campo"><label>Taxa crédito 3x (%)</label><input type="number" step="0.01" id="aj-t3" value="${esc(c.taxa_credito_3x ?? 6.12)}"></div>`);
+  const orig = alvo.onclick;
+  alvo.onclick = async e => {
+    await post('/config', { plano_desconto: +$('aj-pdesc').value || 10, taxa_credito_1x: +$('aj-t1').value || 3.15, taxa_credito_3x: +$('aj-t3').value || 6.12 }).catch(() => {});
+    return orig(e);
+  };
+};
 
 /* =========================================================
    INÍCIO
