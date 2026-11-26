@@ -184,7 +184,8 @@ admin.delete('/nivel/:id', rota(async (req, res) =>
 const CONFIG_PERMITIDA = ['validade_dias', 'hora_abertura', 'local_nome', 'local_endereco', 'professor_nome',
   'professor_bio', 'professor_whatsapp', 'instagram', 'foto', 'regras', 'msg_confirmacao', 'msg_grupo', 'msg_cancelamento',
   'pix_tipo', 'pix_chave', 'pix_nome', 'pix_cidade', 'msg_cobranca', 'msg_lembrete_aula', 'indicacao_beneficio', 'habilidades', 'financeiro_inicio',
-  'preco_aula', 'loja_taxas', 'loja_entrega', 'loja_categorias', 'loja_url'];
+  'preco_aula', 'loja_taxas', 'loja_entrega', 'loja_categorias', 'loja_url',
+  'plano_desconto', 'taxa_credito_1x', 'taxa_credito_3x'];
 admin.post('/config', rota(async (req, res) => {
   const itens = Object.entries(req.body || {}).filter(([k]) => CONFIG_PERMITIDA.includes(k));
   for (const [k, v] of itens) await rpc('admin_salvar_config', { p_chave: k, p_valor: v });
@@ -257,6 +258,8 @@ const FUNCOES_ALUNO = {
     p_pagamento: txt(b.pagamento) || 'pix', p_entrega: txt(b.entrega) || 'retirada', p_endereco: txt(b.endereco), p_observacao: txt(b.observacao) }),
   aluno_informar_pedido: b => ({ p_pedido: num(b.pedido_id) }),
   aluno_cancelar_pedido: b => ({ p_pedido: num(b.pedido_id) }),
+  aluno_area_v5: () => ({}),
+  aluno_pagar_cartao: b => ({ p_mensalidade: num(b.mensalidade_id) }),
 };
 
 // ======================= LOJA (pública) =======================
@@ -275,7 +278,7 @@ const FUNCOES_ADMIN = ['admin_dados_v3', 'admin_salvar_aluno_extra', 'admin_salv
   'admin_salvar_avaliacao', 'admin_avaliacoes', 'admin_excluir_avaliacao', 'admin_nivel_criterios',
   'admin_salvar_conteudo', 'admin_excluir_conteudo', 'admin_salvar_aviso', 'admin_excluir_aviso',
   'admin_indicacao_status', 'admin_resetar_pin', 'gerar_mensalidades',
-  'admin_dados_v4', 'admin_pedido_status', 'admin_salvar_produto', 'admin_excluir_produto', 'loja_produto', 'admin_importar_loja'];
+  'admin_dados_v4', 'admin_pedido_status', 'admin_salvar_produto', 'admin_excluir_produto', 'loja_produto', 'admin_importar_loja', 'admin_dados_v5'];
 
 // importa os produtos da vitrine antiga (lê o JSON que fica dentro do index.html dela)
 admin.post('/importar-loja', rota(async (req, res) => {
