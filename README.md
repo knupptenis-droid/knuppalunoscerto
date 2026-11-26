@@ -1,4 +1,39 @@
-# Knupp Tênis · Reposições 2.0 (com créditos)
+# Atualização v4: comprar aulas + loja
+1. **Supabase → SQL Editor:** rode **`atualizacao-v4.sql`**. Ele não apaga nada e precisa do v3 já rodado.
+2. **GitHub:** envie os arquivos da raiz em `.../upload/main` e os da pasta `public` em `.../upload/main/public`.
+3. **Painel → Loja → Produtos:** clique em **"Importar da loja antiga"** para trazer os produtos da lojaknupptenis.netlify.app.
+
+---
+
+# Knupp Tênis · Área do Aluno (v3)
+
+O site virou a **Área do Aluno** completa:
+- **Aluno** (entra com WhatsApp + PIN de 4 números):
+  - Início: próxima aula, avisos, créditos, status da mensalidade, aulas seguidas e indique um amigo;
+  - Aulas: turma fixa e diário (tema, recado do professor, avaliação da aula);
+  - Reposição (só com a mensalidade em dia);
+  - Financeiro: PIX com QR Code e copia-e-cola, "Já paguei" e recibos;
+  - Evolução: gráfico de habilidades, checklist para subir de nível, conquistas e conteúdos.
+- **Professor**:
+  - Hoje: chamada, diário, lembretes e cancelamento por chuva;
+  - Turmas fixas, Financeiro do mês, ficha do aluno com avaliação técnica;
+  - Conteúdo, avisos e indicações;
+  - PIX e critérios de nível em Ajustes.
+
+## Como atualizar um site que já está no ar (v2 → v3)
+1. **Supabase → SQL Editor → New query**: cole o arquivo **`atualizacao-v3.sql`** inteiro e clique em **Run**. Ele **não apaga nada**.
+   **Nunca** rode o `schema.sql` de novo: ele apaga tudo e só serve para a primeira instalação.
+2. **GitHub, arquivos da raiz:** em `github.com/knupptenis-droid/knuppalunoscerto/upload/main`, envie `server.js`, `atualizacao-v3.sql`, `schema.sql` e `README.md`.
+3. **GitHub, arquivos da pasta public:** em `github.com/knupptenis-droid/knuppalunoscerto/upload/main/public`, envie `index.html`, `qrcode.js`, `sw.js` e `manifest.webmanifest`.
+4. Espere o **Live** no Render.
+5. No painel, faça os primeiros ajustes:
+   - **Ajustes → PIX e financeiro:** tipo e chave PIX, e o mês em que o financeiro começa (padrão: o mês que vem).
+   - **Turmas:** crie as turmas fixas.
+   - **Alunos:** confira a mensalidade de cada um. Os valores vieram dos prints do TennisCoach.
+
+---
+
+# (Histórico) Reposições 2.0
 
 Site de reposição de aulas com **créditos**. O aluno entra pelo WhatsApp, vê quantos créditos tem e pede uma vaga. Você confirma pelo WhatsApp com um toque.
 

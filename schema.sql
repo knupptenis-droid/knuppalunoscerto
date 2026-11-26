@@ -1,7 +1,8 @@
 -- =====================================================================
 -- KNUPP TÊNIS · REPOSIÇÕES 2.0  (créditos de reposição)
 -- Rode este arquivo INTEIRO no Supabase → SQL Editor → New query → Run.
--- ATENÇÃO: apaga as tabelas antigas (ofertas/inscricoes) e os dados delas.
+-- ATENÇÃO: APAGA TUDO e recria do zero. Use só na primeira instalação.
+-- Para atualizar um site que já está no ar, use os arquivos atualizacao-*.sql.
 -- Pode rodar de novo sem medo: ele recria tudo do zero.
 -- =====================================================================
 
@@ -9,6 +10,19 @@ drop table if exists public.inscricoes cascade;
 drop table if exists public.ofertas cascade;
 drop function if exists public.inscrever(bigint, text, text, text);
 
+drop table if exists public.pedidos cascade;
+drop table if exists public.produtos cascade;
+drop table if exists public.presencas cascade;
+drop table if exists public.aulas cascade;
+drop table if exists public.turma_alunos cascade;
+drop table if exists public.turmas cascade;
+drop table if exists public.mensalidades cascade;
+drop table if exists public.avaliacoes cascade;
+drop table if exists public.conteudos cascade;
+drop table if exists public.avisos cascade;
+drop table if exists public.indicacoes cascade;
+drop table if exists public.contas cascade;
+drop table if exists public.sessoes cascade;
 drop table if exists public.reservas cascade;
 drop table if exists public.creditos cascade;
 drop table if exists public.horarios cascade;
