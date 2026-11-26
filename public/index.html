@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Reposições · Knupp Tênis</title>
+<title>Área do Aluno · Knupp Tênis</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -245,80 +245,166 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--verde);outline-offs
 .login-p{max-width:22rem;margin:12vh auto 0;text-align:center;padding:0 20px}
 .login-p .marca{font-size:3.4rem}
 @media(max-width:420px){.vaga .hora{font-size:2rem;min-width:62px}}
+
+/* ====== v3: área do aluno ====== */
+.ola-t{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:2.8rem;line-height:.95;margin:4px 0 10px}
+.app-nav{position:fixed;left:0;right:0;bottom:0;z-index:35;display:flex;justify-content:space-around;background:rgba(14,14,14,.94);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);border-top:1px solid var(--borda);padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.app-nav button{flex:1;background:none;border:0;color:var(--cinza2);display:flex;flex-direction:column;align-items:center;gap:3px;font-size:.68rem;padding:6px 0;cursor:pointer;font-weight:500}
+.app-nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.app-nav button.on{color:var(--verde)}
+#tela-app ~ .engrenagem, body:has(#tela-app:not(.oculto)) .engrenagem{bottom:calc(84px + env(safe-area-inset-bottom))}
+body:has(#tela-app:not(.oculto)) .rodape{display:none}
+.quem-barra{display:flex;gap:8px;overflow-x:auto;padding:12px 18px 0;max-width:32rem;margin:0 auto;scrollbar-width:none}
+.quem-barra button{flex:0 0 auto;padding:9px 14px;border-radius:999px;border:1px solid var(--borda);background:var(--carta);cursor:pointer;font-weight:500;font-size:.9rem}
+.quem-barra button.on{border-color:var(--verde);background:var(--verde-f)}
+.prox{background:linear-gradient(135deg,rgba(43,213,118,.14),rgba(20,20,20,1) 70%);border:1px solid var(--verde-b);border-radius:18px;padding:20px;margin:6px 0 12px}
+.prox-dia{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.4rem;line-height:1;margin:4px 0 6px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{text-align:left;background:var(--carta);border:1px solid var(--borda);border-radius:var(--raio);padding:16px;cursor:pointer;color:var(--branco)}
+.tile:hover{border-color:var(--borda2)}
+.tile .v{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.2rem;line-height:1.05;min-height:2.3rem;display:flex;align-items:center}
+.tile .l{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cinza);margin-top:4px}
+.diario{background:var(--carta);border:1px solid var(--borda);border-radius:var(--raio);padding:16px;margin-bottom:10px}
+.diario-cab{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.tema{color:var(--texto);font-size:.92rem;margin-top:4px}
+.recado{margin-top:12px;background:var(--verde-f);border-left:3px solid var(--verde);border-radius:8px;padding:10px 12px;font-size:.93rem}
+.recado .eyebrow{display:block;margin-bottom:4px;color:var(--verde)}
+.estrelas{display:flex;gap:6px;justify-content:center;margin:8px 0 18px}
+.estrelas button{background:none;border:0;font-size:2.6rem;color:var(--carta3);cursor:pointer;line-height:1}
+.estrelas button.on{color:var(--amarelo)}
+.estrelas-lidas{color:var(--amarelo);margin-top:10px;letter-spacing:2px}
+.fatura{background:var(--carta);border:1px solid var(--borda);border-radius:18px;padding:20px;border-top:3px solid var(--amarelo)}
+.fatura.ok{border-top-color:var(--verde)} .fatura.verm{border-top-color:var(--vermelho)} .fatura.azul{border-top-color:var(--azul)} .fatura.cinza{border-top-color:var(--cinza2)}
+.fatura-cab{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.fatura-valor{font-family:"Bebas Neue",Impact,sans-serif;font-size:3rem;line-height:1;margin:4px 0}
+.pix-box{margin-top:16px}
+.qr{background:#fff;border-radius:14px;padding:10px;width:220px;max-width:70%;margin:0 auto}
+.qr svg{display:block;width:100%;height:auto}
+.pix-codigo{font-family:ui-monospace,Menlo,monospace;font-size:.72rem;word-break:break-all;background:var(--fundo2);border:1px dashed var(--borda2);border-radius:10px;padding:10px;color:var(--texto);max-height:90px;overflow:auto}
+.radar{width:100%;max-width:340px;height:auto;display:block;margin:0 auto}
+.habs{display:grid;gap:8px;margin-top:14px;text-align:left}
+.hab{display:grid;grid-template-columns:105px 1fr 22px 30px;gap:10px;align-items:center;font-size:.9rem}
+.hab em{font-style:normal;font-size:.8rem;font-weight:700} .vermelho{color:var(--vermelho)}
+.barra-h{height:8px;background:var(--carta3);border-radius:99px;overflow:hidden}
+.barra-h i{display:block;height:100%;background:var(--verde);border-radius:99px}
+.progresso{height:10px;background:var(--carta3);border-radius:99px;overflow:hidden}
+.progresso i{display:block;height:100%;background:linear-gradient(90deg,var(--verde2),var(--verde));border-radius:99px}
+.check-item{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--borda);color:var(--texto)}
+.check-item:last-child{border-bottom:0}
+.check-item .ck{width:22px;height:22px;border-radius:7px;border:2px solid var(--cinza2);display:grid;place-items:center;flex:0 0 auto;font-size:.8rem;font-weight:700;color:#06140C}
+.check-item.ok{color:var(--branco)} .check-item.ok .ck{background:var(--verde);border-color:var(--verde)}
+.conq{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cq{background:var(--carta);border:1px solid var(--borda);border-radius:14px;padding:14px 8px;text-align:center;opacity:.35;filter:grayscale(1)}
+.cq.on{opacity:1;filter:none;border-color:var(--verde-b);background:linear-gradient(180deg,rgba(43,213,118,.10),var(--carta))}
+.cq span{font-size:1.8rem;display:block;line-height:1.2}
+.cq b{font-size:.74rem;font-weight:500;color:var(--texto);display:block;margin-top:6px;line-height:1.25}
+.conteudo{display:block;text-decoration:none;background:var(--carta);border:1px solid var(--borda);border-radius:var(--raio);padding:14px 16px;margin-bottom:10px}
+.conteudo b{display:block} .conteudo span{display:block;color:var(--cinza);font-size:.88rem} .conteudo em{font-style:normal;color:var(--verde);font-size:.85rem}
+.pin-in{font-size:1.6rem;letter-spacing:.6em;text-align:center}
+.selo-grande{width:64px;height:64px;border-radius:50%;background:var(--verde-f);border:1px solid var(--verde-b);display:grid;place-items:center;margin:4px auto 16px;color:var(--verde);font-size:1.8rem;font-weight:700}
+/* painel v3 */
+button.kpi{text-align:left;color:var(--branco);cursor:pointer;font:inherit}
+.seg{display:inline-flex;border:1px solid var(--borda2);border-radius:10px;overflow:hidden;flex:0 0 auto}
+.seg button{background:transparent;border:0;padding:8px 12px;font-size:.84rem;color:var(--cinza);cursor:pointer}
+.seg button + button{border-left:1px solid var(--borda2)}
+.seg button.on{background:var(--verde);color:#06140C;font-weight:700}
+.seg button.on.falta{background:var(--vermelho);color:#1a0505}
+.chamada-linha .com-aluno{flex:1 1 100%;padding:10px 12px;font-size:.9rem}
+.nota-linha{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--borda)}
+.nota-linha .seg button{min-width:38px}
+@media(max-width:380px){.hab{grid-template-columns:86px 1fr 18px 26px}.conq{grid-template-columns:repeat(2,1fr)}}
+/* ====== v4: loja e compra de aulas ====== */
+.saldos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.saldos div{background:var(--carta);border:1px solid var(--borda);border-radius:12px;padding:12px 14px}
+.saldos b{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:1.9rem;line-height:1;display:block;color:var(--verde)}
+.saldos span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza)}
+.compra-aulas{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.qtd{display:flex;align-items:center;justify-content:center;gap:22px;margin:16px 0}
+.qtd button{width:48px;height:48px;border-radius:50%;border:1px solid var(--borda2);background:var(--carta2);font-size:1.6rem;cursor:pointer;color:var(--branco)}
+.qtd span{font-family:"Bebas Neue",Impact,sans-serif;font-size:2.6rem;min-width:40px;text-align:center}
+.total-linha{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 0;border-top:1px solid var(--borda);margin-bottom:10px}
+.total-linha b{font-family:"Bebas Neue",Impact,sans-serif;font-weight:400;font-size:1.9rem;color:var(--verde)}
+.cats{display:flex;gap:8px;overflow-x:auto;margin-bottom:14px;scrollbar-width:none}
+.cats button{flex:0 0 auto;padding:8px 14px;border-radius:999px;border:1px solid var(--borda);background:var(--carta);cursor:pointer;font-size:.88rem}
+.cats button.on{border-color:var(--verde);background:var(--verde-f)}
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.prod{position:relative;text-align:left;background:var(--carta);border:1px solid var(--borda);border-radius:14px;padding:0 0 12px;overflow:hidden;cursor:pointer;color:var(--branco);display:flex;flex-direction:column;gap:2px}
+.prod img,.prod .semfoto{width:100%;aspect-ratio:1;object-fit:cover;background:#fff;display:grid;place-items:center;font-size:2.4rem;margin-bottom:8px}
+.prod b,.prod span{padding:0 12px}
+.prod b{font-size:.9rem;line-height:1.3}
+.prod .preco{font-family:"Bebas Neue",Impact,sans-serif;font-size:1.5rem;color:var(--verde);line-height:1}
+.cond{position:absolute;left:8px;top:8px;background:rgba(10,10,10,.82);color:var(--branco);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:7px;font-weight:700}
+.carrinho-flut{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom));z-index:36;background:var(--verde2);color:#06140C;border:0;border-radius:999px;padding:13px 20px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap}
+.prod-galeria{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:14px}
+.prod-galeria img{width:100%;max-width:100%;flex:0 0 100%;aspect-ratio:1;object-fit:contain;background:#fff;border-radius:14px;scroll-snap-align:start}
+#fp-fotos img{width:90px;height:90px;flex:0 0 auto;object-fit:cover;border-radius:10px;background:#fff}
+.tira-foto{position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;border:0;background:rgba(0,0,0,.75);color:#fff;cursor:pointer}
+.opcoes{display:flex;flex-wrap:wrap;gap:8px}
+.opcoes button{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:10px;border:1px solid var(--borda2);background:var(--fundo2);cursor:pointer;font-size:.9rem}
+.opcoes button.on{border-color:var(--verde);background:var(--verde-f);color:var(--branco)}
+.opcoes i{width:16px;height:16px;border-radius:50%;border:1px solid var(--borda2);display:inline-block}
+.app-nav button{font-size:.62rem}
+.minha .q > span,.item .q > span{display:block}
 </style>
 </head>
 <body>
 
 <header class="topo">
-  <a class="marca" href="/"><img src="/logo.png" alt="Matheus Knupp Tennis" class="logo-img"><small>REPOSIÇÕES</small></a>
+  <a class="marca" href="/"><img src="/logo.png" alt="Matheus Knupp Tennis" class="logo-img"><small>ÁREA DO ALUNO</small></a>
   <div class="topo-acoes">
     <button class="chip-btn oculto" id="btn-instalar" type="button">Instalar app</button>
-    <button class="chip-btn oculto" id="btn-sair" type="button">Trocar número</button>
+    <button class="chip-btn oculto" id="btn-sair" type="button">Sair</button>
   </div>
 </header>
 
-<section class="hero">
-  <svg class="quadra" viewBox="0 0 560 300" fill="none" stroke="#fff" stroke-width="2"><rect x="20" y="20" width="520" height="260"/><line x1="20" y1="52" x2="540" y2="52"/><line x1="20" y1="248" x2="540" y2="248"/><line x1="280" y1="20" x2="280" y2="280" stroke-width="3"/><line x1="150" y1="52" x2="150" y2="248"/><line x1="410" y1="52" x2="410" y2="248"/><line x1="150" y1="150" x2="410" y2="150"/></svg>
-  <p class="eyebrow" id="hero-local">CLUBE MILITAR · CABO FRIO</p>
-  <h1>REPOSIÇÃO<br>DE <span class="verde">AULAS</span></h1>
-  <p>Teve aula cancelada por chuva ou pelo professor? Use seu crédito e escolha um novo horário.</p>
-  <div class="status" id="status"><span class="ponto"></span><span id="status-txt">Carregando…</span></div>
-</section>
-
-<main class="miolo">
-  <!-- ENTRAR -->
-  <section id="tela-entrar">
+<!-- ===== LOGIN ===== -->
+<section id="tela-login">
+  <section class="hero" style="padding-bottom:22px">
+    <svg class="quadra" viewBox="0 0 560 300" fill="none" stroke="#fff" stroke-width="2"><rect x="20" y="20" width="520" height="260"/><line x1="20" y1="52" x2="540" y2="52"/><line x1="20" y1="248" x2="540" y2="248"/><line x1="280" y1="20" x2="280" y2="280" stroke-width="3"/><line x1="150" y1="52" x2="150" y2="248"/><line x1="410" y1="52" x2="410" y2="248"/><line x1="150" y1="150" x2="410" y2="150"/></svg>
+    <p class="eyebrow" id="hero-local">CLUBE MILITAR · CABO FRIO</p>
+    <h1>ÁREA DO<br><span class="verde">ALUNO</span></h1>
+    <p>Suas aulas, reposições, mensalidades e sua evolução no tênis, tudo num lugar só.</p>
+  </section>
+  <main class="miolo" style="padding-top:0">
     <div class="carta">
-      <p class="eyebrow" style="margin-bottom:6px">Passo 1</p>
-      <h2 class="secao-t">ENTRE COM SEU <span class="verde">WHATSAPP</span></h2>
-      <p class="secao-s">Use o mesmo número cadastrado com o professor. Para as crianças, é o número do responsável.</p>
-      <div id="entrar-msg"></div>
-      <form id="form-entrar" novalidate>
-        <div class="campo">
-          <label for="in-wpp">WhatsApp com DDD</label>
-          <input id="in-wpp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(22) 99999-9999" maxlength="16">
-        </div>
-        <button class="btn" type="submit" id="btn-entrar">Ver minhas reposições</button>
+      <div id="login-msg"></div>
+      <form id="form-wpp" novalidate>
+        <h2 class="secao-t">ENTRE COM SEU <span class="verde">WHATSAPP</span></h2>
+        <p class="secao-s">O mesmo número cadastrado com o professor. Para as crianças, o número do responsável.</p>
+        <div class="campo"><label for="in-wpp">WhatsApp com DDD</label>
+          <input id="in-wpp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(22) 99999-9999" maxlength="16"></div>
+        <button class="btn" type="submit" id="btn-continuar">Continuar</button>
+      </form>
+      <form id="form-pin" class="oculto" novalidate>
+        <h2 class="secao-t" id="pin-titulo">DIGITE SEU <span class="verde">PIN</span></h2>
+        <p class="secao-s" id="pin-sub">Os 4 números que você criou no primeiro acesso.</p>
+        <div class="campo"><label for="in-pin" id="pin-label">PIN</label>
+          <input id="in-pin" class="pin-in" type="password" inputmode="numeric" maxlength="4" autocomplete="current-password" placeholder="••••"></div>
+        <div class="campo oculto" id="pin2-box"><label for="in-pin2">Repita o PIN</label>
+          <input id="in-pin2" class="pin-in" type="password" inputmode="numeric" maxlength="4" placeholder="••••"></div>
+        <button class="btn" type="submit" id="btn-pin">Entrar</button>
+        <div style="display:flex;justify-content:space-between;margin-top:14px" class="pequeno">
+          <a href="#" id="pin-voltar" class="cinza">← Trocar número</a><a href="#" id="pin-esqueci" class="cinza">Esqueci meu PIN</a></div>
       </form>
     </div>
-  </section>
+  </main>
+</section>
 
-  <!-- ÁREA DO ALUNO -->
-  <section id="tela-aluno" class="oculto">
-    <div class="quem" id="quem"></div>
-    <div id="carteira"></div>
-    <div class="secao" id="bloco-minhas"></div>
-    <div class="secao">
-      <h2 class="secao-t">VAGAS <span class="verde">ABERTAS</span></h2>
-      <p class="secao-s" id="vagas-sub">Horários liberados para o seu nível.</p>
-      <div id="vagas"></div>
-    </div>
-  </section>
+<!-- ===== APP DO ALUNO ===== -->
+<section id="tela-app" class="oculto">
+  <div id="app-quem"></div>
+  <main class="miolo" id="app-conteudo" style="padding-top:14px;padding-bottom:120px"></main>
+  <nav class="app-nav" id="app-nav">
+    <button data-tab="inicio" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z"/></svg>Início</button>
+    <button data-tab="aulas"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>Aulas</button>
+    <button data-tab="repo"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.6 6.2c3.3 2.6 3.3 9 0 11.6M18.4 6.2c-3.3 2.6-3.3 9 0 11.6"/></svg>Reposição</button>
+    <button data-tab="fin"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Financeiro</button>
+    <button data-tab="loja"><svg viewBox="0 0 24 24"><path d="M5 7h14l-1.2 12.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>Loja</button>
+    <button data-tab="evo"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16l4-5 3 3 6-8"/></svg>Evolução</button>
+  </nav>
+</section>
 
-  <section class="secao">
-    <h2 class="secao-t">COMO <span class="verde">FUNCIONA</span></h2>
-    <div class="carta" style="padding:6px 20px"><ol class="regras" id="regras"></ol></div>
-  </section>
-
-  <section class="secao">
-    <h2 class="secao-t">SEU <span class="verde">PROFESSOR</span></h2>
-    <div class="carta">
-      <div class="prof">
-        <div class="foto" id="prof-foto"><img src="/logo-simbolo.png" alt="" style="width:46%;height:auto"></div>
-        <div><p class="eyebrow">Knupp Tênis</p><h3 id="prof-nome">Matheus Knupp</h3><p id="prof-bio"></p></div>
-      </div>
-      <div class="acoes" id="prof-acoes"></div>
-    </div>
-    <div class="carta">
-      <div class="local">
-        <div class="pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-        <div style="flex:1"><p class="eyebrow">Local das aulas</p><b id="local-nome" style="font-size:1.05rem">Clube Militar</b>
-          <div class="cinza pequeno" id="local-end"></div></div>
-        <a class="btn sec mini" id="local-mapa" target="_blank" rel="noopener">Mapa</a>
-      </div>
-    </div>
-  </section>
-</main>
 
 <footer class="rodape">© <span id="ano"></span> Knupp Tênis · Cabo Frio</footer>
 
@@ -332,6 +418,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--verde);outline-offs
 <div id="modais"></div>
 <div id="toast-box"></div>
 
+<script src="/qrcode.js"></script>
 <script>
 /* =========================================================
    UTILIDADES
@@ -391,6 +478,8 @@ function modal(html, aoMontar){
   const f = document.createElement('div'); f.className = 'fundo-modal';
   f.innerHTML = `<div class="modal" role="dialog">${html}</div>`;
   f.addEventListener('click', e => { if (e.target === f) f.remove(); });
+  const esc_ = e => { if (e.key === 'Escape' && $('modais').lastElementChild === f){ f.remove(); document.removeEventListener('keydown', esc_); } };
+  document.addEventListener('keydown', esc_);
   $('modais').appendChild(f);
   const fechar = () => f.remove();
   f.querySelectorAll('[data-fechar]').forEach(b => b.onclick = fechar);
@@ -424,187 +513,700 @@ function chipNivel(id){ const n = nivelPor(id); if(!n) return ''; return `<span 
 function chipsNiveis(ids){ return !ids || !ids.length ? '<span class="nivel" style="--c:#8A8A8A">Todos os níveis</span>' : ids.map(chipNivel).join(''); }
 function corDe(ids){ const n = ids && ids.length ? nivelPor(ids[0]) : null; return n ? n.cor : 'var(--verde)'; }
 const cfg = k => (INFO.config || {})[k];
+const dinheiro = v => 'R$ ' + Number(v || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+const nomeMes = iso => `${MESES[+iso.slice(5,7)-1]}/${iso.slice(0,4)}`;
+const STATUS_RES = {
+  pendente: ['pend', 'Aguardando confirmação'], confirmada: ['ok', 'Confirmada'],
+  cancelada_aluno: ['cinza', 'Cancelada por você'], cancelada_chuva: ['azul', 'Cancelada · crédito devolvido'], recusada: ['verm', 'Não confirmada · crédito devolvido'],
+};
+const MOTIVOS = {
+  lotado: 'Que pena — essa vaga acabou de ser preenchida.', sem_credito: 'Você não tem créditos disponíveis.',
+  nivel: 'Esse horário não é para o seu nível.', ja_pediu: 'Você já pediu esse horário.', passou: 'Esse horário já começou.',
+  nao_abriu: 'Esse horário ainda não abriu.', indisponivel: 'Esse horário não está mais disponível.', aluno: 'Não conseguimos confirmar seu cadastro. Entre de novo.',
+  mensalidade: 'Sua mensalidade está em atraso. Regularize no Financeiro para pedir reposição.',
+};
 
 async function carregarInfo(){
-  try { INFO = await chamar('/api/info'); } catch(e) { $('status-txt').textContent = 'Sem conexão. Puxe para atualizar.'; return; }
+  try { INFO = await chamar('/api/info'); } catch(e) { return; }
   const c = INFO.config || {};
   $('hero-local').textContent = `${(c.local_nome || 'Clube Militar').toUpperCase()} · CABO FRIO`;
-  $('regras').innerHTML = (c.regras || []).map(r => `<li>${esc(r)}</li>`).join('');
-  $('prof-nome').textContent = c.professor_nome || 'Matheus Knupp';
-  $('prof-bio').textContent = c.professor_bio || '';
-  if (c.foto) $('prof-foto').outerHTML = `<img class="foto" id="prof-foto" src="${esc(c.foto)}" alt="Foto do professor">`;
-  const acoes = [];
-  if (c.instagram) acoes.push(`<a class="btn sec" target="_blank" rel="noopener" href="https://instagram.com/${esc(String(c.instagram).replace('@',''))}">${ICON.ig} @${esc(String(c.instagram).replace('@',''))}</a>`);
-  if (c.professor_whatsapp) acoes.push(`<a class="btn wpp" target="_blank" rel="noopener" href="${linkWpp(c.professor_whatsapp, 'Oi, professor! Tenho uma dúvida sobre reposição.')}">${ICON.wpp} WhatsApp</a>`);
-  $('prof-acoes').innerHTML = acoes.join('');
-  $('local-nome').textContent = c.local_nome || 'Clube Militar';
-  $('local-end').textContent = c.local_endereco || '';
-  $('local-mapa').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(`${c.local_nome || 'Clube Militar'} ${c.local_endereco || 'Cabo Frio'}`);
-  atualizarStatus();
 }
-
-/* status do topo: vagas abertas ou contagem para a próxima abertura */
-let timerStatus;
 function proximaAberturaRegra(){
-  // véspera 14h: abre de domingo a quinta
   const hh = String(cfg('hora_abertura') || '14:00');
   const agoraISO = hojeISO();
   for (let i = 0; i < 8; i++){
-    const dia = somaDias(agoraISO, i);
-    const dow = diaSemana(dia);
-    if (dow === 5 || dow === 6) continue; // sexta e sábado não abre
+    const dia = somaDias(agoraISO, i), dow = diaSemana(dia);
+    if (dow === 5 || dow === 6) continue;
     const alvo = new Date(`${dia}T${hh.slice(0,5)}:00-03:00`);
     if (alvo > new Date()) return alvo;
   }
   return null;
 }
-function atualizarStatus(){
-  clearInterval(timerStatus);
-  const box = $('status'), txt = $('status-txt');
-  const abertas = ALUNO.dados ? ALUNO.dados.horarios.filter(h => !h.lotado).length : (INFO.abertos_agora || 0);
-  if (abertas){
-    box.className = 'status aberto'; txt.innerHTML = `${abertas} horário${abertas>1?'s':''} com vaga agora`; return;
-  }
-  const alvo = INFO.proxima_abertura ? new Date(INFO.proxima_abertura) : proximaAberturaRegra();
-  if (!alvo){ box.className = 'status'; txt.textContent = 'Vagas abrem na véspera, às 14h'; return; }
-  box.className = 'status';
-  const tick = () => {
-    const ms = alvo - Date.now();
-    if (ms <= 0){ clearInterval(timerStatus); txt.innerHTML = 'Vagas abrindo… <b>atualize a página</b>'; if (ALUNO.wpp) entrar(ALUNO.wpp, true); return; }
-    if (ms < 6 * 3600e3){
-      const h = Math.floor(ms/3600e3), m = Math.floor(ms%3600e3/60e3), s = Math.floor(ms%60e3/1e3);
-      txt.innerHTML = `Próximas vagas abrem em <span class="contagem">${h?h+'h ':''}${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s</span>`;
-    } else txt.innerHTML = `Próximas vagas abrem ${esc(fmtDataHora(alvo))}`;
-  };
-  tick(); timerStatus = setInterval(tick, 1000);
+
+/* =========================================================
+   PIX (BR Code) e RECIBO
+   ========================================================= */
+function crc16(s){
+  let crc = 0xFFFF;
+  for (let i = 0; i < s.length; i++){ crc ^= s.charCodeAt(i) << 8; for (let j = 0; j < 8; j++) crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) & 0xFFFF : (crc << 1) & 0xFFFF; }
+  return crc.toString(16).toUpperCase().padStart(4, '0');
+}
+const semAcento = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9 ]/g,'').toUpperCase().trim();
+function chavePix(){
+  const tipo = cfg('pix_tipo') || 'celular', c = String(cfg('pix_chave') || '').trim();
+  if (!c) return '';
+  if (tipo === 'celular'){ let d = soNum(c); if (!d.startsWith('55')) d = '55' + d; return '+' + d; }
+  if (tipo === 'cpf') return soNum(c);
+  if (tipo === 'email') return c.toLowerCase();
+  return c;
+}
+function pixCopiaCola(valor, txid){
+  const chave = chavePix(); if (!chave) return '';
+  const f = (id, v) => id + String(v.length).padStart(2, '0') + v;
+  const nome = semAcento(cfg('pix_nome') || 'Matheus Knupp').slice(0, 25) || 'KNUPP TENIS';
+  const cidade = semAcento(cfg('pix_cidade') || 'Cabo Frio').slice(0, 15) || 'CABO FRIO';
+  const tx = (String(txid || '***').replace(/[^A-Za-z0-9]/g, '') || '***').slice(0, 25);
+  const p = f('00','01') + f('26', f('00','br.gov.bcb.pix') + f('01', chave)) + f('52','0000') + f('53','986')
+    + (valor ? f('54', Number(valor).toFixed(2)) : '') + f('58','BR') + f('59', nome) + f('60', cidade) + f('62', f('05', tx)) + '6304';
+  return p + crc16(p);
+}
+function qrSvg(texto, px = 220){
+  try { const q = qrcode(0, 'M'); q.addData(texto); q.make(); return q.createSvgTag({ cellSize: Math.max(2, Math.floor(px / (q.getModuleCount() + 8))), margin: 4, scalable: true }); }
+  catch(e){ return ''; }
+}
+async function copiar(texto){
+  try { await navigator.clipboard.writeText(texto); toast('Copiado! Cole no app do seu banco.'); }
+  catch(e){ const t = document.createElement('textarea'); t.value = texto; document.body.appendChild(t); t.select(); try{ document.execCommand('copy'); toast('Copiado!'); }catch(_){ toast('Segure no código para copiar.', true); } t.remove(); }
+}
+function abrirRecibo({ numero, nome, responsavel, valor, competencia, forma, pago_em, referente }){
+  const c = INFO.config || {};
+  const data = pago_em ? new Date(pago_em).toLocaleDateString('pt-BR', { timeZone: TZ }) : new Date().toLocaleDateString('pt-BR', { timeZone: TZ });
+  const valorExtenso = dinheiro(valor);
+  const html = `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Recibo ${numero} · Knupp Tênis</title>
+  <style>body{font-family:Arial,Helvetica,sans-serif;color:#111;max-width:640px;margin:30px auto;padding:0 20px}
+  .cab{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #111;padding-bottom:14px}
+  .cab img{height:52px;filter:invert(1)} h1{font-size:22px;margin:0;letter-spacing:2px} .num{font-size:13px;color:#555;text-align:right}
+  .valor{font-size:26px;font-weight:700;margin:26px 0 6px} p{line-height:1.7;font-size:15px}
+  .ass{margin-top:60px;text-align:center} .ass div{border-top:1px solid #111;width:260px;margin:0 auto;padding-top:6px;font-size:14px}
+  .rod{margin-top:40px;font-size:12px;color:#777;text-align:center} button{margin:30px auto 0;display:block;padding:12px 22px;font-size:15px;border:0;border-radius:8px;background:#22C55E;font-weight:700;cursor:pointer}
+  @media print{button{display:none}}</style></head><body>
+  <div class="cab"><img src="${location.origin}/logo.png" alt="Matheus Knupp Tennis"><div><h1>RECIBO</h1><div class="num">Nº ${esc(numero)}<br>${esc(data)}</div></div></div>
+  <div class="valor">${esc(valorExtenso)}</div>
+  <p>Recebi de <b>${esc(responsavel ? responsavel + ' (responsável por ' + nome + ')' : nome)}</b> a importância de <b>${esc(valorExtenso)}</b>,
+  ${referente ? 'referente a <b>' + esc(referente) + '</b>' : `referente às <b>aulas de tênis do mês de ${esc(nomeMes(competencia))}</b>`}, pago via <b>${esc(forma || 'PIX')}</b> em ${esc(data)}.</p>
+  <p>Para clareza, firmo o presente recibo.</p>
+  <p>${esc(c.pix_cidade || 'Cabo Frio')}, ${esc(data)}.</p>
+  <div class="ass"><div>${esc(c.professor_nome || 'Matheus Knupp')}<br>Knupp Tênis · Professor de Tênis</div></div>
+  <div class="rod">${esc(c.local_nome || 'Clube Militar')} · ${esc(c.local_endereco || 'Cabo Frio · RJ')}</div>
+  <button onclick="window.print()">Salvar em PDF / Imprimir</button></body></html>`;
+  const w = window.open('', '_blank');
+  if (!w){ toast('Permita pop-ups para abrir o recibo.', true); return; }
+  w.document.open(); w.document.write(html); w.document.close();
 }
 
 /* =========================================================
    ÁREA DO ALUNO
    ========================================================= */
-const ALUNO = { wpp: null, dados: null, sel: null };
+const S = { token: pega('knupp_token'), wpp: null, dados: null, sel: null, aba: 'inicio' };
+const apiAluno = (fn, body = {}) => chamar('/api/v3/aluno/' + fn, { method:'POST', headers:{ 'x-token': S.token || '' }, body: JSON.stringify(body) })
+  .catch(e => { if (e.status === 401){ sair(true); } throw e; });
 
 $('in-wpp').addEventListener('input', e => { e.target.value = mascaraWpp(e.target.value); });
-$('form-entrar').addEventListener('submit', e => { e.preventDefault(); entrar(soNum($('in-wpp').value)); });
-$('btn-sair').onclick = () => { guarda('knupp_wpp', null); ALUNO.wpp = null; ALUNO.dados = null;
-  $('tela-aluno').classList.add('oculto'); $('tela-entrar').classList.remove('oculto'); $('btn-sair').classList.add('oculto'); $('in-wpp').value=''; atualizarStatus(); };
+document.querySelectorAll('.pin-in').forEach(i => i.addEventListener('input', e => { e.target.value = soNum(e.target.value).slice(0,4); }));
+$('form-wpp').addEventListener('submit', e => { e.preventDefault(); passoWpp(); });
+$('form-pin').addEventListener('submit', e => { e.preventDefault(); passoPin(); });
+$('pin-voltar').onclick = e => { e.preventDefault(); mostrarPasso('wpp'); };
+$('pin-esqueci').onclick = e => { e.preventDefault();
+  const w = cfg('professor_whatsapp');
+  $('login-msg').innerHTML = `<div class="aviso amarelo">Peça ao professor para zerar seu PIN. Depois é só entrar de novo e criar um novo.
+    ${w ? `<br><a class="verde" target="_blank" rel="noopener" href="${linkWpp(w, 'Oi, professor! Esqueci o PIN da área do aluno, pode zerar para mim?')}">Falar com o professor no WhatsApp →</a>` : ''}</div>`; };
 
-async function entrar(wpp, silencioso){
-  const msg = $('entrar-msg'); msg.innerHTML = '';
-  if (soNum(wpp).length < 10){ msg.innerHTML = '<div class="aviso erro">Digite o WhatsApp com DDD. Ex.: (22) 99999-9999</div>'; return; }
-  const btn = $('btn-entrar'); if (!silencioso) ocupado(btn, true);
+let modoPin = 'entrar';
+function mostrarPasso(p){
+  $('form-wpp').classList.toggle('oculto', p !== 'wpp'); $('form-pin').classList.toggle('oculto', p === 'wpp');
+  if (p === 'wpp'){ $('login-msg').innerHTML = ''; $('in-wpp').focus(); return; }
+  modoPin = p;
+  const criar = p === 'criar';
+  $('pin-titulo').innerHTML = criar ? 'CRIE SEU <span class="verde">PIN</span>' : 'DIGITE SEU <span class="verde">PIN</span>';
+  $('pin-sub').textContent = criar ? 'Primeiro acesso! Crie uma senha de 4 números. Ela protege seus dados e pagamentos.' : 'Os 4 números que você criou no primeiro acesso.';
+  $('pin-label').textContent = criar ? 'Novo PIN (4 números)' : 'PIN';
+  $('pin2-box').classList.toggle('oculto', !criar);
+  $('btn-pin').textContent = criar ? 'Criar PIN e entrar' : 'Entrar';
+  $('in-pin').value = ''; $('in-pin2').value = ''; setTimeout(() => $('in-pin').focus(), 50);
+}
+const MSG_LOGIN = {
+  nao_cadastrado: 'Não achamos esse número. Confira se digitou certo ou fale com o professor para atualizar seu cadastro.',
+  numero_invalido: 'Número inválido. Use DDD + número.', pin_errado: 'PIN incorreto. Tente de novo.',
+  bloqueado: 'Muitas tentativas erradas. Espere 15 minutos e tente de novo.', pin_formato: 'O PIN precisa ter 4 números.',
+};
+async function passoWpp(){
+  const wpp = soNum($('in-wpp').value), msg = $('login-msg'); msg.innerHTML = '';
+  if (wpp.length < 10){ msg.innerHTML = '<div class="aviso erro">Digite o WhatsApp com DDD.</div>'; return; }
+  const btn = $('btn-continuar'); ocupado(btn, true);
   try {
-    const r = await chamar('/api/aluno/entrar', { method:'POST', body: JSON.stringify({ whatsapp: wpp }) });
-    if (!r.ok){
-      guarda('knupp_wpp', null);
-      msg.innerHTML = r.motivo === 'nao_cadastrado'
-        ? `<div class="aviso amarelo">Não achamos esse número. Confira se digitou certo ou fale com o professor para atualizar seu cadastro.</div>`
-        : `<div class="aviso erro">Número inválido. Use DDD + número.</div>`;
-      $('tela-aluno').classList.add('oculto'); $('tela-entrar').classList.remove('oculto');
-      return;
-    }
-    ALUNO.wpp = wpp; ALUNO.dados = r; guarda('knupp_wpp', wpp);
-    if (!ALUNO.sel || !r.alunos.some(a => a.id === ALUNO.sel)) ALUNO.sel = r.alunos[0].id;
-    $('tela-entrar').classList.add('oculto'); $('tela-aluno').classList.remove('oculto'); $('btn-sair').classList.remove('oculto');
-    desenharAluno(); atualizarStatus();
+    const r = await chamar('/api/v3/login', { method:'POST', body: JSON.stringify({ whatsapp: wpp }) });
+    S.wpp = wpp;
+    if (r.motivo === 'criar_pin') mostrarPasso('criar');
+    else if (r.motivo === 'pedir_pin') mostrarPasso('entrar');
+    else msg.innerHTML = `<div class="aviso ${r.motivo === 'nao_cadastrado' ? 'amarelo' : 'erro'}">${esc(MSG_LOGIN[r.motivo] || 'Não foi possível entrar.')}</div>`;
   } catch(e){ msg.innerHTML = `<div class="aviso erro">${esc(e.message)}</div>`; }
-  finally { if (!silencioso) ocupado(btn, false); }
+  finally { ocupado(btn, false); }
+}
+async function passoPin(){
+  const pin = $('in-pin').value, msg = $('login-msg'); msg.innerHTML = '';
+  if (pin.length !== 4){ msg.innerHTML = '<div class="aviso erro">O PIN tem 4 números.</div>'; return; }
+  if (modoPin === 'criar' && pin !== $('in-pin2').value){ msg.innerHTML = '<div class="aviso erro">Os dois PINs não são iguais.</div>'; return; }
+  const btn = $('btn-pin'); ocupado(btn, true);
+  try {
+    const r = await chamar('/api/v3/login', { method:'POST', body: JSON.stringify({ whatsapp: S.wpp, pin }) });
+    if (!r.ok){ msg.innerHTML = `<div class="aviso erro">${esc(MSG_LOGIN[r.motivo] || 'Não foi possível entrar.')}</div>`; return; }
+    S.token = r.token; guarda('knupp_token', r.token); guarda('knupp_wpp', S.wpp);
+    S.aba = 'inicio'; S.sel = null;
+    await carregarApp();
+  } catch(e){ msg.innerHTML = `<div class="aviso erro">${esc(e.message)}</div>`; }
+  finally { ocupado(btn, false); }
+}
+function sair(expirou){
+  if (!expirou && S.token) fetch('/api/v3/sair', { method:'POST', headers:{ 'x-token': S.token } }).catch(()=>{});
+  S.token = null; S.dados = null; guarda('knupp_token', null);
+  $('tela-app').classList.add('oculto'); $('tela-login').classList.remove('oculto'); $('btn-sair').classList.add('oculto');
+  mostrarPasso('wpp'); const w = pega('knupp_wpp'); if (w) $('in-wpp').value = mascaraWpp(w);
+  if (expirou) $('login-msg').innerHTML = '<div class="aviso amarelo">Sua sessão expirou. Entre de novo.</div>';
+}
+$('btn-sair').onclick = () => sair(false);
+
+async function carregarApp(silencioso){
+  let r;
+  try { r = await apiAluno('aluno_area_v4'); } catch(e){ if (!silencioso && e.status !== 401) toast(e.message, true); return; }
+  if (!r.ok){ sair(true); return; }
+  S.dados = r;
+  if (!S.sel || !r.alunos.some(a => a.id === S.sel)) S.sel = +(pega('knupp_sel') || 0) && r.alunos.some(a => a.id === +pega('knupp_sel')) ? +pega('knupp_sel') : r.alunos[0].id;
+  $('tela-login').classList.add('oculto'); $('tela-app').classList.remove('oculto'); $('btn-sair').classList.remove('oculto');
+  desenharApp();
+}
+document.querySelectorAll('#app-nav [data-tab]').forEach(b => b.onclick = () => { S.aba = b.dataset.tab; desenharApp(); window.scrollTo({ top: 0 }); });
+
+const alunoSel = () => S.dados.alunos.find(a => a.id === S.sel);
+const extraSel = () => (S.dados.extra || {})[S.sel] || {};
+
+function desenharApp(){
+  const d = S.dados;
+  document.querySelectorAll('#app-nav [data-tab]').forEach(b => b.classList.toggle('on', b.dataset.tab === S.aba));
+  $('app-quem').innerHTML = d.alunos.length > 1 ? `<div class="quem-barra">${d.alunos.map(x =>
+    `<button class="${x.id === S.sel ? 'on' : ''}" data-aluno="${x.id}">${esc(x.nome)}</button>`).join('')}</div>` : '';
+  document.querySelectorAll('[data-aluno]').forEach(b => b.onclick = () => { S.sel = +b.dataset.aluno; guarda('knupp_sel', S.sel); desenharApp(); });
+  ({ inicio: tabInicio, aulas: tabAulas, repo: tabRepo, fin: tabFin, evo: tabEvo, loja: tabLoja })[S.aba]();
 }
 
-const STATUS_RES = {
-  pendente: ['pend', 'Aguardando confirmação'], confirmada: ['ok', 'Confirmada'],
-  cancelada_aluno: ['cinza', 'Cancelada por você'], cancelada_chuva: ['azul', 'Cancelada · crédito devolvido'], recusada: ['verm', 'Não confirmada · crédito devolvido'],
-};
-
-function desenharAluno(){
-  const d = ALUNO.dados, a = d.alunos.find(x => x.id === ALUNO.sel);
-  $('quem').innerHTML = d.alunos.length > 1
-    ? `<p class="eyebrow" style="width:100%;margin-bottom:2px">Quem vai jogar?</p>` + d.alunos.map(x => `<button class="${x.id===a.id?'on':''}" data-aluno="${x.id}">${esc(x.nome)}</button>`).join('')
-    : '';
-  document.querySelectorAll('[data-aluno]').forEach(b => b.onclick = () => { ALUNO.sel = +b.dataset.aluno; desenharAluno(); });
-
-  const primeiro = a.nome.split(' ')[0];
-  const prox = a.lista_creditos[0];
-  $('carteira').innerHTML = `<div class="carteira ${a.creditos ? '' : 'zero'}"><div class="bola"></div>
-    <p class="ola">Olá, <b>${esc(primeiro)}</b> ${a.nivel_ids.length ? '· ' + a.nivel_ids.map(chipNivel).join(' ') : ''}</p>
-    <div class="num">${a.creditos}<small>${a.creditos === 1 ? 'CRÉDITO' : 'CRÉDITOS'}</small></div>
-    <div class="venc">${a.creditos
-      ? `Próximo vencimento: <b>${dataDe(prox.expira_em)}</b> (${diasAte(prox.expira_em) <= 1 ? 'vence amanhã' : 'em ' + diasAte(prox.expira_em) + ' dias'})`
-      : 'Você não tem créditos de reposição agora. Eles aparecem aqui quando uma aula sua é cancelada por chuva ou pelo professor.'}</div></div>`;
-
-  // minhas reposições
-  const minhas = a.reservas;
-  $('bloco-minhas').innerHTML = minhas.length ? `<h2 class="secao-t">MINHAS <span class="verde">REPOSIÇÕES</span></h2>
-    <div class="carta" style="padding:4px 18px">${minhas.map(r => {
-      const [cl, tx] = STATUS_RES[r.status] || ['cinza', r.status];
-      const podeCancelar = ['pendente','confirmada'].includes(r.status);
-      return `<div class="minha"><div class="q"><b>${nomeDia(r.data)} · ${fmtHora(r.hora)}</b>
-        <span>${diaCompleto(r.data)}${r.observacao ? ' · ' + esc(r.observacao) : ''}</span>
-        <div style="margin-top:6px"><span class="selo ${cl}">${tx}</span></div></div>
-        ${podeCancelar ? `<button class="btn perigo mini" data-cancelar="${r.id}" data-st="${r.status}">Cancelar</button>` : ''}</div>`;
-    }).join('')}</div>` : '';
-  document.querySelectorAll('[data-cancelar]').forEach(b => b.onclick = () => cancelarMinha(+b.dataset.cancelar, b.dataset.st, b));
-
-  // vagas do nível
-  const meus = d.horarios.filter(h => !h.nivel_ids.length || h.nivel_ids.some(n => a.nivel_ids.includes(n)));
-  const jaPedi = new Set(minhas.filter(r => ['pendente','confirmada'].includes(r.status)).map(r => r.horario_id));
-  if (!meus.length){
-    const alvo = INFO.proxima_abertura ? new Date(INFO.proxima_abertura) : proximaAberturaRegra();
-    $('vagas').innerHTML = `<div class="vazio"><span class="bebas">Nenhuma vaga aberta agora</span>
-      ${alvo ? 'As próximas vagas abrem ' + esc(fmtDataHora(alvo)) + '.' : 'As vagas abrem na véspera, às 14h.'}<br>Fique de olho no grupo do WhatsApp.</div>`;
-    return;
-  }
-  let html = '', ultimo = '';
-  meus.forEach(h => {
-    if (h.data !== ultimo){ ultimo = h.data; html += `<div class="dia"><h3>${nomeDia(h.data)}</h3><span>${diaCompleto(h.data)}</span></div>`; }
-    const pedi = jaPedi.has(h.id);
-    let botao;
-    if (pedi) botao = `<span class="selo pend">Pedido feito</span>`;
-    else if (h.lotado) botao = `<span class="selo cinza">Lotado</span>`;
-    else botao = `<button class="btn auto mini" data-pedir="${h.id}" ${a.creditos ? '' : 'disabled title="Sem créditos"'}>Pedir vaga</button>`;
-    html += `<div class="vaga ${h.lotado && !pedi ? 'lotada' : ''}" style="--c:${esc(corDe(h.nivel_ids))}">
-      <div class="hora">${fmtHoraBig(h.hora)}</div>
-      <div class="info"><div class="niveis">${chipsNiveis(h.nivel_ids)}</div>${h.observacao ? `<p>${esc(h.observacao)}</p>` : ''}</div>
-      ${botao}</div>`;
+/* ---------- cálculos ---------- */
+function agoraHHMM(){ return new Intl.DateTimeFormat('pt-BR',{ timeZone:TZ, hour:'2-digit', minute:'2-digit', hour12:false }).format(new Date()); }
+function proximasAulas(ex, a){
+  const out = [], hoje = hojeISO(), agora = agoraHHMM();
+  (ex.turmas || []).forEach(t => {
+    for (let i = 0; i < 8; i++){
+      const dia = somaDias(hoje, i);
+      if (diaSemana(dia) !== t.dia_semana) continue;
+      if (i === 0 && t.hora.slice(0,5) <= agora) continue;
+      out.push({ data: dia, hora: t.hora, tipo: 'turma', nivel_id: t.nivel_id }); break;
+    }
   });
-  $('vagas').innerHTML = html + (a.creditos ? '' : `<div class="aviso amarelo">Para pedir uma vaga você precisa ter pelo menos 1 crédito.</div>`);
-  document.querySelectorAll('[data-pedir]').forEach(b => b.onclick = () => pedir(+b.dataset.pedir, b));
+  (a.reservas || []).filter(r => ['pendente','confirmada'].includes(r.status) && (r.data > hoje || (r.data === hoje && r.hora.slice(0,5) > agora)))
+    .forEach(r => out.push({ data: r.data, hora: r.hora, tipo: 'reposicao', status: r.status }));
+  return out.sort((x, y) => (x.data + x.hora).localeCompare(y.data + y.hora));
+}
+function sequencia(ex){
+  let n = 0;
+  for (const au of (ex.aulas || [])){ if (au.status_aula !== 'realizada') continue; if (au.presenca === 'falta') break; n++; }
+  return n;
+}
+function mensalidadeAtual(ex){
+  const ms = ex.mensalidades || [];
+  return ms.find(m => m.status === 'pendente' && m.vencimento < hojeISO()) || ms.find(m => ['pendente','informado'].includes(m.status)) || ms[0] || null;
+}
+function seloMens(m){
+  if (!m) return ['cinza','Sem mensalidade'];
+  if (m.status === 'pago') return ['ok','Paga'];
+  if (m.status === 'isento') return ['cinza','Isenta'];
+  if (m.status === 'informado') return ['azul','Pagamento informado'];
+  return m.vencimento < hojeISO() ? ['verm','Atrasada'] : ['pend','Em aberto'];
 }
 
-const MOTIVOS = {
-  lotado: 'Que pena — essa vaga acabou de ser preenchida.', sem_credito: 'Você não tem créditos disponíveis.',
-  nivel: 'Esse horário não é para o seu nível.', ja_pediu: 'Você já pediu esse horário.', passou: 'Esse horário já começou.',
-  nao_abriu: 'Esse horário ainda não abriu.', indisponivel: 'Esse horário não está mais disponível.', aluno: 'Não conseguimos confirmar seu cadastro. Entre de novo.',
-};
+/* ---------- INÍCIO ---------- */
+function tabInicio(){
+  const a = alunoSel(), ex = extraSel(), c = INFO.config || {};
+  const prox = proximasAulas(ex, a)[0];
+  const m = mensalidadeAtual(ex), [mc, mt] = seloMens(m);
+  const atrasada = m && m.status === 'pendente' && m.vencimento < hojeISO();
+  const avisos = S.dados.avisos || [];
+  $('app-conteudo').innerHTML = `
+    <p class="eyebrow">Área do aluno</p>
+    <h1 class="ola-t">OLÁ, <span class="verde">${esc(a.nome.split(' ')[0].toUpperCase())}</span></h1>
+    <div class="niveis" style="margin:-4px 0 18px">${a.nivel_ids.map(chipNivel).join('')}</div>
+    ${avisos.map(v => `<div class="aviso amarelo">📢 ${esc(v.texto)}</div>`).join('')}
+    ${atrasada ? `<div class="aviso erro"><b>Mensalidade de ${esc(nomeMes(m.competencia))} em atraso.</b> Enquanto não regularizar, a reposição fica bloqueada.
+       <button class="btn mini" style="margin-top:10px" data-ir="fin">Pagar agora</button></div>` : ''}
+    <div class="prox">
+      <p class="eyebrow">Próxima aula</p>
+      ${prox ? `<div class="prox-dia">${nomeDia(prox.data)} · <span class="verde">${fmtHora(prox.hora)}</span></div>
+        <div class="cinza">${diaCompleto(prox.data)} · ${esc(c.local_nome || 'Clube Militar')}${prox.tipo === 'reposicao' ? ` · <span class="selo ${prox.status === 'confirmada' ? 'ok' : 'pend'}">Reposição${prox.status === 'pendente' ? ' (aguardando)' : ''}</span>` : ''}</div>`
+      : `<div class="prox-dia">—</div><div class="cinza">Nenhuma aula agendada. Fale com o professor.</div>`}
+    </div>
+    <div class="tiles">
+      <button class="tile" data-ir="repo"><div class="v">${a.creditos}</div><div class="l">Crédito${a.creditos===1?'':'s'} de reposição</div></button>
+      <button class="tile" data-ir="fin"><div class="v"><span class="selo ${mc}">${mt}</span></div><div class="l">Mensalidade</div></button>
+      <button class="tile" data-ir="aulas"><div class="v">${ex.total_presencas || 0}</div><div class="l">Aulas feitas</div></button>
+      <button class="tile" data-ir="evo"><div class="v">${sequencia(ex)}🔥</div><div class="l">Aulas seguidas</div></button>
+    </div>
+    <div class="secao"><h2 class="secao-t">INDIQUE UM <span class="verde">AMIGO</span></h2>
+      <div class="carta"><p style="margin-top:0">${esc(c.indicacao_beneficio || 'Indique um amigo para treinar com a gente!')}</p>
+        <div class="linha2"><div class="campo"><label>Nome do amigo</label><input id="ind-nome"></div>
+        <div class="campo"><label>WhatsApp dele</label><input id="ind-wpp" type="tel" inputmode="numeric" placeholder="(22) 9…"></div></div>
+        <div class="acoes" style="margin-top:0"><button class="btn" id="ind-enviar">Enviar indicação</button>
+        <a class="btn wpp" target="_blank" rel="noopener" href="${linkWppLivre('Faço aula de tênis com o professor Matheus Knupp e estou curtindo demais! Vem fazer uma aula 🎾 https://knupptenis.com.br')}">${ICON.wpp} Convidar</a></div>
+        ${ex.indicacoes ? `<p class="cinza pequeno" style="margin-bottom:0">Você já indicou ${ex.indicacoes} amigo(s)${ex.indicacoes_fechadas ? `, ${ex.indicacoes_fechadas} já fechou 💚` : ''}.</p>` : ''}</div></div>
+    <div class="secao"><h2 class="secao-t">SEU <span class="verde">PROFESSOR</span></h2>
+      <div class="carta"><div class="prof">${c.foto ? `<img class="foto" src="${esc(c.foto)}" alt="">` : '<div class="foto"><img src="/logo-simbolo.png" alt="" style="width:46%;height:auto"></div>'}
+        <div><p class="eyebrow">Knupp Tênis</p><h3>${esc(c.professor_nome || 'Matheus Knupp')}</h3><p>${esc(c.professor_bio || '')}</p></div></div>
+        <div class="acoes">${c.instagram ? `<a class="btn sec" target="_blank" rel="noopener" href="https://instagram.com/${esc(String(c.instagram).replace('@',''))}">${ICON.ig} @${esc(String(c.instagram).replace('@',''))}</a>` : ''}
+        ${c.professor_whatsapp ? `<a class="btn wpp" target="_blank" rel="noopener" href="${linkWpp(c.professor_whatsapp, 'Oi, professor!')}">${ICON.wpp} WhatsApp</a>` : ''}</div></div>
+      <div class="carta"><div class="local"><div class="pin"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div style="flex:1"><p class="eyebrow">Local das aulas</p><b>${esc(c.local_nome || 'Clube Militar')}</b><div class="cinza pequeno">${esc(c.local_endereco || '')}</div></div>
+        <a class="btn sec mini" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((c.local_nome || 'Clube Militar') + ' ' + (c.local_endereco || 'Cabo Frio'))}">Mapa</a></div></div>
+    </div>`;
+  ligarIr();
+  $('ind-wpp').oninput = e => e.target.value = mascaraWpp(e.target.value);
+  $('ind-enviar').onclick = async e => {
+    const nome = $('ind-nome').value.trim(); if (!nome) return toast('Escreva o nome do amigo.', true);
+    ocupado(e.target, true);
+    try { const r = await apiAluno('aluno_indicar', { aluno_id: S.sel, nome, whatsapp: soNum($('ind-wpp').value) });
+      toast(r.ok ? 'Indicação enviada! Valeu 💚' : 'Não foi possível enviar.', !r.ok); } catch(err){ toast(err.message, true); }
+    await carregarApp(true);
+  };
+}
+function ligarIr(){ document.querySelectorAll('[data-ir]').forEach(b => b.onclick = () => { S.aba = b.dataset.ir; desenharApp(); window.scrollTo({ top: 0 }); }); }
+
+/* ---------- AULAS ---------- */
+const PRES = { presente: ['ok','Presente'], falta: ['verm','Falta'], reposicao: ['azul','Reposição'] };
+function tabAulas(){
+  const ex = extraSel(), c = INFO.config || {};
+  const turmas = ex.turmas || [], aulas = ex.aulas || [];
+  $('app-conteudo').innerHTML = `
+    <h2 class="secao-t">MINHA <span class="verde">TURMA</span></h2>
+    ${turmas.length ? `<div class="carta" style="padding:4px 18px">${turmas.map(t => `<div class="minha"><div class="q"><b>${SEM_L[t.dia_semana].replace(/^./, x => x.toUpperCase())} · ${fmtHora(t.hora)}</b>
+        <span>${esc(t.nome || '')}${t.nome ? ' · ' : ''}${esc(c.local_nome || 'Clube Militar')}</span></div>${t.nivel_id ? chipNivel(t.nivel_id) : ''}</div>`).join('')}</div>`
+      : `<div class="vazio">Sua turma ainda não foi cadastrada no sistema.</div>`}
+    <div class="secao"><h2 class="secao-t">DIÁRIO DE <span class="verde">AULAS</span></h2>
+      <p class="secao-s">O que foi treinado e o recado do professor para você.</p>
+      ${aulas.length ? aulas.map(au => {
+        const [pc, pt] = au.status_aula === 'cancelada' ? ['cinza','Aula cancelada'] : (PRES[au.presenca] || ['cinza', au.presenca]);
+        const podeAvaliar = au.status_aula === 'realizada' && au.presenca !== 'falta';
+        return `<div class="diario"><div class="diario-cab"><div><b>${diaCompleto(au.data)} · ${fmtHora(au.hora)}</b>
+          ${au.tema ? `<div class="tema">🎯 ${esc(au.tema)}</div>` : ''}</div><span class="selo ${pc}">${pt}</span></div>
+          ${au.comentario ? `<div class="recado"><span class="eyebrow">Recado do professor</span>${esc(au.comentario)}</div>` : ''}
+          ${au.comentario_geral ? `<p class="cinza pequeno" style="margin:8px 0 0">${esc(au.comentario_geral)}</p>` : ''}
+          ${podeAvaliar ? (au.nota_aluno ? `<div class="estrelas-lidas">${'★'.repeat(au.nota_aluno)}${'☆'.repeat(5 - au.nota_aluno)} <span class="cinza pequeno">sua avaliação</span></div>`
+            : `<button class="btn sec mini" style="margin-top:10px" data-avaliar="${au.aula_id}">Avaliar esta aula</button>`) : ''}</div>`;
+      }).join('') : `<div class="vazio"><span class="bebas">Nada por aqui ainda</span>Depois de cada aula, o professor registra o que foi treinado.</div>`}
+    </div>`;
+  document.querySelectorAll('[data-avaliar]').forEach(b => b.onclick = () => avaliarAula(+b.dataset.avaliar));
+}
+function avaliarAula(aulaId){
+  let nota = 0;
+  modal(`<h2>COMO FOI A <span class="verde">AULA?</span></h2><p class="sub">Sua opinião ajuda o professor a melhorar.</p>
+    <div class="estrelas" id="av-est">${[1,2,3,4,5].map(n => `<button data-n="${n}">★</button>`).join('')}</div>
+    <div class="campo"><label>Comentário (opcional)</label><textarea id="av-com" placeholder="O que você mais curtiu? O que dá para melhorar?"></textarea></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="av-ok">Enviar</button></div>`,
+  (m, fechar) => {
+    m.querySelectorAll('[data-n]').forEach(b => b.onclick = () => { nota = +b.dataset.n; m.querySelectorAll('[data-n]').forEach(x => x.classList.toggle('on', +x.dataset.n <= nota)); });
+    m.querySelector('#av-ok').onclick = async () => {
+      if (!nota) return toast('Toque nas estrelas.', true);
+      try { await apiAluno('aluno_avaliar_aula', { aluno_id: S.sel, aula_id: aulaId, nota, comentario: m.querySelector('#av-com').value }); toast('Obrigado pela avaliação! ⭐'); } catch(e){ toast(e.message, true); }
+      fechar(); carregarApp(true);
+    };
+  });
+}
+
+/* ---------- REPOSIÇÃO ---------- */
+function tabRepo(){
+  const d = S.dados, a = alunoSel(), ex = extraSel();
+  const emDia = ex.em_dia !== false;
+  const prox = a.lista_creditos[0];
+  const meus = d.horarios.filter(h => !h.nivel_ids.length || h.nivel_ids.some(n => a.nivel_ids.includes(n)));
+  const jaPedi = new Set(a.reservas.filter(r => ['pendente','confirmada'].includes(r.status)).map(r => r.horario_id));
+  let vagas;
+  if (!meus.length){
+    const alvo = proximaAberturaRegra();
+    vagas = `<div class="vazio"><span class="bebas">Nenhuma vaga aberta agora</span>${alvo ? 'As próximas vagas abrem ' + esc(fmtDataHora(alvo)) + '.' : 'As vagas abrem na véspera, às 14h.'}</div>`;
+  } else {
+    let ult = ''; vagas = '';
+    meus.forEach(h => {
+      if (h.data !== ult){ ult = h.data; vagas += `<div class="dia"><h3>${nomeDia(h.data)}</h3><span>${diaCompleto(h.data)}</span></div>`; }
+      const pedi = jaPedi.has(h.id);
+      const botao = pedi ? `<span class="selo pend">Pedido feito</span>` : h.lotado ? `<span class="selo cinza">Lotado</span>`
+        : `<button class="btn auto mini" data-pedir="${h.id}" ${a.creditos && emDia ? '' : 'disabled'}>Pedir vaga</button>`;
+      vagas += `<div class="vaga ${h.lotado && !pedi ? 'lotada' : ''}" style="--c:${esc(corDe(h.nivel_ids))}"><div class="hora">${fmtHoraBig(h.hora)}</div>
+        <div class="info"><div class="niveis">${chipsNiveis(h.nivel_ids)}</div>${h.observacao ? `<p>${esc(h.observacao)}</p>` : ''}</div>${botao}</div>`;
+    });
+  }
+  $('app-conteudo').innerHTML = `
+    <div class="carteira ${a.creditos ? '' : 'zero'}"><div class="bola"></div>
+      <p class="ola">Créditos de reposição</p>
+      <div class="num">${a.creditos}<small>${a.creditos === 1 ? 'CRÉDITO' : 'CRÉDITOS'}</small></div>
+      <div class="venc">${a.creditos ? `Próximo vencimento: <b>${dataDe(prox.expira_em)}</b> (${diasAte(prox.expira_em) <= 1 ? 'vence amanhã' : 'em ' + diasAte(prox.expira_em) + ' dias'})`
+        : 'Os créditos aparecem quando uma aula sua é cancelada por chuva ou pelo professor.'}</div></div>
+    ${!emDia ? `<div class="aviso erro" style="margin-top:14px"><b>Reposição bloqueada:</b> sua mensalidade está em atraso. <button class="btn mini" style="margin-top:10px" data-ir="fin">Regularizar</button></div>` : ''}
+    ${a.reservas.length ? `<div class="secao"><h2 class="secao-t">MINHAS <span class="verde">REPOSIÇÕES</span></h2><div class="carta" style="padding:4px 18px">${a.reservas.map(r => {
+      const [cl, tx] = STATUS_RES[r.status] || ['cinza', r.status];
+      return `<div class="minha"><div class="q"><b>${nomeDia(r.data)} · ${fmtHora(r.hora)}</b><span>${diaCompleto(r.data)}${r.observacao ? ' · ' + esc(r.observacao) : ''}</span>
+        <div style="margin-top:6px"><span class="selo ${cl}">${tx}</span></div></div>
+        ${['pendente','confirmada'].includes(r.status) ? `<button class="btn perigo mini" data-cancelar="${r.id}" data-st="${r.status}">Cancelar</button>` : ''}</div>`; }).join('')}</div></div>` : ''}
+    <div class="secao"><h2 class="secao-t">VAGAS <span class="verde">ABERTAS</span></h2><p class="secao-s">Horários liberados para o seu nível.</p>${vagas}
+      ${!a.creditos && meus.length ? `<div class="aviso amarelo">Para pedir uma vaga você precisa ter pelo menos 1 crédito.</div>` : ''}</div>
+    <div class="secao"><h2 class="secao-t">COMO <span class="verde">FUNCIONA</span></h2><div class="carta" style="padding:6px 20px"><ol class="regras">${(cfg('regras') || []).map(r => `<li>${esc(r)}</li>`).join('')}<li>A reposição só pode ser marcada com a mensalidade em dia.</li></ol></div></div>`;
+  ligarIr();
+  document.querySelectorAll('[data-pedir]').forEach(b => b.onclick = () => pedir(+b.dataset.pedir, b));
+  document.querySelectorAll('[data-cancelar]').forEach(b => b.onclick = () => cancelarMinha(+b.dataset.cancelar, b.dataset.st, b));
+}
 async function pedir(horarioId, btn){
-  const h = ALUNO.dados.horarios.find(x => x.id === horarioId), a = ALUNO.dados.alunos.find(x => x.id === ALUNO.sel);
+  const h = S.dados.horarios.find(x => x.id === horarioId), a = alunoSel();
   const ok = await confirmar({ titulo: 'PEDIR ESTA VAGA?', ok: 'Pedir vaga',
-    texto: `<b>${esc(a.nome)}</b> · ${nomeDia(h.data)} (${dataCurta(h.data)}) às <b>${fmtHora(h.hora)}</b>.<br><br>Vamos usar 1 crédito. Sua vaga fica garantida quando o professor confirmar pelo WhatsApp. Até lá, se cancelar, o crédito volta.` });
+    texto: `<b>${esc(a.nome)}</b> · ${nomeDia(h.data)} (${dataCurta(h.data)}) às <b>${fmtHora(h.hora)}</b>.<br><br>Vamos usar 1 crédito. A vaga fica garantida quando o professor confirmar pelo WhatsApp. Até lá, se cancelar, o crédito volta.` });
   if (!ok) return;
   ocupado(btn, true);
   try {
-    const r = await chamar('/api/aluno/reservar', { method:'POST', body: JSON.stringify({ whatsapp: ALUNO.wpp, aluno_id: a.id, horario_id: horarioId }) });
-    if (r.ok) {
-      modal(`<div style="text-align:center"><div style="width:64px;height:64px;border-radius:50%;background:var(--verde-f);border:1px solid var(--verde-b);display:grid;place-items:center;margin:4px auto 16px">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2BD576" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h2>PEDIDO <span class="verde">ENVIADO!</span></h2><p class="sub">Você está na lista de ${nomeDia(h.data).toLowerCase()} às ${fmtHora(h.hora)}.<br>O professor vai confirmar pelo WhatsApp.</p>
-        <button class="btn" data-fechar>Fechar</button></div>`);
-    } else toast(MOTIVOS[r.motivo] || 'Não foi possível pedir essa vaga.', true);
+    const r = await apiAluno('aluno_reservar', { aluno_id: a.id, horario_id: horarioId });
+    if (r.ok) modal(`<div style="text-align:center"><div class="selo-grande">✓</div><h2>PEDIDO <span class="verde">ENVIADO!</span></h2>
+      <p class="sub">Você está na lista de ${nomeDia(h.data).toLowerCase()} às ${fmtHora(h.hora)}.<br>O professor vai confirmar pelo WhatsApp.</p><button class="btn" data-fechar>Fechar</button></div>`);
+    else toast(MOTIVOS[r.motivo] || 'Não foi possível pedir essa vaga.', true);
   } catch(e){ toast(e.message, true); }
-  await entrar(ALUNO.wpp, true);
+  await carregarApp(true);
 }
 async function cancelarMinha(id, status, btn){
   const perde = status === 'confirmada';
   const ok = await confirmar({ titulo: 'CANCELAR REPOSIÇÃO?', ok: 'Sim, cancelar', perigo: true,
-    texto: perde ? 'Essa reposição já foi <b>confirmada</b>. Se cancelar agora, <b>você perde o crédito</b> e a vaga fica livre para outro aluno.'
-                 : 'O professor ainda não confirmou, então <b>o crédito volta</b> para você.' });
+    texto: perde ? 'Essa reposição já foi <b>confirmada</b>. Se cancelar agora, <b>você perde o crédito</b> e a vaga fica livre para outro aluno.' : 'O professor ainda não confirmou, então <b>o crédito volta</b> para você.' });
   if (!ok) return;
   ocupado(btn, true);
-  try {
-    const r = await chamar('/api/aluno/cancelar', { method:'POST', body: JSON.stringify({ whatsapp: ALUNO.wpp, reserva_id: id }) });
-    toast(r.ok ? (r.perdeu_credito ? 'Reposição cancelada. O crédito foi perdido.' : 'Cancelada. Seu crédito voltou.') : 'Não foi possível cancelar.', !r.ok);
-  } catch(e){ toast(e.message, true); }
-  await entrar(ALUNO.wpp, true);
+  try { const r = await apiAluno('aluno_cancelar', { reserva_id: id });
+    toast(r.ok ? (r.perdeu_credito ? 'Reposição cancelada. O crédito foi perdido.' : 'Cancelada. Seu crédito voltou.') : 'Não foi possível cancelar.', !r.ok); } catch(e){ toast(e.message, true); }
+  await carregarApp(true);
+}
+
+/* ---------- FINANCEIRO ---------- */
+function tabFin(){
+  const a = alunoSel(), ex = extraSel(), ms = ex.mensalidades || [];
+  const atual = mensalidadeAtual(ex);
+  let cartao = '';
+  if (!ms.length) cartao = `<div class="vazio"><span class="bebas">Nada para pagar</span>${ex.valor_mensal ? 'Suas mensalidades vão aparecer aqui todo mês.' : 'Nenhuma mensalidade cadastrada para você.'}</div>`;
+  else {
+    const m = atual, [sc, st] = seloMens(m);
+    const aberto = ['pendente'].includes(m.status);
+    const pix = aberto ? pixCopiaCola(m.valor, 'KNUPP' + m.id) : '';
+    cartao = `<div class="fatura ${sc}"><div class="fatura-cab"><div><p class="eyebrow">Mensalidade · ${esc(nomeMes(m.competencia))}</p>
+        <div class="fatura-valor">${dinheiro(m.valor)}</div><div class="cinza pequeno">Vencimento ${dataCurta(m.vencimento)}</div></div><span class="selo ${sc}">${st}</span></div>
+      ${aberto ? (pix ? `<div class="pix-box"><div class="qr">${qrSvg(pix)}</div>
+          <p class="cinza pequeno" style="text-align:center;margin:10px 0">Escaneie o QR Code no app do banco ou copie o código:</p>
+          <div class="pix-codigo">${esc(pix)}</div>
+          <button class="btn" id="pix-copiar" style="margin-top:12px">Copiar código PIX</button></div>`
+        : `<div class="aviso amarelo" style="margin-top:14px">O PIX ainda não foi configurado. Fale com o professor para pagar.</div>`)
+        + `<button class="btn sec" id="ja-paguei" style="margin-top:10px">Já paguei</button>
+           <p class="cinza pequeno" style="margin-bottom:0">Depois de pagar, toque em "Já paguei". O professor confere e o recibo aparece aqui.</p>` : ''}
+      ${m.status === 'informado' ? `<p class="cinza pequeno" style="margin:14px 0 0">Recebemos seu aviso de pagamento. Assim que o professor confirmar, o recibo fica disponível.</p>` : ''}
+      ${m.status === 'pago' ? `<button class="btn sec" data-recibo="${m.id}" style="margin-top:14px">Ver recibo</button>` : ''}</div>`;
+  }
+  $('app-conteudo').innerHTML = `<h2 class="secao-t">FINAN<span class="verde">CEIRO</span></h2>
+    <p class="secao-s">${ex.valor_mensal ? `Plano: <b>${dinheiro(ex.valor_mensal)}</b> por mês · vence todo dia ${ex.dia_vencimento}` : 'Mensalidades, PIX e recibos.'}</p>
+    ${cartao}
+    ${ms.length > 1 || (ms.length && atual && ms[0].id !== atual.id) ? `<div class="secao"><h2 class="secao-t" style="font-size:1.6rem">HISTÓRICO</h2><div class="carta" style="padding:4px 18px">
+      ${ms.map(m => { const [sc, st] = seloMens(m); return `<div class="minha"><div class="q"><b>${esc(nomeMes(m.competencia).replace(/^./, x => x.toUpperCase()))}</b>
+        <span>${dinheiro(m.valor)} · venc. ${dataCurta(m.vencimento)}</span></div><span class="selo ${sc}">${st}</span>
+        ${m.status === 'pago' ? `<button class="btn sec mini" data-recibo="${m.id}">Recibo</button>` : ''}</div>`; }).join('')}</div></div>` : ''}`;
+  const cp = $('pix-copiar'); if (cp) cp.onclick = () => copiar(pixCopiaCola(atual.valor, 'KNUPP' + atual.id));
+  const jp = $('ja-paguei'); if (jp) jp.onclick = async () => {
+    if (!await confirmar({ titulo: 'JÁ PAGOU?', ok: 'Sim, já paguei', texto: 'Vamos avisar o professor para conferir o pagamento. Se quiser, mande o comprovante para ele no WhatsApp.' })) return;
+    try { await apiAluno('aluno_informar_pagamento', { mensalidade_id: atual.id }); toast('Aviso enviado! ✅'); } catch(e){ toast(e.message, true); }
+    const w = cfg('professor_whatsapp');
+    if (w) modal(`<h2>ENVIAR <span class="verde">COMPROVANTE?</span></h2><p class="sub">Opcional, mas agiliza a confirmação.</p>
+      <a class="btn wpp" target="_blank" rel="noopener" href="${linkWpp(w, `Oi, professor! Paguei a mensalidade de ${nomeMes(atual.competencia)} (${a.nome}). Segue o comprovante:`)}">${ICON.wpp} Mandar no WhatsApp</a>
+      <div class="rodape-m"><button class="btn sec" data-fechar>Agora não</button></div>`);
+    carregarApp(true);
+  };
+  document.querySelectorAll('[data-recibo]').forEach(b => b.onclick = () => {
+    const m = ms.find(x => x.id === +b.dataset.recibo);
+    abrirRecibo({ numero: m.recibo, nome: a.nome, valor: m.valor, competencia: m.competencia, forma: m.forma, pago_em: m.pago_em });
+  });
+}
+
+/* ---------- EVOLUÇÃO ---------- */
+function radar(habs, atual, inicial, tam = 300){
+  const n = habs.length; if (n < 3) return '';
+  const c = tam / 2, R = tam / 2 - 46, ang = i => -Math.PI / 2 + i * 2 * Math.PI / n;
+  const pt = (i, v) => [c + Math.cos(ang(i)) * R * v / 5, c + Math.sin(ang(i)) * R * v / 5];
+  const poly = vals => habs.map((h, i) => pt(i, +vals[h] || 0).map(x => x.toFixed(1)).join(',')).join(' ');
+  let g = '';
+  for (let k = 1; k <= 5; k++) g += `<polygon points="${habs.map((h, i) => pt(i, k).join(',')).join(' ')}" fill="none" stroke="rgba(255,255,255,${k === 5 ? .16 : .07})"/>`;
+  habs.forEach((h, i) => { const [x, y] = pt(i, 5); const [lx, ly] = pt(i, 6.15);
+    g += `<line x1="${c}" y1="${c}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.07)"/>
+      <text x="${lx}" y="${ly}" fill="#CFCFCF" font-size="11" text-anchor="middle" dominant-baseline="middle" font-family="DM Sans,sans-serif">${esc(h)}</text>`; });
+  if (inicial) g += `<polygon points="${poly(inicial)}" fill="rgba(138,138,138,.12)" stroke="#8A8A8A" stroke-dasharray="4 4" stroke-width="1.5"/>`;
+  g += `<polygon points="${poly(atual)}" fill="rgba(43,213,118,.22)" stroke="#2BD576" stroke-width="2"/>`;
+  habs.forEach((h, i) => { const [x, y] = pt(i, +atual[h] || 0); g += `<circle cx="${x}" cy="${y}" r="3.5" fill="#2BD576"/>`; });
+  return `<svg viewBox="0 0 ${tam} ${tam}" class="radar">${g}</svg>`;
+}
+function conquistas(a, ex){
+  const t = ex.total_presencas || 0, s = sequencia(ex), av = ex.avaliacoes || [];
+  const media = v => { const xs = Object.values(v.notas || {}).map(Number).filter(Boolean); return xs.length ? xs.reduce((p, q) => p + q, 0) / xs.length : 0; };
+  return [
+    ['🎾','Primeira aula', t >= 1], ['🔟','10 aulas', t >= 10], ['⭐','25 aulas', t >= 25], ['🏅','50 aulas', t >= 50], ['🏆','100 aulas', t >= 100],
+    ['🔥','5 aulas seguidas', s >= 5], ['💯','10 aulas seguidas', s >= 10],
+    ['🔁','Usou uma reposição', (a.reservas || []).some(r => r.status === 'confirmada')],
+    ['📋','Primeira avaliação', av.length >= 1], ['🚀','Evoluiu na avaliação', av.length >= 2 && media(av[av.length - 1]) > media(av[0])],
+    ['🤝','Indicou um amigo', (ex.indicacoes || 0) >= 1], ['💚','Amigo indicado fechou', (ex.indicacoes_fechadas || 0) >= 1],
+  ];
+}
+function tabEvo(){
+  const a = alunoSel(), ex = extraSel(), av = ex.avaliacoes || [];
+  const habsCfg = cfg('habilidades') || ['Forehand','Backhand','Saque','Devolução','Voleio','Movimentação','Tático','Mental'];
+  const ult = av[av.length - 1], pri = av.length > 1 ? av[0] : null;
+  const habs = ult ? habsCfg.filter(h => ult.notas[h] !== undefined).concat(Object.keys(ult.notas).filter(h => !habsCfg.includes(h))) : [];
+  const nivelId = a.nivel_ids[0], crit = ((S.dados.niveis_criterios || {})[nivelId]) || [];
+  const feitos = crit.filter(c => (ex.checklist || {})[c]).length;
+  const conq = conquistas(a, ex), ganhas = conq.filter(c => c[2]).length;
+  const conteudos = (S.dados.conteudos || []).filter(c => !c.nivel_ids.length || c.nivel_ids.some(n => a.nivel_ids.includes(n)));
+  $('app-conteudo').innerHTML = `<h2 class="secao-t">SUA <span class="verde">EVOLUÇÃO</span></h2>
+    ${ult ? `<p class="secao-s">Avaliação do professor de ${dataCurta(ult.data)}${pri ? ` · comparando com ${dataCurta(pri.data)} (tracejado)` : ''}</p>
+      <div class="carta" style="text-align:center">${habs.length >= 3 ? radar(habs, ult.notas, pri && pri.notas) : ''}
+        <div class="habs">${habs.map(h => { const v = +ult.notas[h] || 0, d = pri ? v - (+pri.notas[h] || 0) : 0;
+          return `<div class="hab"><span>${esc(h)}</span><div class="barra-h"><i style="width:${v * 20}%"></i></div><b>${v}</b>${d ? `<em class="${d > 0 ? 'verde' : 'vermelho'}">${d > 0 ? '+' : ''}${d}</em>` : '<em></em>'}</div>`; }).join('')}</div>
+        ${ult.observacao ? `<div class="recado" style="text-align:left"><span class="eyebrow">Observação do professor</span>${esc(ult.observacao)}</div>` : ''}</div>`
+      : `<div class="vazio"><span class="bebas">Sem avaliação ainda</span>O professor vai avaliar seus golpes de tempos em tempos. Aqui você acompanha sua evolução.</div>`}
+    ${crit.length ? `<div class="secao"><h2 class="secao-t">PARA SUBIR DE <span class="verde">NÍVEL</span></h2>
+      <p class="secao-s">Nível atual: ${chipNivel(nivelId)} · ${feitos} de ${crit.length} conquistados</p>
+      <div class="progresso"><i style="width:${Math.round(feitos / crit.length * 100)}%"></i></div>
+      <div class="carta" style="padding:6px 18px;margin-top:12px">${crit.map(c => { const ok = (ex.checklist || {})[c];
+        return `<div class="check-item ${ok ? 'ok' : ''}"><span class="ck">${ok ? '✓' : ''}</span>${esc(c)}</div>`; }).join('')}</div></div>` : ''}
+    <div class="secao"><h2 class="secao-t">CONQUIS<span class="verde">TAS</span></h2><p class="secao-s">${ganhas} de ${conq.length} desbloqueadas</p>
+      <div class="conq">${conq.map(([i, n, ok]) => `<div class="cq ${ok ? 'on' : ''}"><span>${i}</span><b>${esc(n)}</b></div>`).join('')}</div></div>
+    ${conteudos.length ? `<div class="secao"><h2 class="secao-t">CONTEÚDO PARA <span class="verde">VOCÊ</span></h2>
+      ${conteudos.map(c => `<a class="conteudo" ${c.url ? `href="${esc(c.url)}" target="_blank" rel="noopener"` : ''}><b>${esc(c.titulo)}</b>${c.descricao ? `<span>${esc(c.descricao)}</span>` : ''}${c.url ? '<em>Abrir →</em>' : ''}</a>`).join('')}</div>` : ''}`;
+}
+
+
+/* =========================================================
+   v4: COMPRA DE AULAS + LOJA (aluno)
+   ========================================================= */
+S.carrinho = (() => { try { return JSON.parse(pega('knupp_carrinho') || '[]'); } catch(e){ return []; } })();
+const salvarCarrinho = () => guarda('knupp_carrinho', JSON.stringify(S.carrinho));
+const saldoSel = () => ((S.dados.saldos || {})[S.sel]) || { repo: 0, aula: 0 };
+const precoAula = () => Number(S.dados.preco_aula || cfg('preco_aula') || 70);
+const STATUS_PED = { aguardando: ['pend','Aguardando pagamento'], informado: ['azul','Pagamento informado'], pago: ['ok','Pago'],
+  separado: ['ok','Separado'], entregue: ['cinza','Entregue'], cancelado: ['cinza','Cancelado'] };
+
+/* ---------- Reposição: saldos separados + comprar aulas ---------- */
+const tabRepoV3 = tabRepo;
+tabRepo = function(){
+  tabRepoV3();
+  const s = saldoSel(), ex = extraSel(), emDia = ex.em_dia !== false;
+  const box = document.createElement('div');
+  box.innerHTML = `<div class="saldos"><div><b>${s.repo}</b><span>de reposição</span></div><div><b>${s.aula}</b><span>aula${s.aula === 1 ? '' : 's'} comprada${s.aula === 1 ? '' : 's'}</span></div></div>
+    <div class="carta compra-aulas"><div style="flex:1"><b>Quer treinar mais?</b><div class="cinza pequeno">Compre aulas extras por ${dinheiro(precoAula())} cada. Elas não vencem e valem nos horários de vaga.</div></div>
+    <button class="btn auto" id="comprar-aulas" ${emDia ? '' : 'disabled'}>Comprar aulas</button></div>
+    ${emDia ? '' : '<p class="cinza pequeno" style="margin-top:-4px">Para comprar aulas, a mensalidade precisa estar em dia.</p>'}`;
+  const cart = document.querySelector('#app-conteudo .carteira');
+  cart.insertAdjacentElement('afterend', box);
+  const b = $('comprar-aulas'); if (b) b.onclick = comprarAulas;
+};
+function comprarAulas(){
+  let qtd = 1; const p = precoAula();
+  modal(`<h2>COMPRAR <span class="verde">AULAS</span></h2><p class="sub">${dinheiro(p)} por aula · sem vencimento · use nos horários de vaga</p>
+    <div class="qtd"><button id="q-menos">−</button><span id="q-n">1</span><button id="q-mais">+</button></div>
+    <div class="total-linha">Total <b id="q-total">${dinheiro(p)}</b></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="q-ok">Continuar para o PIX</button></div>`,
+  (m, fechar) => {
+    const upd = () => { m.querySelector('#q-n').textContent = qtd; m.querySelector('#q-total').textContent = dinheiro(qtd * p); };
+    m.querySelector('#q-menos').onclick = () => { qtd = Math.max(1, qtd - 1); upd(); };
+    m.querySelector('#q-mais').onclick = () => { qtd = Math.min(20, qtd + 1); upd(); };
+    m.querySelector('#q-ok').onclick = async e => {
+      ocupado(e.target, true);
+      try {
+        const r = await apiAluno('aluno_criar_pedido', { aluno_id: S.sel, tipo: 'aulas', itens: [{ qtd }] });
+        if (!r.ok){ ocupado(e.target, false); return toast(r.motivo === 'mensalidade' ? MOTIVOS.mensalidade : 'Não foi possível criar o pedido.', true); }
+        fechar(); await carregarApp(true); pagarPedido(r.pedido_id);
+      } catch(err){ ocupado(e.target, false); toast(err.message, true); }
+    };
+  });
+}
+
+/* ---------- pagar / acompanhar pedidos ---------- */
+function resumoItens(p){ return p.itens.map(i => `${i.qtd}× ${i.nome}${i.opcoes ? ' (' + i.opcoes + ')' : ''}`).join(' · '); }
+function pagarPedido(id){
+  const p = (S.dados.pedidos || []).find(x => x.id === id); if (!p) return;
+  const pix = p.pagamento === 'pix' ? pixCopiaCola(p.total, 'KNUPPP' + p.id) : '';
+  const w = cfg('professor_whatsapp');
+  modal(`<h2>PEDIDO <span class="verde">#${p.id}</span></h2><p class="sub">${esc(resumoItens(p))}</p>
+    <div class="total-linha">Total <b>${dinheiro(p.total)}</b></div>
+    ${p.pagamento === 'pix' ? (pix ? `<div class="pix-box"><div class="qr">${qrSvg(pix)}</div><div class="pix-codigo" style="margin-top:12px">${esc(pix)}</div>
+        <button class="btn" id="pp-copiar" style="margin-top:12px">Copiar código PIX</button>
+        <button class="btn sec" id="pp-paguei" style="margin-top:10px">Já paguei</button></div>`
+        : `<div class="aviso amarelo">O PIX ainda não foi configurado. Fale com o professor para pagar.</div>`)
+      : `<div class="aviso">Pagamento no <b>cartão</b> na hora da entrega/retirada (crédito com a taxa da maquininha ou débito). O professor vai combinar com você.</div>`}
+    ${w ? `<a class="btn wpp" style="margin-top:10px" target="_blank" rel="noopener" href="${linkWpp(w, `Oi, professor! Fiz o pedido #${p.id} na área do aluno (${resumoItens(p)}) — total ${dinheiro(p.total)}.`)}">${ICON.wpp} Avisar o professor</a>` : ''}
+    <div class="rodape-m"><button class="btn sec" data-fechar>Fechar</button></div>`,
+  (m, fechar) => {
+    const c = m.querySelector('#pp-copiar'); if (c) c.onclick = () => copiar(pix);
+    const pg = m.querySelector('#pp-paguei'); if (pg) pg.onclick = async () => {
+      try { await apiAluno('aluno_informar_pedido', { pedido_id: p.id }); toast('Aviso enviado! O professor vai conferir ✅'); } catch(e){ toast(e.message, true); }
+      fechar(); carregarApp(true);
+    };
+  });
+}
+const tabFinV3 = tabFin;
+tabFin = function(){
+  tabFinV3();
+  const meus = (S.dados.pedidos || []).filter(p => p.aluno_id === S.sel || S.dados.alunos.length === 1);
+  if (!meus.length) return;
+  const a = alunoSel();
+  const box = document.createElement('div'); box.className = 'secao';
+  box.innerHTML = `<h2 class="secao-t" style="font-size:1.6rem">MEUS <span class="verde">PEDIDOS</span></h2><div class="carta" style="padding:4px 18px">
+    ${meus.map(p => { const [sc, st] = STATUS_PED[p.status] || ['cinza', p.status];
+      return `<div class="minha"><div class="q"><b>#${p.id} · ${p.tipo === 'aulas' ? 'Compra de aulas' : 'Loja'} · ${dinheiro(p.total)}</b><span>${esc(resumoItens(p))}</span>
+        <div style="margin-top:6px"><span class="selo ${sc}">${st}</span></div></div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+        ${p.status === 'aguardando' ? `<button class="btn mini" data-ppagar="${p.id}">${p.pagamento === 'pix' ? 'Pagar' : 'Ver'}</button><button class="btn perigo mini" data-pcancel="${p.id}">Cancelar</button>` : ''}
+        ${['pago','separado','entregue'].includes(p.status) ? `<button class="btn sec mini" data-precibo="${p.id}">Recibo</button>` : ''}</div></div>`; }).join('')}</div>`;
+  $('app-conteudo').appendChild(box);
+  box.querySelectorAll('[data-ppagar]').forEach(b => b.onclick = () => pagarPedido(+b.dataset.ppagar));
+  box.querySelectorAll('[data-pcancel]').forEach(b => b.onclick = async () => {
+    if (!await confirmar({ titulo: 'CANCELAR PEDIDO?', ok: 'Cancelar pedido', perigo: true, texto: 'O pedido será cancelado. Se você já pagou, fale com o professor.' })) return;
+    await apiAluno('aluno_cancelar_pedido', { pedido_id: +b.dataset.pcancel }).catch(e => toast(e.message, true)); carregarApp(true);
+  });
+  box.querySelectorAll('[data-precibo]').forEach(b => b.onclick = () => { const p = meus.find(x => x.id === +b.dataset.precibo);
+    abrirRecibo({ numero: p.recibo, nome: a.nome, valor: p.total, forma: p.forma, pago_em: p.pago_em, referente: resumoItens(p) }); });
+};
+
+/* ---------- LOJA ---------- */
+let LOJA = null, LOJA_CAT = 'Todos';
+async function carregarLoja(){ if (!LOJA){ try { LOJA = await chamar('/api/loja'); } catch(e){ toast(e.message, true); LOJA = { produtos: [], config: {} }; } } return LOJA; }
+function precoItem(p, escolhas){
+  let preco = Number(p.preco);
+  (p.variacoes || []).forEach(v => { const o = (v.opcoes || []).find(o => o.nome === (escolhas || {})[v.nome]); if (o && Number(o.preco) > 0) preco = Number(o.preco); });
+  return preco;
+}
+function precoMinimo(p){
+  const vs = p.variacoes || [];
+  const temVar = vs.some(v => (v.opcoes || []).some(o => Number(o.preco) > 0));
+  if (!temVar) return { min: Number(p.preco), aPartir: false };
+  // se toda opção de alguma variação tem preço próprio, o preço base nunca vale
+  const fechada = vs.find(v => (v.opcoes || []).length && (v.opcoes || []).every(o => Number(o.preco) > 0));
+  const precos = fechada ? fechada.opcoes.map(o => Number(o.preco)) : [Number(p.preco), ...vs.flatMap(v => (v.opcoes || []).map(o => Number(o.preco)).filter(x => x > 0))];
+  return { min: Math.min(...precos), aPartir: true };
+}
+function parcelaTxt(valor, n){
+  const tx = (LOJA.config.loja_taxas || [])[n - 1]; if (!n || n < 2 || tx === undefined) return '';
+  return `ou ${n}x de ${dinheiro(valor * (1 + tx / 100) / n)}`;
+}
+async function tabLoja(){
+  $('app-conteudo').innerHTML = '<div class="vazio"><span class="girando"></span></div>';
+  await carregarLoja();
+  const cats = ['Todos', ...(LOJA.config.loja_categorias || []).filter(c => LOJA.produtos.some(p => p.categoria === c)),
+    ...[...new Set(LOJA.produtos.map(p => p.categoria).filter(Boolean))].filter(c => !(LOJA.config.loja_categorias || []).includes(c))];
+  const lista = LOJA.produtos.filter(p => LOJA_CAT === 'Todos' || p.categoria === LOJA_CAT);
+  const nCar = S.carrinho.reduce((s, i) => s + i.qtd, 0);
+  $('app-conteudo').innerHTML = `<h2 class="secao-t">LOJA <span class="verde">KNUPP</span></h2>
+    <p class="secao-s">${esc(LOJA.config.loja_entrega || 'Retirada nas aulas ou entrega combinada.')}</p>
+    <div class="cats">${cats.map(c => `<button class="${c === LOJA_CAT ? 'on' : ''}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')}</div>
+    ${lista.length ? `<div class="grade">${lista.map(p => { const { min, aPartir } = precoMinimo(p);
+      return `<button class="prod" data-prod="${esc(p.id)}">${p.foto ? `<img src="${esc(p.foto)}" alt="" loading="lazy">` : '<div class="semfoto">🎾</div>'}
+        ${p.condicao ? `<span class="cond">${esc(p.condicao)}</span>` : ''}<b>${esc(p.nome)}</b>
+        <span class="cinza pequeno">${aPartir ? 'A partir de' : 'Pix à vista'}</span><span class="preco">${dinheiro(min)}</span></button>`; }).join('')}</div>`
+      : '<div class="vazio">Nenhum produto nessa categoria.</div>'}
+    ${nCar ? `<button class="carrinho-flut" id="ver-carrinho">🛒 Ver carrinho (${nCar}) · ${dinheiro(totalCarrinho())}</button>` : ''}`;
+  document.querySelectorAll('[data-cat]').forEach(b => b.onclick = () => { LOJA_CAT = b.dataset.cat; tabLoja(); });
+  document.querySelectorAll('[data-prod]').forEach(b => b.onclick = () => abrirProduto(b.dataset.prod));
+  const vc = $('ver-carrinho'); if (vc) vc.onclick = abrirCarrinho;
+}
+function totalCarrinho(){ return S.carrinho.reduce((s, i) => { const p = LOJA && LOJA.produtos.find(x => x.id === i.produto_id); return s + (p ? precoItem(p, i.escolhas) * i.qtd : 0); }, 0); }
+async function abrirProduto(id){
+  const p = LOJA.produtos.find(x => x.id === id); if (!p) return;
+  const escolhas = {}; let qtd = 1, fotos = [p.foto].filter(Boolean);
+  (p.variacoes || []).forEach(v => { const o = (v.opcoes || [])[0]; if (o && (v.opcoes || []).length === 1) escolhas[v.nome] = o.nome; });
+  modal(`<div class="prod-galeria" id="pg-gal">${fotos.map(f => `<img src="${esc(f)}" alt="">`).join('')}</div>
+    ${p.condicao ? `<span class="cond" style="position:static">${esc(p.condicao)}</span>` : ''}
+    <h2 style="margin-top:10px">${esc(p.nome)}</h2>
+    ${p.descricao ? `<p class="sub" style="white-space:pre-line">${esc(p.descricao)}</p>` : ''}
+    <div id="pg-vars">${(p.variacoes || []).map(v => `<div class="campo"><label>${esc(v.nome)}</label><div class="opcoes" data-var="${esc(v.nome)}">
+      ${(v.opcoes || []).map(o => `<button type="button" data-op="${esc(o.nome)}" class="${escolhas[v.nome] === o.nome ? 'on' : ''}">${o.cor ? `<i style="background:${esc(o.cor)}"></i>` : ''}${esc(o.nome)}</button>`).join('')}</div></div>`).join('')}</div>
+    <div class="qtd"><button id="pq-menos">−</button><span id="pq-n">1</span><button id="pq-mais">+</button></div>
+    <div class="total-linha"><span>Pix à vista <b id="pg-preco"></b></span><span class="cinza pequeno" id="pg-parc"></span></div>
+    <div id="pg-msg"></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="pg-add">Adicionar ao carrinho</button></div>`,
+  async (m, fechar) => {
+    const combo = () => (p.variacoes || []).map(v => escolhas[v.nome]).join(' / ');
+    const upd = () => {
+      const completo = (p.variacoes || []).every(v => escolhas[v.nome]);
+      const pr = precoItem(p, escolhas) * qtd;
+      m.querySelector('#pg-preco').textContent = dinheiro(pr);
+      m.querySelector('#pg-parc').textContent = parcelaTxt(pr, p.parcelas);
+      m.querySelector('#pq-n').textContent = qtd;
+      const indisp = completo && (p.indisponiveis || []).includes(combo());
+      m.querySelector('#pg-msg').innerHTML = indisp ? '<div class="aviso erro">Essa combinação está indisponível no momento.</div>' : '';
+      m.querySelector('#pg-add').disabled = !completo || indisp;
+      m.querySelector('#pg-add').textContent = completo ? 'Adicionar ao carrinho' : 'Escolha as opções';
+      // foto da opção escolhida
+      (p.variacoes || []).forEach(v => { const o = (v.opcoes || []).find(o => o.nome === escolhas[v.nome]); if (o && o.foto){ const g = m.querySelector('#pg-gal img'); if (g) g.src = o.foto; } });
+    };
+    m.querySelectorAll('[data-var]').forEach(box => box.querySelectorAll('[data-op]').forEach(b => b.onclick = () => {
+      escolhas[box.dataset.var] = b.dataset.op; box.querySelectorAll('[data-op]').forEach(x => x.classList.toggle('on', x === b)); upd(); }));
+    m.querySelector('#pq-menos').onclick = () => { qtd = Math.max(1, qtd - 1); upd(); };
+    m.querySelector('#pq-mais').onclick = () => { qtd = Math.min(20, qtd + 1); upd(); };
+    m.querySelector('#pg-add').onclick = () => {
+      const k = S.carrinho.find(i => i.produto_id === p.id && JSON.stringify(i.escolhas) === JSON.stringify(escolhas));
+      if (k) k.qtd += qtd; else S.carrinho.push({ produto_id: p.id, escolhas: { ...escolhas }, qtd });
+      salvarCarrinho(); fechar(); toast('Adicionado ao carrinho 🛒'); tabLoja();
+    };
+    upd();
+    if (p.n_fotos){ try { const full = await chamar('/api/loja/' + encodeURIComponent(p.id));
+      const g = m.querySelector('#pg-gal'); if (g && full && full.fotos) g.innerHTML = [p.foto, ...full.fotos].filter(Boolean).map(f => `<img src="${esc(f)}" alt="">`).join(''); } catch(e){} }
+  });
+}
+function abrirCarrinho(){
+  const desenhar = m => {
+    const itens = S.carrinho.map((i, k) => { const p = LOJA.produtos.find(x => x.id === i.produto_id); return p ? { i, k, p, pr: precoItem(p, i.escolhas) } : null; }).filter(Boolean);
+    const total = itens.reduce((s, x) => s + x.pr * x.i.qtd, 0);
+    const maxParc = Math.min(...itens.map(x => x.p.parcelas || 1));
+    m.querySelector('#car-itens').innerHTML = itens.length ? itens.map(x => `<div class="minha"><div class="q"><b>${esc(x.p.nome)}</b>
+      <span>${esc(Object.values(x.i.escolhas).join(' / '))}</span><span class="cinza pequeno">${x.i.qtd} × ${dinheiro(x.pr)}</span></div>
+      <button class="btn perigo mini" data-rm="${x.k}">Tirar</button></div>`).join('') : '<p class="cinza">Carrinho vazio.</p>';
+    m.querySelector('#car-total').textContent = dinheiro(total);
+    m.querySelector('#car-parc').textContent = maxParc > 1 ? `No cartão: até ${maxParc}x (${parcelaTxt(total, maxParc).replace('ou ', '')}, com a taxa da maquininha)` : '';
+    m.querySelector('#car-ok').disabled = !itens.length;
+    m.querySelectorAll('[data-rm]').forEach(b => b.onclick = () => { S.carrinho.splice(+b.dataset.rm, 1); salvarCarrinho(); desenhar(m); });
+  };
+  modal(`<h2>SEU <span class="verde">CARRINHO</span></h2><div class="carta" style="padding:4px 18px;margin-bottom:14px" id="car-itens"></div>
+    <div class="total-linha">Total no Pix <b id="car-total"></b></div><p class="cinza pequeno" id="car-parc" style="margin-top:-6px"></p>
+    <div class="campo"><label>Pagamento</label><div class="opcoes" id="car-pag"><button type="button" data-v="pix" class="on">PIX agora</button><button type="button" data-v="cartao">Cartão na entrega</button></div></div>
+    <div class="campo"><label>Entrega</label><div class="opcoes" id="car-ent"><button type="button" data-v="retirada" class="on">Retirar na aula</button><button type="button" data-v="entrega">Entrega em Cabo Frio</button></div></div>
+    <div class="campo oculto" id="car-end-box"><label>Endereço para entrega</label><input id="car-end" placeholder="Rua, número, bairro"></div>
+    <div class="campo"><label>Observação (opcional)</label><input id="car-obs" placeholder="Ex.: tensão 24/23, prefiro entregar na aula de terça…"></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Continuar comprando</button><button class="btn" id="car-ok">Fazer pedido</button></div>`,
+  (m, fechar) => {
+    const grupo = id => { m.querySelectorAll(`#${id} button`).forEach(b => b.onclick = () => { m.querySelectorAll(`#${id} button`).forEach(x => x.classList.toggle('on', x === b));
+      if (id === 'car-ent') m.querySelector('#car-end-box').classList.toggle('oculto', b.dataset.v !== 'entrega'); }); };
+    grupo('car-pag'); grupo('car-ent'); desenhar(m);
+    m.querySelector('#car-ok').onclick = async e => {
+      const entrega = m.querySelector('#car-ent .on').dataset.v, endereco = m.querySelector('#car-end').value.trim();
+      if (entrega === 'entrega' && !endereco) return toast('Coloque o endereço da entrega.', true);
+      ocupado(e.target, true);
+      try {
+        const r = await apiAluno('aluno_criar_pedido', { aluno_id: S.sel, tipo: 'loja', itens: S.carrinho, pagamento: m.querySelector('#car-pag .on').dataset.v,
+          entrega, endereco, observacao: m.querySelector('#car-obs').value });
+        if (!r.ok){ ocupado(e.target, false); return toast(r.motivo === 'indisponivel' ? `"${r.produto}" está indisponível nessa opção.` : 'Não foi possível fazer o pedido. Atualize a página.', true); }
+        S.carrinho = []; salvarCarrinho(); fechar(); await carregarApp(true); pagarPedido(r.pedido_id);
+      } catch(err){ ocupado(e.target, false); toast(err.message, true); }
+    };
+  });
 }
 
 /* instalar como app */
@@ -623,7 +1225,7 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').cat
 /* =========================================================
    PAINEL DO PROFESSOR
    ========================================================= */
-let ADM = null, SENHA = null, ABA = 'pedidos', ESTAT = null;
+let ADM = null, SENHA = null, ABA = 'hoje', ESTAT = null;
 try { SENHA = sessionStorage.getItem('knupp_senha'); } catch(e) {}
 const api = (url, opts = {}) => chamar('/api/admin' + url, { ...opts, headers: { 'x-admin-senha': SENHA || '' } })
   .catch(e => { if (e.status === 401){ SENHA = null; try{sessionStorage.removeItem('knupp_senha')}catch(_){}; loginPainel('Senha incorreta.'); } throw e; });
@@ -652,7 +1254,7 @@ async function carregarPainel(){
 }
 async function recarregar(msg){ if (msg) toast(msg); await carregarPainel(); }
 
-const ABAS = [['pedidos','Pedidos'],['horarios','Horários'],['alunos','Alunos'],['creditos','Créditos'],['numeros','Números'],['ajustes','Ajustes']];
+const ABAS = [['hoje','Hoje'],['pedidos','Reposições'],['horarios','Horários'],['turmas','Turmas'],['alunos','Alunos'],['financeiro','Financeiro'],['loja','Loja'],['creditos','Créditos'],['conteudo','Conteúdo'],['numeros','Números'],['ajustes','Ajustes']];
 function desenharPainel(){
   const pend = pendentes().length;
   $('painel').innerHTML = `<div class="p-topo"><div class="p-linha">
@@ -1106,16 +1708,577 @@ function abaAjustes(){
 }
 
 /* =========================================================
+   PAINEL v3 (área do aluno)
+   ========================================================= */
+const v3 = (fn, body) => post('/v3/' + fn, body || {});
+async function carregarPainel(){
+  try { ADM = await v3('admin_dados_v3'); } catch(e){ if (e.status !== 401) toast(e.message, true); return; }
+  INFO.niveis = ADM.niveis.filter(n => n.ativo); INFO.config = ADM.config;
+  desenharPainel();
+}
+function fecharPainel(){ $('painel').classList.add('oculto'); document.body.style.overflow = ''; carregarInfo(); if (S.token) carregarApp(true); }
+const ALEX = id => (ADM.alunos_extra || {})[id] || {};
+const nomeAluno = id => (ADM.alunos.find(a => a.id === id) || {}).nome || '—';
+const nomeTurma = t => `${SEM[t.dia_semana]} ${fmtHora(t.hora)}${t.nome ? ' · ' + t.nome : ''}`;
+
+function desenharPainel(){
+  const pend = pendentes().length, p = ADM.pendencias || {};
+  const badge = { pedidos: pend, financeiro: (p.informadas || 0) + (p.atrasadas || 0), conteudo: p.indicacoes_novas || 0 };
+  $('painel').innerHTML = `<div class="p-topo"><div class="p-linha">
+      <div class="marca"><img src="/logo.png" alt="Matheus Knupp Tennis" class="logo-img"><small>DASHBOARD</small></div>
+      <div style="display:flex;gap:8px"><button class="chip-btn" id="p-atualizar">Atualizar</button><button class="chip-btn" id="p-fechar">Ver site</button></div></div>
+    <nav class="p-abas">${ABAS.map(([k,t]) => `<button data-aba="${k}" class="${ABA===k?'on':''}">${t}${badge[k] ? `<span class="badge">${badge[k]}</span>` : ''}</button>`).join('')}</nav></div>
+    <div class="p-miolo" id="p-miolo"></div>`;
+  $('p-fechar').onclick = fecharPainel;
+  $('p-atualizar').onclick = () => recarregar('Atualizado.');
+  document.querySelectorAll('[data-aba]').forEach(b => b.onclick = () => { ABA = b.dataset.aba; desenharPainel(); });
+  ({ hoje: abaHoje, pedidos: abaPedidos, horarios: abaHorarios, turmas: abaTurmas, alunos: abaAlunos, financeiro: abaFinanceiro,
+     creditos: abaCreditos, conteudo: abaConteudo, numeros: abaNumeros, ajustes: abaAjustes, loja: () => {} })[ABA]();
+}
+
+/* ---------- HOJE: chamada + diário ---------- */
+let DIA_HOJE = null;
+async function abaHoje(){
+  const m = $('p-miolo'); DIA_HOJE = DIA_HOJE || hojeISO();
+  const p = ADM.pendencias || {}, pend = pendentes().length;
+  m.innerHTML = `<div class="kpis">
+      <button class="kpi" data-ir-aba="pedidos" style="--k:var(--amarelo)"><div class="v">${pend}</div><div class="l">Reposições a confirmar</div></button>
+      <button class="kpi" data-ir-aba="financeiro" style="--k:var(--azul)"><div class="v">${p.informadas || 0}</div><div class="l">Pagamentos informados</div></button>
+      <button class="kpi" data-ir-aba="financeiro" style="--k:var(--vermelho)"><div class="v">${p.atrasadas || 0}</div><div class="l">Mensalidades atrasadas</div></button>
+      <button class="kpi" data-ir-aba="conteudo"><div class="v">${p.indicacoes_novas || 0}</div><div class="l">Indicações novas</div></button></div>
+    <div class="p-titulo"><h2>CHAMADA E <span class="verde">DIÁRIO</span></h2>
+      <div style="display:flex;gap:6px;align-items:center"><button class="btn sec mini" id="dia-ant">‹</button>
+      <input type="date" id="dia-sel" value="${DIA_HOJE}" style="width:auto;padding:9px 12px"><button class="btn sec mini" id="dia-prox">›</button></div></div>
+    <div id="chamada"><div class="vazio"><span class="girando"></span></div></div>`;
+  m.querySelectorAll('[data-ir-aba]').forEach(b => b.onclick = () => { ABA = b.dataset.irAba; desenharPainel(); });
+  $('dia-sel').onchange = e => { DIA_HOJE = e.target.value; abaHoje(); };
+  $('dia-ant').onclick = () => { DIA_HOJE = somaDias(DIA_HOJE, -1); abaHoje(); };
+  $('dia-prox').onclick = () => { DIA_HOJE = somaDias(DIA_HOJE, 1); abaHoje(); };
+  let dia; try { dia = await v3('admin_aulas_dia', { data: DIA_HOJE }); } catch(e){ return; }
+  if (!dia.turmas.length){
+    $('chamada').innerHTML = `<div class="vazio"><span class="bebas">Sem turmas ${nomeDia(DIA_HOJE).toLowerCase()}</span>${ADM.turmas.length ? 'Nenhuma turma cadastrada nesse dia da semana.' : 'Cadastre suas turmas fixas na aba <b>Turmas</b> para fazer a chamada aqui.'}</div>`; return;
+  }
+  $('chamada').innerHTML = dia.turmas.map(t => {
+    const aula = t.aula, pres = Object.fromEntries(dia.presencas.filter(p => aula && p.aula_id === aula.id).map(p => [p.aluno_id, p]));
+    const lista = [...t.aluno_ids.map(id => ({ id, tipo: 'fixo' })), ...t.reposicoes.filter(r => !t.aluno_ids.includes(r.aluno_id)).map(r => ({ id: r.aluno_id, tipo: 'repo' }))];
+    const cancelada = aula && aula.status === 'cancelada';
+    return `<div class="ph" data-turma="${t.turma_id}" style="border-left:3px solid ${esc(t.nivel_id ? corDe([t.nivel_id]) : 'var(--verde)')}">
+      <div class="ph-cab"><div class="hora">${fmtHoraBig(t.hora)}</div><div class="q"><b>${esc(t.nome || 'Turma')}</b>
+        <div class="niveis" style="margin-top:4px">${t.nivel_id ? chipNivel(t.nivel_id) : ''}</div></div>
+        <span class="selo ${cancelada ? 'verm' : aula ? 'ok' : 'cinza'}">${cancelada ? 'Cancelada' : aula ? 'Chamada feita' : 'Pendente'}</span></div>
+      <div class="ph-res">${lista.length ? lista.map(({ id, tipo }) => { const p = pres[id] || {}; const st = p.status || (tipo === 'repo' ? 'reposicao' : 'presente');
+        return `<div class="item chamada-linha" data-aluno="${id}" data-tipo="${tipo}"><div class="q"><b>${esc(nomeAluno(id))}</b>
+          <span>${tipo === 'repo' ? 'Reposição' : 'Fixo'}${p.nota_aluno ? ` · ${'★'.repeat(p.nota_aluno)}${p.comentario_aluno ? ' "' + esc(p.comentario_aluno) + '"' : ''}` : ''}</span></div>
+          <div class="seg"><button data-st="${tipo === 'repo' ? 'reposicao' : 'presente'}" class="${st !== 'falta' ? 'on' : ''}">Veio</button><button data-st="falta" class="${st === 'falta' ? 'on falta' : ''}">Faltou</button></div>
+          <input class="com-aluno" placeholder="Recado para o aluno (opcional)" value="${esc(p.comentario || '')}"></div>`; }).join('')
+        : '<div class="item"><span class="cinza">Nenhum aluno nessa turma.</span></div>'}</div>
+      <div style="padding:12px 16px;display:grid;gap:10px"><input class="tema" placeholder="Tema da aula (ex.: saque e devolução)" value="${esc(aula && aula.tema || '')}">
+        <input class="com-geral" placeholder="Comentário geral da aula (todos veem)" value="${esc(aula && aula.comentario || '')}"></div>
+      <div class="ph-acoes"><button class="btn mini" data-salvar>Salvar chamada</button>
+        <button class="btn sec mini" data-lembrar>Lembrar alunos</button>
+        <button class="btn perigo mini" data-cancelar-aula>Cancelar aula (chuva)</button></div></div>`;
+  }).join('');
+  $('chamada').querySelectorAll('.seg button').forEach(b => b.onclick = () => {
+    const seg = b.parentElement; seg.querySelectorAll('button').forEach(x => x.classList.remove('on', 'falta'));
+    b.classList.add('on'); if (b.dataset.st === 'falta') b.classList.add('falta');
+  });
+  $('chamada').querySelectorAll('[data-turma]').forEach(card => {
+    const t = dia.turmas.find(x => x.turma_id === +card.dataset.turma);
+    const coletar = status => ({ turma_id: t.turma_id, data: DIA_HOJE, hora: t.hora.slice(0,5), status,
+      tema: card.querySelector('.tema').value, comentario: card.querySelector('.com-geral').value,
+      presencas: [...card.querySelectorAll('.chamada-linha')].map(l => ({ aluno_id: +l.dataset.aluno,
+        status: status === 'cancelada' ? 'falta' : l.querySelector('.seg .on').dataset.st, comentario: l.querySelector('.com-aluno').value })) });
+    card.querySelector('[data-salvar]').onclick = async e => { ocupado(e.target, true); await v3('admin_salvar_aula', coletar('realizada')).catch(err => toast(err.message, true)); toast('Chamada salva ✅'); abaHoje(); };
+    card.querySelector('[data-lembrar]').onclick = () => {
+      const ids = [...card.querySelectorAll('.chamada-linha')].map(l => +l.dataset.aluno);
+      modal(`<h2>LEMBRAR <span class="verde">ALUNOS</span></h2><p class="sub">${nomeDia(DIA_HOJE)} às ${fmtHora(t.hora)} — toque em cada um.</p>
+        <div class="lista">${ids.map(id => { const a = ADM.alunos.find(x => x.id === id) || {};
+          return `<div class="item"><div class="q"><b>${esc(a.nome)}</b><span>${a.whatsapp ? fmtWpp(a.whatsapp) : 'sem WhatsApp'}</span></div>
+          ${a.whatsapp ? `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWpp(a.whatsapp, preencher(ADM.config.msg_lembrete_aula, { nome: a.nome.split(' ')[0], dia: nomeDia(DIA_HOJE).toLowerCase(), hora: fmtHora(t.hora) }))}">${ICON.wpp} Lembrar</a>` : ''}</div>`; }).join('')}</div>
+        <div class="rodape-m"><button class="btn" data-fechar>Pronto</button></div>`);
+    };
+    card.querySelector('[data-cancelar-aula]').onclick = async () => {
+      if (!await confirmar({ titulo: 'CANCELAR AULA?', ok: 'Cancelar e dar créditos', perigo: true,
+        texto: `Os alunos fixos dessa turma ganham <b>1 crédito de reposição</b> cada (vale ${esc(ADM.config.validade_dias || 40)} dias).` })) return;
+      await v3('admin_salvar_aula', coletar('cancelada'));
+      if (t.aluno_ids.length) await post('/creditos', { aluno_ids: t.aluno_ids, quantidade: 1, origem: 'chuva', motivo: `Chuva · ${diaCompleto(DIA_HOJE)} ${fmtHora(t.hora)}` });
+      await recarregar(`Aula cancelada. ${t.aluno_ids.length} crédito(s) lançado(s) 🌧️`);
+      avisarAfetados(t.aluno_ids.map(id => ADM.alunos.find(a => a.id === id)).filter(Boolean).map(a => ({ nome: a.nome, whatsapp: a.whatsapp })),
+        { data: DIA_HOJE, hora: t.hora }, 'chuva');
+    };
+  });
+}
+
+/* ---------- TURMAS ---------- */
+function abaTurmas(){
+  const m = $('p-miolo');
+  const porDia = [1,2,3,4,5,6,0].map(d => [d, ADM.turmas.filter(t => t.dia_semana === d)]).filter(([, ts]) => ts.length);
+  m.innerHTML = `<div class="p-titulo"><h2>TURMAS <span class="verde">FIXAS</span></h2><button class="btn auto mini" id="nova-t">+ Nova turma</button></div>
+    <div class="aviso">As turmas fixas alimentam a chamada do dia, o "dia de chuva" e a próxima aula que o aluno vê no app.</div>
+    ${porDia.length ? porDia.map(([d, ts]) => `<div class="dia"><h3>${SEM_L[d].replace(/^./, x => x.toUpperCase())}</h3><span>${ts.length} turma(s)</span></div>
+      ${ts.map(t => { const livres = t.capacidade - t.aluno_ids.length;
+        return `<div class="ph clicavel" data-t="${t.id}" style="border-left:3px solid ${esc(t.nivel_id ? corDe([t.nivel_id]) : 'var(--verde)')};cursor:pointer">
+        <div class="ph-cab"><div class="hora">${fmtHoraBig(t.hora)}</div><div class="q"><b>${esc(t.nome || 'Turma')}</b>${t.ativo ? '' : ' <span class="selo cinza">Inativa</span>'}
+          <div class="niveis" style="margin:4px 0">${t.nivel_id ? chipNivel(t.nivel_id) : ''}</div><span>${t.aluno_ids.map(id => esc(nomeAluno(id))).join(', ') || 'Sem alunos'}</span></div>
+          <div style="text-align:right"><div class="ocup">${t.aluno_ids.length}/${t.capacidade}</div>${livres > 0 ? `<span class="selo ok">+${livres} vaga${livres > 1 ? 's' : ''}</span>` : '<span class="selo cinza">Cheia</span>'}</div></div></div>`; }).join('')}`).join('')
+    : '<div class="vazio"><span class="bebas">Nenhuma turma ainda</span>Crie suas turmas fixas (ex.: Terça 18h · Intermediário) e coloque os alunos.</div>'}`;
+  $('nova-t').onclick = () => formTurma();
+  m.querySelectorAll('[data-t]').forEach(el => el.onclick = () => formTurma(ADM.turmas.find(t => t.id === +el.dataset.t)));
+}
+function formTurma(t){
+  const novo = !t; t = t || { nome: '', dia_semana: 2, hora: '18:00', nivel_id: null, capacidade: 4, aluno_ids: [], ativo: true };
+  const sel = new Set(t.aluno_ids);
+  modal(`<h2>${novo ? 'NOVA' : 'EDITAR'} <span class="verde">TURMA</span></h2><div id="ft-msg"></div>
+    <div class="linha2"><div class="campo"><label>Dia</label><select id="ft-dia">${[1,2,3,4,5,6,0].map(d => `<option value="${d}" ${t.dia_semana === d ? 'selected' : ''}>${SEM_L[d]}</option>`).join('')}</select></div>
+    <div class="campo"><label>Hora</label><input type="time" id="ft-hora" value="${esc(String(t.hora).slice(0,5))}" step="900"></div></div>
+    <div class="linha2"><div class="campo"><label>Nível</label><select id="ft-nivel"><option value="">—</option>${ADM.niveis.map(n => `<option value="${n.id}" ${t.nivel_id === n.id ? 'selected' : ''}>${esc(n.nome)}</option>`).join('')}</select></div>
+    <div class="campo"><label>Capacidade</label><input type="number" id="ft-cap" min="1" max="12" value="${t.capacidade}"></div></div>
+    <div class="campo"><label>Nome (opcional)</label><input id="ft-nome" value="${esc(t.nome || '')}" placeholder="Ex.: Quarteto Intermediário"></div>
+    <label>Alunos (<span id="ft-n">${sel.size}</span>)</label>
+    <div class="campo"><input id="ft-q" placeholder="Buscar aluno…"></div><div class="alunos-check" id="ft-lista"></div>
+    <label class="check-linha"><input type="checkbox" id="ft-ativo" ${t.ativo ? 'checked' : ''}> <span>Turma ativa</span></label>
+    <div class="rodape-m">${novo ? '' : '<button class="btn perigo auto" id="ft-del">Apagar</button>'}<button class="btn sec" data-fechar>Voltar</button><button class="btn" id="ft-ok">Salvar</button></div>`,
+  (m, fechar) => {
+    const desenhar = () => {
+      const q = m.querySelector('#ft-q').value.toLowerCase(), niv = +m.querySelector('#ft-nivel').value;
+      const lista = ADM.alunos.filter(a => a.ativo && (!q || a.nome.toLowerCase().includes(q)))
+        .sort((x, y) => (sel.has(y.id) - sel.has(x.id)) || ((niv && y.nivel_ids.includes(niv)) - (niv && x.nivel_ids.includes(niv))) || x.nome.localeCompare(y.nome));
+      m.querySelector('#ft-lista').innerHTML = lista.map(a => `<label class="check-linha"><input type="checkbox" data-a="${a.id}" ${sel.has(a.id) ? 'checked' : ''}>
+        <span style="flex:1">${esc(a.nome)}</span><span class="niveis">${a.nivel_ids.map(chipNivel).join('')}</span></label>`).join('');
+      m.querySelectorAll('[data-a]').forEach(c => c.onchange = () => { c.checked ? sel.add(+c.dataset.a) : sel.delete(+c.dataset.a); m.querySelector('#ft-n').textContent = sel.size; });
+    };
+    m.querySelector('#ft-q').oninput = desenhar; m.querySelector('#ft-nivel').onchange = desenhar; desenhar();
+    m.querySelector('#ft-ok').onclick = async e => {
+      ocupado(e.target, true);
+      try { await v3('admin_salvar_turma', { id: novo ? null : t.id, nome: m.querySelector('#ft-nome').value, dia: +m.querySelector('#ft-dia').value,
+        hora: m.querySelector('#ft-hora').value, nivel_id: +m.querySelector('#ft-nivel').value || null, capacidade: +m.querySelector('#ft-cap').value || 4,
+        aluno_ids: [...sel], ativo: m.querySelector('#ft-ativo').checked }); fechar(); recarregar('Turma salva.'); }
+      catch(err){ ocupado(e.target, false); m.querySelector('#ft-msg').innerHTML = `<div class="aviso erro">${esc(err.message)}</div>`; }
+    };
+    const d = m.querySelector('#ft-del'); if (d) d.onclick = async () => {
+      if (!await confirmar({ titulo: 'APAGAR TURMA?', perigo: true, ok: 'Apagar', texto: 'Os alunos continuam cadastrados; só a turma some. O histórico de chamadas fica guardado.' })) return;
+      await v3('admin_excluir_turma', { id: t.id }); fechar(); recarregar('Turma apagada.');
+    };
+  });
+}
+
+/* ---------- FINANCEIRO ---------- */
+let MES_FIN = null, FILTRO_FIN = 'todos';
+async function abaFinanceiro(){
+  const m = $('p-miolo'); MES_FIN = MES_FIN || hojeISO().slice(0,7) + '-01';
+  m.innerHTML = '<div class="vazio"><span class="girando"></span></div>';
+  let f; try { f = await v3('admin_financeiro', { mes: MES_FIN }); } catch(e){ return; }
+  const hoje = hojeISO(), itens = f.itens;
+  const atras = i => i.status === 'pendente' && i.vencimento < hoje;
+  const soma = arr => arr.reduce((s, i) => s + Number(i.valor), 0);
+  const previsto = soma(itens.filter(i => i.status !== 'isento')), recebido = soma(itens.filter(i => i.status === 'pago'));
+  const filtros = { todos: () => true, aberto: i => i.status === 'pendente' && !atras(i), informados: i => i.status === 'informado', atrasados: atras, pagos: i => i.status === 'pago' };
+  const lista = itens.filter(filtros[FILTRO_FIN]);
+  const SEL = i => atras(i) ? ['verm','Atrasada'] : ({ pendente: ['pend','Em aberto'], informado: ['azul','Informou pagamento'], pago: ['ok','Paga'], isento: ['cinza','Isenta'] })[i.status];
+  const inicio = ADM.config.financeiro_inicio;
+  m.innerHTML = `<div class="p-titulo"><h2>FINAN<span class="verde">CEIRO</span></h2>
+      <div style="display:flex;gap:6px;align-items:center"><button class="btn sec mini" id="mes-ant">‹</button><b style="min-width:130px;text-align:center">${esc(nomeMes(f.mes).replace(/^./, x => x.toUpperCase()))}</b><button class="btn sec mini" id="mes-prox">›</button></div></div>
+    ${!itens.length ? `<div class="aviso amarelo">Nenhuma mensalidade nesse mês. ${inicio && MES_FIN < inicio ? `O financeiro começa em <b>${esc(nomeMes(inicio))}</b> (mude em Ajustes).` : 'Confira se os alunos têm valor de mensalidade cadastrado.'}</div>` : ''}
+    <div class="kpis"><div class="kpi"><div class="v" style="font-size:1.9rem">${dinheiro(previsto)}</div><div class="l">Previsto</div></div>
+      <div class="kpi" style="--k:var(--verde)"><div class="v" style="font-size:1.9rem">${dinheiro(recebido)}</div><div class="l">Recebido</div></div>
+      <div class="kpi" style="--k:var(--amarelo)"><div class="v" style="font-size:1.9rem">${dinheiro(previsto - recebido)}</div><div class="l">Falta receber</div></div>
+      <div class="kpi" style="--k:var(--vermelho)"><div class="v">${itens.filter(atras).length}</div><div class="l">Atrasadas</div></div></div>
+    <div class="turmas-sel">${[['todos','Todos'],['aberto','Em aberto'],['informados','Informaram'],['atrasados','Atrasados'],['pagos','Pagos']].map(([k, t]) =>
+      `<button data-f="${k}" class="${FILTRO_FIN === k ? 'on' : ''}">${t} (${itens.filter(filtros[k]).length})</button>`).join('')}</div>
+    ${lista.length ? `<div class="lista">${lista.map(i => { const [sc, st] = SEL(i);
+      return `<div class="item"><div class="q"><b>${esc(i.nome)}</b><span>${dinheiro(i.valor)} · venc. ${dataCurta(i.vencimento)}${i.status === 'pago' ? ` · ${esc(i.forma || '')} · recibo nº ${i.recibo}` : ''}</span></div>
+        <span class="selo ${sc}">${st}</span><div class="btns">
+        ${['pendente','informado'].includes(i.status) ? `<button class="btn mini" data-pagar="${i.id}">Recebi</button>` : ''}
+        ${i.status === 'pendente' && i.whatsapp ? `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWpp(i.whatsapp, preencher(ADM.config.msg_cobranca, { nome: (i.responsavel || i.nome).split(' ')[0], mes: nomeMes(f.mes), valor: dinheiro(i.valor), vencimento: dataCurta(i.vencimento), link: SITE }))}">${ICON.wpp} Cobrar</a>` : ''}
+        ${i.status === 'pago' ? `<button class="btn sec mini" data-recibo="${i.id}">Recibo</button>` : ''}
+        <button class="btn sec mini" data-mais="${i.id}">…</button></div></div>`; }).join('')}</div>` : itens.length ? '<div class="vazio">Nada nesse filtro.</div>' : ''}
+    ${f.atrasadas_outros_meses.length ? `<div class="p-titulo"><h2>ATRASADAS DE <span style="color:var(--vermelho)">MESES ANTERIORES</span></h2></div>
+      <div class="lista">${f.atrasadas_outros_meses.map(i => `<div class="item"><div class="q"><b>${esc(i.nome)}</b><span>${esc(nomeMes(i.competencia))} · ${dinheiro(i.valor)} · venc. ${dataCurta(i.vencimento)}</span></div>
+        <div class="btns"><button class="btn mini" data-pagar="${i.id}">Recebi</button></div></div>`).join('')}</div>` : ''}
+    ${f.historico.length ? `<div class="p-titulo"><h2>ÚLTIMOS <span class="verde">MESES</span></h2></div><div class="lista"><div class="barra">${f.historico.map(x => {
+        const max = Math.max(...f.historico.map(y => +y.previsto || 0), 1);
+        return `<div class="col"><span class="n">${Math.round((+x.recebido || 0) / 1000 * 10) / 10}k</span><div class="b" style="height:${Math.round((+x.recebido || 0) / max * 120)}px"></div></div>`; }).join('')}</div>
+      <div class="barra-leg">${f.historico.map(x => `<span>${MESES[+x.mes.slice(5)-1].slice(0,3)}<br>de ${Math.round(+x.previsto)}</span>`).join('')}</div></div>` : ''}`;
+  $('mes-ant').onclick = () => { MES_FIN = somaMes(MES_FIN, -1); abaFinanceiro(); };
+  $('mes-prox').onclick = () => { MES_FIN = somaMes(MES_FIN, 1); abaFinanceiro(); };
+  m.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { FILTRO_FIN = b.dataset.f; abaFinanceiro(); });
+  const todos = [...itens, ...f.atrasadas_outros_meses];
+  m.querySelectorAll('[data-pagar]').forEach(b => b.onclick = () => {
+    const i = todos.find(x => x.id === +b.dataset.pagar);
+    modal(`<h2>RECEBI <span class="verde">${dinheiro(i.valor)}</span></h2><p class="sub">${esc(i.nome)}</p>
+      <div class="campo"><label>Forma</label><div class="turmas-sel" id="pg-forma">${['PIX','Dinheiro','Cartão','Transferência'].map((x, k) => `<button type="button" class="${k ? '' : 'on'}">${x}</button>`).join('')}</div></div>
+      <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="pg-ok">Confirmar pagamento</button></div>`,
+    (mm, fechar) => {
+      mm.querySelectorAll('#pg-forma button').forEach(x => x.onclick = () => { mm.querySelectorAll('#pg-forma button').forEach(y => y.classList.remove('on')); x.classList.add('on'); });
+      mm.querySelector('#pg-ok').onclick = async () => { await v3('admin_mensalidade', { id: i.id, status: 'pago', forma: mm.querySelector('#pg-forma .on').textContent }); fechar(); toast('Pagamento registrado ✅'); await recarregarSilencioso(); abaFinanceiro(); };
+    });
+  });
+  m.querySelectorAll('[data-recibo]').forEach(b => b.onclick = () => { const i = itens.find(x => x.id === +b.dataset.recibo);
+    abrirRecibo({ numero: i.recibo, nome: i.nome, responsavel: i.responsavel, valor: i.valor, competencia: f.mes, forma: i.forma, pago_em: i.pago_em }); });
+  m.querySelectorAll('[data-mais]').forEach(b => b.onclick = () => {
+    const i = itens.find(x => x.id === +b.dataset.mais);
+    modal(`<h2>${esc(i.nome)}</h2><p class="sub">${esc(nomeMes(f.mes))}</p>
+      <div class="campo"><label>Valor deste mês</label><input type="number" step="0.01" id="mx-valor" value="${i.valor}"></div>
+      <div class="campo"><label>Observação</label><input id="mx-obs" value="${esc(i.observacao || '')}"></div>
+      <div class="acoes" style="margin-top:0"><button class="btn" id="mx-salvar">Salvar valor</button>
+        ${i.status !== 'pendente' ? '<button class="btn sec" id="mx-reabrir">Voltar para "em aberto"</button>' : ''}
+        ${i.status !== 'isento' ? '<button class="btn sec" id="mx-isentar">Isentar este mês</button>' : ''}
+        <button class="btn perigo" id="mx-apagar">Apagar cobrança</button></div>
+      <div class="rodape-m"><button class="btn sec" data-fechar>Fechar</button></div>`,
+    (mm, fechar) => {
+      const fim = async (body, msg) => { await v3('admin_mensalidade', { id: i.id, ...body }); fechar(); toast(msg); await recarregarSilencioso(); abaFinanceiro(); };
+      mm.querySelector('#mx-salvar').onclick = () => fim({ valor: +mm.querySelector('#mx-valor').value, observacao: mm.querySelector('#mx-obs').value }, 'Salvo.');
+      const r = mm.querySelector('#mx-reabrir'); if (r) r.onclick = () => fim({ status: 'pendente' }, 'Voltou para em aberto.');
+      const s = mm.querySelector('#mx-isentar'); if (s) s.onclick = () => fim({ status: 'isento' }, 'Mês isento.');
+      mm.querySelector('#mx-apagar').onclick = async () => { await v3('admin_excluir_mensalidade', { id: i.id }); fechar(); toast('Cobrança apagada.'); abaFinanceiro(); };
+    });
+  });
+}
+function somaMes(iso, n){ const [y, mo] = iso.split('-').map(Number); const d = new Date(Date.UTC(y, mo - 1 + n, 1)); return d.toISOString().slice(0,10); }
+async function recarregarSilencioso(){ try { ADM = await v3('admin_dados_v3'); INFO.config = ADM.config; } catch(e){} }
+
+/* ---------- ALUNO (ficha completa) ---------- */
+function formAluno(a){
+  const novo = !a;
+  a = a || { nome:'', whatsapp:'', nivel_ids:[], turmas:[], observacao:'', ativo:true, creditos:0 };
+  const x = novo ? { valor_mensal: null, dia_vencimento: 10, responsavel: '', checklist: {}, turma_ids: [] } : ALEX(a.id);
+  const creds = novo ? [] : ADM.creditos.filter(c => c.aluno_id === a.id);
+  const STC = { disponivel:['ok','Disponível'], reservado:['pend','Em uso'], usado:['cinza','Usado'], perdido:['verm','Perdido'], removido:['cinza','Removido'], vencido:['verm','Vencido'] };
+  const turmaSel = new Set(x.turma_ids || []);
+  modal(`<h2>${novo ? 'NOVO' : 'FICHA DO'} <span class="verde">ALUNO</span></h2><div id="fa-msg"></div>
+    <div class="campo"><label>Nome</label><input id="fa-nome" value="${esc(a.nome)}"></div>
+    <div class="linha2"><div class="campo"><label>WhatsApp</label><input id="fa-wpp" type="tel" inputmode="numeric" value="${esc(fmtWpp(a.whatsapp))}" placeholder="(22) 99999-9999"></div>
+    <div class="campo"><label>Responsável (crianças)</label><input id="fa-resp" value="${esc(x.responsavel || '')}" placeholder="Nome do pai/mãe"></div></div>
+    <div class="campo"><label>Nível(eis)</label>${seletorNiveis(a.nivel_ids)}</div>
+    <div class="linha2"><div class="campo"><label>Mensalidade (R$)</label><input id="fa-valor" type="number" step="0.01" value="${x.valor_mensal ?? ''}" placeholder="Ex.: 260"></div>
+    <div class="campo"><label>Vence todo dia</label><input id="fa-dia" type="number" min="1" max="28" value="${x.dia_vencimento || 10}"></div></div>
+    ${ADM.turmas.length ? `<div class="campo"><label>Turmas fixas</label><div class="turmas-sel" id="fa-turmas">${ADM.turmas.map(t =>
+      `<button type="button" data-tid="${t.id}" class="${turmaSel.has(t.id) ? 'on' : ''}">${esc(nomeTurma(t))}</button>`).join('')}</div></div>` : ''}
+    <div class="campo"><label>Observação</label><input id="fa-obs" value="${esc(a.observacao||'')}"></div>
+    <label class="check-linha"><input type="checkbox" id="fa-ativo" ${a.ativo ? 'checked' : ''}> <span>Aluno ativo</span></label>
+    ${novo ? '' : `
+    <div class="p-titulo" style="margin-top:18px"><h2 style="font-size:1.5rem">PARA SUBIR DE NÍVEL</h2></div><div id="fa-check"></div>
+    <div class="p-titulo"><h2 style="font-size:1.5rem">AVALIAÇÃO TÉCNICA</h2><button class="btn auto mini" id="fa-aval">+ Nova avaliação</button></div><div id="fa-avals" class="cinza pequeno">Carregando…</div>
+    <div class="p-titulo"><h2 style="font-size:1.5rem">CRÉDITOS · ${a.creditos}</h2><button class="btn auto mini" id="fa-mais">+ Dar crédito</button></div>
+      ${creds.length ? `<div class="lista">${creds.map(c => `<div class="item"><div class="q"><b>${c.origem === 'chuva' ? 'Chuva' : c.origem === 'devolucao' ? 'Devolução' : 'Manual'}${c.motivo ? ' · ' + esc(c.motivo) : ''}</b>
+          <span>Criado ${dataDe(c.criado_em)} · vence ${dataDe(c.expira_em)}</span></div><span class="selo ${(STC[c.status]||['cinza'])[0]}">${(STC[c.status]||['',c.status])[1]}</span>
+          ${c.status === 'disponivel' ? `<button class="btn perigo mini" data-rmc="${c.id}">Remover</button>` : ''}</div>`).join('')}</div>` : '<p class="cinza pequeno">Nenhum crédito ainda.</p>'}
+    <div class="p-titulo"><h2 style="font-size:1.5rem">ACESSO</h2></div>
+      <p class="cinza pequeno">${x.tem_pin ? 'O aluno já criou o PIN de acesso.' : 'O aluno ainda não entrou na área do aluno.'} ${x.em_dia === false ? '<span class="selo verm">Mensalidade atrasada</span>' : ''}</p>
+      ${x.tem_pin ? '<button class="btn sec auto mini" id="fa-reset">Zerar PIN (aluno cria outro)</button>' : ''}`}
+    <div class="rodape-m">${novo ? '' : '<button class="btn perigo auto" id="fa-del">Excluir</button>'}<button class="btn sec" data-fechar>Voltar</button><button class="btn" id="fa-salvar">Salvar</button></div>`,
+  async (m, fechar) => {
+    ligarSeletor(m);
+    m.querySelector('#fa-wpp').oninput = e => e.target.value = mascaraWpp(e.target.value);
+    m.querySelectorAll('[data-tid]').forEach(b => b.onclick = () => { b.classList.toggle('on'); });
+    const checklist = { ...(x.checklist || {}) };
+    const desenharCheck = () => {
+      const niv = lerSeletor(m)[0], n = ADM.niveis.find(v => v.id === niv), crit = (n && n.criterios) || [];
+      const box = m.querySelector('#fa-check'); if (!box) return;
+      box.innerHTML = crit.length ? crit.map((c, k) => `<label class="check-linha"><input type="checkbox" data-ck="${k}" ${checklist[c] ? 'checked' : ''}><span>${esc(c)}</span></label>`).join('')
+        : '<p class="cinza pequeno">Sem critérios para esse nível. Cadastre em Ajustes → Níveis.</p>';
+      box.querySelectorAll('[data-ck]').forEach(c => c.onchange = () => { checklist[crit[+c.dataset.ck]] = c.checked; });
+    };
+    m.querySelectorAll('[data-niv]').forEach(b => b.addEventListener('click', desenharCheck)); desenharCheck();
+    m.querySelector('#fa-salvar').onclick = async e => {
+      const body = { id: novo ? null : a.id, nome: m.querySelector('#fa-nome').value, whatsapp: soNum(m.querySelector('#fa-wpp').value) || null,
+        nivel_ids: lerSeletor(m), turmas: a.turmas || [], observacao: m.querySelector('#fa-obs').value, ativo: m.querySelector('#fa-ativo').checked };
+      ocupado(e.target, true);
+      try {
+        const r = await post('/aluno', body);
+        const valor = m.querySelector('#fa-valor').value;
+        await v3('admin_salvar_aluno_extra', { id: r.id, valor: valor === '' ? null : +valor, dia: +m.querySelector('#fa-dia').value || 10,
+          responsavel: m.querySelector('#fa-resp').value, checklist, turma_ids: ADM.turmas.length ? [...m.querySelectorAll('[data-tid].on')].map(b => +b.dataset.tid) : null });
+        fechar(); recarregar('Aluno salvo.');
+      } catch(err){ ocupado(e.target, false); m.querySelector('#fa-msg').innerHTML = `<div class="aviso erro">${esc(err.message)}</div>`; }
+    };
+    const d = m.querySelector('#fa-del'); if (d) d.onclick = async () => {
+      if (!await confirmar({ titulo:'EXCLUIR ALUNO?', perigo:true, ok:'Excluir', texto:`${esc(a.nome)} e todo o histórico (pagamentos, chamadas, avaliações) serão apagados. Se ele só parou de treinar, prefira desmarcar "Aluno ativo".` })) return;
+      await del(`/aluno/${a.id}`); fechar(); recarregar('Aluno excluído.');
+    };
+    const mais = m.querySelector('#fa-mais'); if (mais) mais.onclick = () => { fechar(); darCredito([a.id]); };
+    m.querySelectorAll('[data-rmc]').forEach(b => b.onclick = async () => { await del(`/credito/${b.dataset.rmc}`); fechar(); await recarregar('Crédito removido.'); formAluno(ADM.alunos.find(y => y.id === a.id)); });
+    const rs = m.querySelector('#fa-reset'); if (rs) rs.onclick = async () => {
+      if (!await confirmar({ titulo: 'ZERAR PIN?', ok: 'Zerar', texto: 'O aluno vai criar um PIN novo no próximo acesso. Quem estiver logado com esse número sai do app.' })) return;
+      await v3('admin_resetar_pin', { whatsapp: a.whatsapp }); toast('PIN zerado.'); fechar(); recarregar();
+    };
+    const av = m.querySelector('#fa-aval'); if (av) av.onclick = () => { fechar(); formAvaliacao(a); };
+    if (!novo){
+      const lista = await v3('admin_avaliacoes', { aluno_id: a.id }).catch(() => []);
+      const box = m.querySelector('#fa-avals');
+      if (box) box.innerHTML = lista.length ? `<div class="lista">${lista.map(v => `<div class="item"><div class="q"><b>${diaCompleto(v.data)}</b>
+          <span>${Object.entries(v.notas).map(([k, n]) => `${esc(k)} ${n}`).join(' · ')}</span></div><button class="btn perigo mini" data-rmav="${v.id}">Apagar</button></div>`).join('')}</div>`
+        : 'Nenhuma avaliação ainda. Faça a primeira para o aluno ver o gráfico de evolução.';
+      m.querySelectorAll('[data-rmav]').forEach(b => b.onclick = async () => { await v3('admin_excluir_avaliacao', { id: +b.dataset.rmav }); b.closest('.item').remove(); toast('Avaliação apagada.'); });
+    }
+  });
+}
+function formAvaliacao(a){
+  const habs = ADM.config.habilidades || ['Forehand','Backhand','Saque','Devolução','Voleio','Movimentação','Tático','Mental'];
+  const notas = Object.fromEntries(habs.map(h => [h, 3]));
+  modal(`<h2>AVALIAR <span class="verde">${esc(a.nome.split(' ')[0].toUpperCase())}</span></h2><p class="sub">De 1 (começando) a 5 (excelente para o nível). O aluno vê o gráfico na área dele.</p>
+    <div class="campo"><label>Data</label><input type="date" id="av-data" value="${hojeISO()}"></div>
+    ${habs.map(h => `<div class="nota-linha"><span>${esc(h)}</span><div class="seg notas" data-h="${esc(h)}">${[1,2,3,4,5].map(n => `<button type="button" class="${n === 3 ? 'on' : ''}">${n}</button>`).join('')}</div></div>`).join('')}
+    <div class="campo" style="margin-top:14px"><label>Observação para o aluno</label><textarea id="av-obs" placeholder="Pontos fortes, o que treinar a seguir…"></textarea></div>
+    <div class="rodape-m"><button class="btn sec" data-fechar>Voltar</button><button class="btn" id="av-ok">Salvar avaliação</button></div>`,
+  (m, fechar) => {
+    m.querySelectorAll('.notas').forEach(seg => seg.querySelectorAll('button').forEach(b => b.onclick = () => {
+      seg.querySelectorAll('button').forEach(x => x.classList.remove('on')); b.classList.add('on'); notas[seg.dataset.h] = +b.textContent; }));
+    m.querySelector('#av-ok').onclick = async e => {
+      ocupado(e.target, true);
+      await v3('admin_salvar_avaliacao', { aluno_id: a.id, data: m.querySelector('#av-data').value, notas, observacao: m.querySelector('#av-obs').value });
+      fechar(); await recarregar('Avaliação salva 📈'); formAluno(ADM.alunos.find(y => y.id === a.id));
+    };
+  });
+}
+
+/* ---------- CONTEÚDO, AVISOS, INDICAÇÕES ---------- */
+function abaConteudo(){
+  const m = $('p-miolo');
+  const ST = { nova: ['pend','Nova'], contatada: ['azul','Contatada'], fechou: ['ok','Fechou'], nao_fechou: ['cinza','Não fechou'] };
+  m.innerHTML = `<div class="p-titulo"><h2>INDICA<span class="verde">ÇÕES</span></h2></div>
+    ${ADM.indicacoes.length ? `<div class="lista">${ADM.indicacoes.map(i => `<div class="item"><div class="q"><b>${esc(i.nome)}</b>
+      <span>Indicado por ${esc(i.indicador || '—')} · ${dataDe(i.criado_em)}${i.whatsapp ? ' · ' + fmtWpp(i.whatsapp) : ''}</span></div>
+      <select data-ind="${i.id}" style="width:auto;padding:8px 34px 8px 10px">${Object.entries(ST).map(([k, [, t]]) => `<option value="${k}" ${i.status === k ? 'selected' : ''}>${t}</option>`).join('')}</select>
+      ${i.whatsapp ? `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWpp(i.whatsapp, `Oi, ${i.nome.split(' ')[0]}! Aqui é o Matheus, professor de tênis. ${i.indicador ? i.indicador.split(' ')[0] + ' me indicou você' : 'Recebi sua indicação'} — bora marcar uma aula? 🎾`)}">${ICON.wpp} Chamar</a>` : ''}</div>`).join('')}</div>`
+      : '<div class="vazio">Quando um aluno indicar alguém pelo app, aparece aqui.</div>'}
+    <div class="p-titulo"><h2>MURAL DE <span class="verde">AVISOS</span></h2></div>
+    <div class="carta"><div class="campo"><label>Novo aviso (aparece no início do app)</label><input id="av-txt" placeholder="Ex.: Sem aula na sexta (feriado)."></div>
+      <div class="linha2"><div class="campo"><label>Mostrar até (opcional)</label><input type="date" id="av-ate"></div><div class="campo" style="display:flex;align-items:flex-end"><button class="btn" id="av-add">Publicar aviso</button></div></div>
+      ${ADM.avisos.map(v => `<div class="item" style="padding:10px 0"><div class="q"><b>${esc(v.texto)}</b><span>${v.ate ? 'até ' + dataCurta(v.ate) : 'sem data para sair'}</span></div><button class="btn perigo mini" data-rmaviso="${v.id}">Apagar</button></div>`).join('')}</div>
+    <div class="p-titulo"><h2>CONTEÚDO PARA <span class="verde">ALUNOS</span></h2><button class="btn auto mini" id="ct-novo">+ Conteúdo</button></div>
+    ${ADM.conteudos.length ? `<div class="lista">${ADM.conteudos.map(c => `<div class="item clicavel" data-ct="${c.id}"><div class="q"><b>${esc(c.titulo)}</b><span>${esc(c.url || '')}</span></div>
+      <div class="niveis">${chipsNiveis(c.nivel_ids)}</div></div>`).join('')}</div>` : '<div class="vazio">Coloque links dos seus Reels, vídeos de exercícios e dicas por nível. Eles aparecem na aba Evolução do aluno.</div>'}`;
+  m.querySelectorAll('[data-ind]').forEach(s => s.onchange = async () => { await v3('admin_indicacao_status', { id: +s.dataset.ind, status: s.value }); recarregar('Indicação atualizada.'); });
+  $('av-add').onclick = async () => { const t = $('av-txt').value.trim(); if (!t) return; await v3('admin_salvar_aviso', { texto: t, ate: $('av-ate').value || null }); recarregar('Aviso publicado 📢'); };
+  m.querySelectorAll('[data-rmaviso]').forEach(b => b.onclick = async () => { await v3('admin_excluir_aviso', { id: +b.dataset.rmaviso }); recarregar('Aviso apagado.'); });
+  $('ct-novo').onclick = () => formConteudo();
+  m.querySelectorAll('[data-ct]').forEach(el => el.onclick = () => formConteudo(ADM.conteudos.find(c => c.id === +el.dataset.ct)));
+}
+function formConteudo(c){
+  const novo = !c; c = c || { titulo: '', url: '', descricao: '', nivel_ids: [] };
+  modal(`<h2>${novo ? 'NOVO' : 'EDITAR'} <span class="verde">CONTEÚDO</span></h2>
+    <div class="campo"><label>Título</label><input id="ct-t" value="${esc(c.titulo)}" placeholder="Ex.: 3 exercícios para o saque"></div>
+    <div class="campo"><label>Link (Instagram, YouTube…)</label><input id="ct-u" value="${esc(c.url || '')}" placeholder="https://"></div>
+    <div class="campo"><label>Descrição</label><input id="ct-d" value="${esc(c.descricao || '')}"></div>
+    <div class="campo"><label>Para quais níveis (nenhum = todos)</label>${seletorNiveis(c.nivel_ids)}</div>
+    <div class="rodape-m">${novo ? '' : '<button class="btn perigo auto" id="ct-del">Apagar</button>'}<button class="btn sec" data-fechar>Voltar</button><button class="btn" id="ct-ok">Salvar</button></div>`,
+  (m, fechar) => {
+    ligarSeletor(m);
+    m.querySelector('#ct-ok').onclick = async () => { if (!m.querySelector('#ct-t').value.trim()) return toast('Coloque um título.', true);
+      await v3('admin_salvar_conteudo', { id: novo ? null : c.id, titulo: m.querySelector('#ct-t').value, url: m.querySelector('#ct-u').value, descricao: m.querySelector('#ct-d').value, nivel_ids: lerSeletor(m) });
+      fechar(); recarregar('Conteúdo salvo.'); };
+    const d = m.querySelector('#ct-del'); if (d) d.onclick = async () => { await v3('admin_excluir_conteudo', { id: c.id }); fechar(); recarregar('Conteúdo apagado.'); };
+  });
+}
+
+/* ---------- dia de chuva usando as turmas reais ---------- */
+const escolherAlunosV2 = escolherAlunos;
+escolherAlunos = function(opts){
+  if (!ADM.turmas.length) return escolherAlunosV2(opts);
+  // converte as turmas reais para o formato de texto que o seletor antigo entende
+  const original = ADM.alunos.map(a => a.turmas);
+  ADM.alunos.forEach(a => { a.turmas = ADM.turmas.filter(t => t.aluno_ids.includes(a.id)).map(t => `${SEM[t.dia_semana]} ${fmtHora(t.hora)}${t.nome ? ' · ' + t.nome : ''}`); });
+  escolherAlunosV2(opts);
+  ADM.alunos.forEach((a, k) => { a.turmas = original[k]; });
+};
+
+/* ---------- AJUSTES (extras do v3) ---------- */
+const abaAjustesV2 = abaAjustes;
+abaAjustes = function(){
+  abaAjustesV2();
+  const c = ADM.config, m = $('p-miolo');
+  const box = document.createElement('div');
+  box.innerHTML = `<div class="p-titulo"><h2>PIX E <span class="verde">FINANCEIRO</span></h2></div>
+    <div class="carta"><div class="linha2"><div class="campo"><label>Tipo de chave</label><select id="aj-ptipo">${[['celular','Celular'],['cpf','CPF/CNPJ'],['email','E-mail'],['aleatoria','Chave aleatória']].map(([k, t]) => `<option value="${k}" ${(c.pix_tipo || 'celular') === k ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+      <div class="campo"><label>Chave PIX</label><input id="aj-pchave" value="${esc(c.pix_chave || '')}"></div></div>
+      <div class="linha2"><div class="campo"><label>Nome do recebedor</label><input id="aj-pnome2" value="${esc(c.pix_nome || '')}"></div>
+      <div class="campo"><label>Cidade</label><input id="aj-pcid" value="${esc(c.pix_cidade || 'Cabo Frio')}"></div></div>
+      <div class="campo"><label>Financeiro começa em (mês)</label><input type="month" id="aj-finini" value="${esc(String(c.financeiro_inicio || '').slice(0,7))}"></div>
+      <div class="campo"><label>Mensagem de cobrança</label><textarea id="aj-mcob">${esc(c.msg_cobranca || '')}</textarea><div class="cinza pequeno">Use {nome}, {mes}, {valor}, {vencimento} e {link}.</div></div>
+      <div class="campo"><label>Mensagem de lembrete de aula</label><textarea id="aj-mlem">${esc(c.msg_lembrete_aula || '')}</textarea></div>
+      <div class="campo"><label>Benefício da indicação (aparece para o aluno)</label><input id="aj-ind" value="${esc(c.indicacao_beneficio || '')}"></div>
+      <div class="campo"><label>Habilidades avaliadas (uma por linha)</label><textarea id="aj-habs">${esc((c.habilidades || []).join('\n'))}</textarea></div>
+      <button class="btn" id="aj-salvar3">Salvar PIX e financeiro</button></div>
+    <div class="p-titulo"><h2>CRITÉRIOS PARA SUBIR DE <span class="verde">NÍVEL</span></h2></div>
+    <div class="lista">${ADM.niveis.map(n => `<div class="item" style="display:block"><div style="margin-bottom:8px">${chipNivel(n.id) || esc(n.nome)}</div>
+      <textarea data-crit="${n.id}" style="min-height:96px" placeholder="Um critério por linha">${esc((n.criterios || []).join('\n'))}</textarea>
+      <button class="btn sec mini" style="margin-top:8px" data-salvacrit="${n.id}">Salvar critérios</button></div>`).join('')}</div>`;
+  const ref = m.querySelector('#aj-sair') ? m.querySelector('#aj-sair').closest('div') : null;
+  m.insertBefore(box, m.querySelector('#aj-salvar').nextSibling);
+  $('aj-salvar3').onclick = async e => {
+    ocupado(e.target, true);
+    const ini = $('aj-finini').value;
+    await post('/config', { pix_tipo: $('aj-ptipo').value, pix_chave: $('aj-pchave').value.trim(), pix_nome: $('aj-pnome2').value, pix_cidade: $('aj-pcid').value,
+      msg_cobranca: $('aj-mcob').value, msg_lembrete_aula: $('aj-mlem').value, indicacao_beneficio: $('aj-ind').value,
+      habilidades: $('aj-habs').value.split('\n').map(s => s.trim()).filter(Boolean), ...(ini ? { financeiro_inicio: ini + '-01' } : {}) }).catch(err => toast(err.message, true));
+    recarregar('Salvo ✅');
+  };
+  m.querySelectorAll('[data-salvacrit]').forEach(b => b.onclick = async () => {
+    const id = +b.dataset.salvacrit;
+    await v3('admin_nivel_criterios', { id, criterios: m.querySelector(`[data-crit="${id}"]`).value.split('\n').map(s => s.trim()).filter(Boolean) });
+    toast('Critérios salvos.'); await recarregarSilencioso();
+  });
+};
+
+
+/* =========================================================
+   PAINEL v4: LOJA E COMPRA DE AULAS
+   ========================================================= */
+async function carregarPainel(){
+  try { ADM = await v3('admin_dados_v4'); } catch(e){ if (e.status !== 401) toast(e.message, true); return; }
+  INFO.niveis = ADM.niveis.filter(n => n.ativo); INFO.config = ADM.config;
+  desenharPainel();
+}
+async function recarregarSilencioso(){ try { ADM = await v3('admin_dados_v4'); INFO.config = ADM.config; } catch(e){} }
+const desenharPainelV3 = desenharPainel;
+desenharPainel = function(){
+  desenharPainelV3();
+  const p = ADM.pendencias || {}, n = (p.pedidos_novos || 0) + (p.pedidos_separar || 0);
+  const b = document.querySelector('[data-aba=loja]');
+  if (b && n) b.insertAdjacentHTML('beforeend', `<span class="badge">${n}</span>`);
+  if (ABA === 'loja') abaLoja();
+};
+let SUB_LOJA = 'pedidos', FILTRO_PED = 'abertos';
+function abaLoja(){
+  const m = $('p-miolo');
+  m.innerHTML = `<div class="turmas-sel" style="margin-bottom:16px"><button data-sub="pedidos" class="${SUB_LOJA === 'pedidos' ? 'on' : ''}">Pedidos</button>
+    <button data-sub="produtos" class="${SUB_LOJA === 'produtos' ? 'on' : ''}">Produtos</button></div><div id="loja-miolo"></div>`;
+  m.querySelectorAll('[data-sub]').forEach(b => b.onclick = () => { SUB_LOJA = b.dataset.sub; abaLoja(); });
+  (SUB_LOJA === 'pedidos' ? lojaPedidos : lojaProdutos)();
+}
+function lojaPedidos(){
+  const box = $('loja-miolo'), peds = ADM.pedidos;
+  const F = { abertos: p => ['aguardando','informado'].includes(p.status), separar: p => p.tipo === 'loja' && ['pago','separado'].includes(p.status),
+    concluidos: p => ['entregue'].includes(p.status) || (p.tipo === 'aulas' && p.status === 'pago'), cancelados: p => p.status === 'cancelado', todos: () => true };
+  const lista = peds.filter(F[FILTRO_PED]);
+  const ST = { aguardando: ['pend','Aguardando pagamento'], informado: ['azul','Informou pagamento'], pago: ['ok','Pago'], separado: ['ok','Separado'], entregue: ['cinza','Entregue'], cancelado: ['cinza','Cancelado'] };
+  const mes = hojeISO().slice(0, 7);
+  const vendidoMes = peds.filter(p => ['pago','separado','entregue'].includes(p.status) && String(p.pago_em || '').slice(0, 7) === mes).reduce((s, p) => s + Number(p.total), 0);
+  box.innerHTML = `<div class="kpis"><div class="kpi" style="--k:var(--amarelo)"><div class="v">${peds.filter(F.abertos).length}</div><div class="l">Aguardando pagamento</div></div>
+      <div class="kpi" style="--k:var(--azul)"><div class="v">${peds.filter(F.separar).length}</div><div class="l">Para separar/entregar</div></div>
+      <div class="kpi"><div class="v" style="font-size:1.9rem">${dinheiro(vendidoMes)}</div><div class="l">Vendido no mês</div></div>
+      <div class="kpi"><div class="v">${Object.values(ADM.saldo_aulas || {}).reduce((s, n) => s + n, 0)}</div><div class="l">Aulas compradas em aberto</div></div></div>
+    <div class="turmas-sel">${[['abertos','A receber'],['separar','Separar/entregar'],['concluidos','Concluídos'],['cancelados','Cancelados'],['todos','Todos']].map(([k, t]) =>
+      `<button data-fp="${k}" class="${FILTRO_PED === k ? 'on' : ''}">${t} (${peds.filter(F[k]).length})</button>`).join('')}</div>
+    ${lista.length ? `<div class="lista">${lista.map(p => { const [sc, st] = ST[p.status] || ['cinza', p.status];
+      return `<div class="item"><div class="q"><b>#${p.id} · ${esc(p.nome || '—')} · ${dinheiro(p.total)}</b>
+        <span>${p.tipo === 'aulas' ? '🎾 Compra de aulas · ' : ''}${esc(p.itens.map(i => `${i.qtd}× ${i.nome}${i.opcoes ? ' (' + i.opcoes + ')' : ''}`).join(' · '))}</span>
+        <span>${p.pagamento === 'pix' ? 'PIX' : 'Cartão na entrega'} · ${p.entrega === 'entrega' ? 'Entrega: ' + esc(p.endereco || '') : 'Retira na aula'} · ${dataDe(p.criado_em)}${p.observacao ? ' · "' + esc(p.observacao) + '"' : ''}</span></div>
+        <span class="selo ${sc}">${st}</span><div class="btns">
+        ${['aguardando','informado'].includes(p.status) ? `<button class="btn mini" data-pst="${p.id}" data-para="pago">Recebi</button>` : ''}
+        ${p.tipo === 'loja' && p.status === 'pago' ? `<button class="btn sec mini" data-pst="${p.id}" data-para="separado">Separado</button>` : ''}
+        ${p.tipo === 'loja' && ['pago','separado'].includes(p.status) ? `<button class="btn mini" data-pst="${p.id}" data-para="entregue">Entregue</button>` : ''}
+        ${['pago','separado','entregue'].includes(p.status) ? `<button class="btn sec mini" data-prec="${p.id}">Recibo</button>` : ''}
+        ${p.whatsapp ? `<a class="btn wpp mini" target="_blank" rel="noopener" href="${linkWpp(p.whatsapp, `Oi, ${(p.nome || '').split(' ')[0]}! Sobre o seu pedido #${p.id} (${dinheiro(p.total)}): `)}">${ICON.wpp}</a>` : ''}
+        ${!['cancelado','entregue'].includes(p.status) ? `<button class="btn perigo mini" data-pst="${p.id}" data-para="cancelado">Cancelar</button>` : ''}</div></div>`; }).join('')}</div>`
+      : '<div class="vazio">Nenhum pedido aqui.</div>'}`;
+  box.querySelectorAll('[data-fp]').forEach(b => b.onclick = () => { FILTRO_PED = b.dataset.fp; lojaPedidos(); });
+  box.querySelectorAll('[data-pst]').forEach(b => b.onclick = async () => {
+    const p = peds.find(x => x.id === +b.dataset.pst), para = b.dataset.para;
+    if (para === 'cancelado' && !await confirmar({ titulo: 'CANCELAR PEDIDO?', perigo: true, ok: 'Cancelar', texto: p.tipo === 'aulas' && p.status === 'pago' ? 'Atenção: os créditos dessa compra já foram lançados. Remova-os na ficha do aluno se precisar.' : 'O pedido fica marcado como cancelado.' })) return;
+    if (para === 'pago' && p.tipo === 'aulas' && !await confirmar({ titulo: 'CONFIRMAR PAGAMENTO?', ok: 'Recebi', texto: `${esc(p.nome)} recebe <b>${p.itens[0].qtd} aula(s)</b> de crédito na hora.` })) return;
+    await v3('admin_pedido_status', { id: p.id, status: para }).catch(e => toast(e.message, true));
+    await recarregarSilencioso(); toast(para === 'pago' ? 'Pagamento registrado ✅' : 'Pedido atualizado.'); desenharPainel();
+  });
+  box.querySelectorAll('[data-prec]').forEach(b => b.onclick = () => { const p = peds.find(x => x.id === +b.dataset.prec);
+    abrirRecibo({ numero: p.recibo, nome: p.nome, responsavel: p.responsavel, valor: p.total, forma: p.forma, pago_em: p.pago_em,
+      referente: p.itens.map(i => `${i.qtd}× ${i.nome}${i.opcoes ? ' (' + i.opcoes + ')' : ''}`).join(', ') }); });
+}
+function lojaProdutos(){
+  const box = $('loja-miolo');
+  box.innerHTML = `<div class="p-titulo" style="margin-top:0"><h2>PRODU<span class="verde">TOS</span></h2>
+      <div style="display:flex;gap:8px"><button class="btn sec auto mini" id="imp-loja">Importar da loja antiga</button><button class="btn auto mini" id="novo-prod">+ Produto</button></div></div>
+    <div class="carta" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px"><div style="flex:1 1 200px"><b>Preço da aula avulsa (crédito)</b>
+      <div class="cinza pequeno">Valor que o aluno paga em "Comprar aulas".</div></div>
+      <input type="number" id="preco-aula" value="${esc(ADM.config.preco_aula ?? 70)}" style="width:110px"><button class="btn mini" id="salva-preco">Salvar</button></div>
+    ${ADM.produtos.length ? `<div class="lista">${ADM.produtos.map(p => `<div class="item clicavel" data-pr="${esc(p.id)}">
+        ${p.foto ? `<img src="${esc(p.foto)}" alt="" style="width:52px;height:52px;object-fit:cover;border-radius:10px">` : ''}
+        <div class="q"><b>${esc(p.nome)}</b><span>${esc(p.categoria || '')}${p.condicao ? ' · ' + esc(p.condicao) : ''}${p.n_variacoes ? ' · ' + p.n_variacoes + ' variação(ões)' : ''}</span></div>
+        <b>${dinheiro(p.preco)}</b>${p.ativo ? '' : '<span class="selo cinza">Oculto</span>'}</div>`).join('')}</div>`
+      : '<div class="vazio"><span class="bebas">Nenhum produto ainda</span>Toque em "Importar da loja antiga" para trazer tudo da lojaknupptenis.netlify.app.</div>'}`;
+  $('salva-preco').onclick = async () => { await post('/config', { preco_aula: +$('preco-aula').value || 70 }); toast('Preço salvo.'); recarregarSilencioso(); };
+  $('novo-prod').onclick = () => formProduto();
+  box.querySelectorAll('[data-pr]').forEach(el => el.onclick = async () => { const full = await v3('loja_produto', { id: el.dataset.pr }); formProduto(full); });
+  $('imp-loja').onclick = async () => {
+    const url = ADM.config.loja_url || 'https://lojaknupptenis.netlify.app/';
+    if (!await confirmar({ titulo: 'IMPORTAR PRODUTOS?', ok: 'Importar', texto: `Vou ler os produtos, fotos e preços de <b>${esc(url)}</b>. Produtos que já existem aqui são atualizados; nada é apagado.` })) return;
+    toast('Importando… pode levar alguns segundos.');
+    try { const r = await post('/importar-loja', { url }); await recarregarSilencioso(); toast(`${r.importados} produto(s) importado(s) ✅`); desenharPainel(); }
+    catch(e){ toast(e.message, true); }
+  };
+}
+async function redimensionar(file, max = 900){
+  return new Promise(res => { const img = new Image(); img.onload = () => {
+    const k = Math.min(1, max / Math.max(img.width, img.height)), cv = document.createElement('canvas');
+    cv.width = Math.round(img.width * k); cv.height = Math.round(img.height * k); cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+    res(cv.toDataURL('image/jpeg', .82)); }; img.src = URL.createObjectURL(file); });
+}
+function formProduto(p){
+  const novo = !p; p = p || { id: '', nome: '', categoria: '', condicao: 'Novo', descricao: '', foto: '', fotos: [], preco: 0, parcelas: 12, variacoes: [], indisponiveis: [], ativo: true };
+  let foto = p.foto, fotos = [...(p.fotos || [])];
+  const varTxt = (p.variacoes || []).map(v => `# ${v.nome}\n` + (v.opcoes || []).map(o => [o.nome, Number(o.preco) > 0 ? o.preco : '', o.cor || ''].join(' | ').replace(/( \| )+$/, '')).join('\n')).join('\n\n');
+  const cats = ADM.config.loja_categorias || [];
+  modal(`<h2>${novo ? 'NOVO' : 'EDITAR'} <span class="verde">PRODUTO</span></h2>
+    <div class="prod-galeria" id="fp-fotos"></div>
+    <div class="acoes" style="margin-top:8px"><label class="btn sec mini" style="letter-spacing:0;text-transform:none;color:var(--texto)">Foto principal<input type="file" accept="image/*" id="fp-foto" class="oculto"></label>
+      <label class="btn sec mini" style="letter-spacing:0;text-transform:none;color:var(--texto)">+ Fotos extras<input type="file" accept="image/*" multiple id="fp-extras" class="oculto"></label></div>
+    <div class="campo"><label>Nome</label><input id="fp-nome" value="${esc(p.nome)}"></div>
+    <div class="linha2"><div class="campo"><label>Categoria</label><input id="fp-cat" list="fp-cats" value="${esc(p.categoria || '')}"><datalist id="fp-cats">${cats.map(c => `<option value="${esc(c)}">`).join('')}</datalist></div>
+    <div class="campo"><label>Condição</label><input id="fp-cond" list="fp-conds" value="${esc(p.condicao || '')}"><datalist id="fp-conds"><option value="Novo"><option value="Seminovo"><option value="Pronta entrega"><option value="Serviço"></datalist></div></div>
+    <div class="linha2"><div class="campo"><label>Preço no Pix (R$)</label><input type="number" step="0.01" id="fp-preco" value="${esc(p.preco)}"></div>
+    <div class="campo"><label>Máx. parcelas no cartão</label><input type="number" min="1" max="12" id="fp-parc" value="${esc(p.parcelas || 1)}"></div></div>
+    <div class="campo"><label>Descrição</label><textarea id="fp-desc">${esc(p.descricao || '')}</textarea></div>
+    <div class="campo"><label>Variações</label><textarea id="fp-vars" style="min-height:150px;font-family:ui-monospace,monospace;font-size:.85rem" placeholder="# Cor\nBranca | | #FFFFFF\nPreta | | #000000\n\n# Tamanho\nP\nM\nG">${esc(varTxt)}</textarea>
+      <div class="cinza pequeno">Cada variação começa com <b># Nome</b>. Embaixo, uma opção por linha: <b>Nome | preço | cor</b>. O preço é opcional e, se preenchido, substitui o preço do produto (ex.: Pack 3 Tubos | 180).</div></div>
+    <div class="campo"><label>Combinações indisponíveis (uma por linha)</label><textarea id="fp-ind" placeholder="Branca / 8 Anos">${esc((p.indisponiveis || []).join('\n'))}</textarea></div>
+    <label class="check-linha"><input type="checkbox" id="fp-ativo" ${p.ativo ? 'checked' : ''}> <span>Aparece na loja</span></label>
+    <div class="rodape-m">${novo ? '' : '<button class="btn perigo auto" id="fp-del">Apagar</button>'}<button class="btn sec" data-fechar>Voltar</button><button class="btn" id="fp-ok">Salvar</button></div>`,
+  (m, fechar) => {
+    const galeria = () => { m.querySelector('#fp-fotos').innerHTML = [foto, ...fotos].filter(Boolean).map((f, k) =>
+      `<div style="position:relative;flex:0 0 auto"><img src="${esc(f)}" alt="">${k ? `<button type="button" class="tira-foto" data-tf="${k - 1}">✕</button>` : ''}</div>`).join('') || '<div class="vazio" style="width:100%">Sem foto</div>';
+      m.querySelectorAll('[data-tf]').forEach(b => b.onclick = () => { fotos.splice(+b.dataset.tf, 1); galeria(); }); };
+    galeria();
+    m.querySelector('#fp-foto').onchange = async e => { if (e.target.files[0]){ foto = await redimensionar(e.target.files[0]); galeria(); } };
+    m.querySelector('#fp-extras').onchange = async e => { for (const f of e.target.files) fotos.push(await redimensionar(f)); galeria(); };
+    m.querySelector('#fp-ok').onclick = async e => {
+      const antigas = {}; (p.variacoes || []).forEach(v => (v.opcoes || []).forEach(o => { antigas[v.nome + '|' + o.nome] = o.foto || ''; }));
+      const variacoes = []; let atual = null;
+      m.querySelector('#fp-vars').value.split('\n').map(l => l.trim()).filter(Boolean).forEach(l => {
+        if (l.startsWith('#')){ atual = { nome: l.replace(/^#+/, '').trim(), opcoes: [] }; variacoes.push(atual); return; }
+        if (!atual){ atual = { nome: 'Opção', opcoes: [] }; variacoes.push(atual); }
+        const [nome, preco, cor] = l.split('|').map(s => (s || '').trim());
+        atual.opcoes.push({ nome, preco: Number(String(preco || '0').replace(',', '.')) || 0, cor: cor || '', foto: antigas[atual.nome + '|' + nome] || '' });
+      });
+      if (!m.querySelector('#fp-nome').value.trim()) return toast('Coloque o nome do produto.', true);
+      ocupado(e.target, true);
+      try {
+        await v3('admin_salvar_produto', { produto: { id: p.id || null, nome: m.querySelector('#fp-nome').value.trim(), categoria: m.querySelector('#fp-cat').value.trim(),
+          condicao: m.querySelector('#fp-cond').value.trim(), descricao: m.querySelector('#fp-desc').value, foto, fotos,
+          preco: Number(m.querySelector('#fp-preco').value) || 0, parcelas: Number(m.querySelector('#fp-parc').value) || 1,
+          variacoes: variacoes.filter(v => v.opcoes.length), indisponiveis: m.querySelector('#fp-ind').value.split('\n').map(s => s.trim()).filter(Boolean),
+          ativo: m.querySelector('#fp-ativo').checked } });
+        fechar(); await recarregarSilencioso(); toast('Produto salvo.'); desenharPainel();
+      } catch(err){ ocupado(e.target, false); toast(err.message, true); }
+    };
+    const d = m.querySelector('#fp-del'); if (d) d.onclick = async () => {
+      if (!await confirmar({ titulo: 'APAGAR PRODUTO?', perigo: true, ok: 'Apagar', texto: 'Se só quiser esconder, desmarque "Aparece na loja".' })) return;
+      await v3('admin_excluir_produto', { id: p.id }); fechar(); await recarregarSilencioso(); toast('Produto apagado.'); desenharPainel();
+    };
+  });
+}
+
+/* =========================================================
    INÍCIO
    ========================================================= */
 $('ano').textContent = new Date().getFullYear();
 (async () => {
   await carregarInfo();
-  const salvo = pega('knupp_wpp');
-  if (salvo){ $('in-wpp').value = mascaraWpp(salvo); entrar(salvo, true); }
+  const w = pega('knupp_wpp'); if (w) $('in-wpp').value = mascaraWpp(w);
+  if (S.token) carregarApp(true); else mostrarPasso('wpp');
   if (location.hash === '#admin') $('engrenagem').click();
 })();
-document.addEventListener('visibilitychange', () => { if (!document.hidden && ALUNO.wpp && $('painel').classList.contains('oculto')) entrar(ALUNO.wpp, true); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden && S.token && $('painel').classList.contains('oculto')) carregarApp(true); });
 </script>
 </body>
 </html>
